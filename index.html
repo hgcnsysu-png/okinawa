@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>2026 沖繩大家族之旅 | 8天7夜行程 (瀨長島最終夜)</title>
+    <title>2026 沖繩大家族之旅 | 8天7夜完整行程</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -92,20 +92,6 @@
             color: #1e2a2e;
         }
 
-        .flight-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 0.8rem;
-        }
-
-        .flight {
-            background: #f2efe7;
-            border-radius: 1rem;
-            padding: 0.6rem 1rem;
-            flex: 1;
-        }
-
         .day-section {
             background: white;
             border-radius: 1.8rem;
@@ -175,31 +161,6 @@
             font-size: 0.98rem;
         }
 
-        .meal-tag {
-            background: #f5e5cf;
-            border-radius: 20px;
-            padding: 0.2rem 0.8rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 0.5rem;
-            color: #aa6f3c;
-        }
-
-        .highlight {
-            background: #eef6f0;
-            border-left: 4px solid #3f886e;
-            padding: 0.5rem 1rem;
-            border-radius: 14px;
-            margin: 1rem 0;
-        }
-
-        hr {
-            margin: 1rem 0;
-            border: none;
-            border-top: 1px solid #e9e2d4;
-        }
-
         .btn-toggle {
             background: none;
             border: none;
@@ -223,14 +184,37 @@
             margin: 1.2rem 0;
         }
 
-        .hotel-switch-badge {
-            background: #f4e4c1;
+        .highlight {
+            background: #eef6f0;
+            border-left: 4px solid #3f886e;
+            padding: 0.5rem 1rem;
+            border-radius: 14px;
+            margin: 1rem 0;
+        }
+
+        .price-table {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .price-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
             border-radius: 1rem;
-            padding: 0.4rem 1rem;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .price-table th, .price-table td {
+            border: 1px solid #e2d9c8;
+            padding: 0.6rem 0.8rem;
+            text-align: center;
+        }
+
+        .price-table th {
+            background: #2b5e4c;
+            color: white;
             font-weight: 600;
-            display: inline-block;
-            color: #9b6a3b;
         }
 
         footer {
@@ -268,11 +252,12 @@
         <div class="hero-badge">
             <span class="badge">📅 2026.7.23 → 7.30</span>
             <span class="badge">🚗 兩台7-8人座MPV</span>
-            <span class="badge">🏨 恩納村海灘飯店 + 那霸市區 + 瀨長島Storyline</span>
+            <span class="badge">🏨 恩納村海灘飯店 + 琉球利恩 + 瀨長島Storyline</span>
             <span class="badge">🎢 JUNGLIA叢林樂園 + 百年古家阿古豬</span>
         </div>
     </div>
 
+    <!-- 航班＆交通資訊 -->
     <div class="info-grid">
         <div class="info-card">
             <h3>✈️ 去程</h3>
@@ -280,11 +265,11 @@
         </div>
         <div class="info-card">
             <h3>✈️ 回程</h3>
-            <p>7/30 (四) 12:20 ✈ 14:30 抵港</p>
+            <p>7/30 (四) 12:20 ✈ 14:30 抵達香港</p>
         </div>
         <div class="info-card">
             <h3>🚘 移動方式</h3>
-            <p>租兩台 7-8人座 MPV (OTS/ Times) ｜車上導航搭配Mapcode</p>
+            <p>租兩台 7-8人座 MPV (OTS / Times)｜導航搭配Mapcode</p>
         </div>
         <div class="info-card">
             <h3>📱 必備工具</h3>
@@ -292,15 +277,25 @@
         </div>
     </div>
 
+    <!-- 住宿總覽 -->
+    <div class="reserve-note" style="margin-bottom: 1.5rem;">
+        <p>🏨 <strong>8天7夜 住宿配置</strong><br>
+        ▪️ <strong>Day1 - Day4</strong>：御幸海灘酒店 (Hotel Miyuki Beach) — 恩納村，私人沙灘<br>
+        ▪️ <strong>Day5 - Day6</strong>：琉球利恩飯店那霸國際通 — 國際通入口，免費迎賓啤酒<br>
+        ▪️ <strong>Day7</strong>：瀨長島 STORYLINE 酒店 — 離機場10分鐘，最後一晚奢華悠閒
+        </p>
+    </div>
+
+    <!-- 行程區塊會用js動態載入 -->
     <div id="days-container"></div>
 
-    <!-- 餐廳&樂園重點提醒 -->
+    <!-- 重要提醒區塊 -->
     <div class="alert-card">
         <p>🌟 <strong>「百年古家 大家」預約重點</strong><br>
         📍 地址：名護市中山90 ｜ Mapcode：206 745 056*82<br>
         🕒 晚餐 18:00-21:00 (最後點餐20:00) , 完全預約制，12人必提前1-2週預約！<br>
         🍽️ 推薦：阿古豬涮涮鍋套餐、琉球料理。有免費停車場(100台)、榻榻米座位，適合家族聚會。<br>
-        📞 電話預約或請白金秘書 / 飯店協助，告知人數及兒童椅需求。
+        📞 電話預約或請信用卡白金祕書 / 飯店協助，告知人數及兒童椅需求。
         </p>
     </div>
 
@@ -313,141 +308,164 @@
         </p>
     </div>
 
-    <!-- 瀨長島住宿特別提醒 -->
-    <div class="highlight" style="background: #dff3f0;">
-        🏝️ <strong>最後一晚住宿升級｜瀨長島 STORYLINE 酒店</strong><br>
-        📍 位於瀨長島 Umikaji Terrace 旁，步行即到白色希臘風商店街、溫泉&沙灘。<br>
-        🚗 距離那霸機場僅10-15分鐘車程，<strong>Day8 早晨還車、前往機場超省時</strong>，可悠閒享受最後沖繩早晨。<br>
-        🌅 前一晚可賞夕陽、泡足湯，飯店設計現代簡約，家族12人建議提早預訂相鄰客房。
+    <!-- 溜滑梯特別提醒 -->
+    <div class="highlight" style="background: #fef1df;">
+        🛑 <strong>浦添大公園 巨型滾輪溜滑梯 注意事項</strong><br>
+        🔥 溜滑梯為金屬滾輪材質，夏天曬得非常燙，務必自備滑行墊！<br>
+        ✅ 請從香港帶去厚紙板、專用滑草墊或毛巾，現場無販售。<br>
+        ✅ 小朋友建議穿著長褲，避免摩擦燙傷。
+    </div>
+
+    <!-- 總預算區塊 -->
+    <div class="price-table">
+        <table>
+            <caption style="text-align: left; margin-bottom: 8px; font-weight: 600;">💰 12人主要費用估算 (參考)</caption>
+            <thead>
+                <tr><th>項目</th><th>估算(日圓)</th><th>約港幣</th><th>備註</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>JUNGLIA 門票(10大+2小)</td><td>約 99,880</td><td>5,100</td><td>1日門票</td></tr>
+                <tr><td>JUNGLIA 停車場(2台)</td><td>4,000</td><td>200</td><td>全預約制</td></tr>
+                <tr><td>美麗海水族館門票</td><td>約 30,000</td><td>1,530</td><td>可購買優惠套票</td></tr>
+                <tr><td>玉泉洞門票</td><td>約 24,000</td><td>1,220</td><td>一般票價</td></tr>
+                <tr><td>DMM 水族館門票</td><td>約 32,000</td><td>1,630</td><td>全室內</td></tr>
+                <tr><td>租車(2台×8天)</td><td>約 160,000</td><td>8,160</td><td>含保險</td></tr>
+                <tr><td>住宿(7晚,12人)</td><td>約 600,000</td><td>30,600</td><td>依實際房型</td></tr>
+                <tr><td>餐食(8天)</td><td>約 400,000</td><td>20,400</td><td>含燒肉、古家等</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size: 0.8rem; margin-top: 8px;">⚠️ 實際費用依匯率、票種選擇變動，建議提前3個月預訂。</p>
     </div>
 
     <footer>
         🌴 行程可依當天體力微調，最後一夜入住瀨長島，隔天輕鬆還車搭機！<br>
-        有任何疑問隨時在家族群組討論 ✨
+        預祝家族旅行滿載回憶 ✨
     </footer>
 </div>
 
 <script>
-    // 行程資料庫 — Day5~Day8 因應最後一晚改住瀨長島STORYLINE調整
+    // 完整行程資料
     const scheduleData = [
         {
             day: 1, date: "7/23 (四)", title: "啟程 × 恩納海濱", emoji: "🌊",
             theme: "北部進駐",
             items: [
-                { time: "11:20", desc: "抵達那霸機場，通關、提領行李" },
-                { time: "12:30-14:00", desc: "辦理租車手續 (兩台MPV) 確認保險及導航" },
-                { time: "14:00-15:30", desc: "【午餐】瀨長島 Umikaji Terrace (看海鬆餅、第一餐沖繩味)" },
-                { time: "15:30-16:30", desc: "北上恩納村 (車程約1hr，沿途欣賞海岸)" },
-                { time: "16:30-17:15", desc: "萬座毛 象鼻岩 + 家族大合照 (經典地標)" },
-                { time: "17:30", desc: "入住 御幸海灘酒店 (Hotel Miyuki Beach) 放行李，小歇" },
-                { time: "18:30", desc: "【晚餐】恩納區燒肉 — 主選：島豚屋恩納店 (阿古豬蒸籠)｜備案：琉球之牛/古民家七輪燒肉" }
+                { time: "11:20", desc: "抵達那霸機場" },
+                { time: "12:30-14:00", desc: "辦理租車手續（兩台 MPV）" },
+                { time: "14:00-15:30", desc: "【午餐】瀨長島 Umikaji Terrace（看海、吃鬆餅）" },
+                { time: "15:30-16:30", desc: "北上前往恩納村（車程約 1 小時）" },
+                { time: "16:30-17:15", desc: "萬座毛（象鼻岩、拍家族大合照）" },
+                { time: "17:30", desc: "入住 御幸海灘酒店" },
+                { time: "18:30", desc: "【晚餐】恩納區燒肉 — 島豚屋恩納店 / 琉球之牛" }
             ]
         },
         {
             day: 2, date: "7/24 (五)", title: "恐龍冒險 × 百年古家阿古豬", emoji: "🦖",
             theme: "JUNGLIA + 夢幻古宅",
             items: [
-                { time: "08:30", desc: "從飯店出發前往 JUNGLIA 叢林樂園 (車程約45分鐘)" },
-                { time: "09:30-17:00", desc: "🔥【全日暢玩 JUNGLIA】恐龍探索之旅(DINOSAR SAFARI)、越野車、熱氣球，必看潑水秀。長輩可選購SPA券。" },
-                { time: "12:30", desc: "園區內 Panorama Dining 或美食餐車 (火山牛肉派、漢堡排)" },
-                { time: "17:00-18:00", desc: "驅車前往名護山區「百年古家 大家」 (Mapcode:206 745 056*82)" },
-                { time: "18:00-19:30", desc: "🏮【晚宴】百年古家 大家 — 阿古豬涮涮鍋、傳統琉球料理，古民家氛圍，全家圍爐。" },
-                { time: "20:00", desc: "返回御幸海灘飯店，享受夜晚海風" }
-            ]
+                { time: "08:30", desc: "從飯店出發前往 JUNGLIA（車程約 45 分鐘）" },
+                { time: "09:30-17:00", desc: "🔥 JUNGLIA 叢林樂園 全日玩樂 — 恐龍探索之旅、越野車、熱氣球。長輩可加購SPA券。" },
+                { time: "12:30", desc: "園區內午餐（Panorama Dining 或美食餐車）" },
+                { time: "17:00-18:00", desc: "驅車前往名護山區「百年古家 大家」" },
+                { time: "18:00-19:30", desc: "🏮【晚餐】百年古家 大家 — 阿古豬涮涮鍋、傳統琉球料理" },
+                { time: "20:00", desc: "返回御幸海灘酒店" }
+            ],
+            priceNote: true
         },
         {
             day: 3, date: "7/25 (六)", title: "美麗海水族館 × 古宇利藍", emoji: "🐋",
             theme: "北部經典",
             items: [
-                { time: "09:30", desc: "出發 沖繩美麗海水族館 (車程30分鐘)" },
-                { time: "10:00-13:30", desc: "水族館看鯨鯊、海豚秀｜午餐：Ocean Blue餐廳 或 岸本食堂" },
-                { time: "14:00-16:00", desc: "古宇利島 跨越大橋，沙灘踩水、心形岩打卡，品嚐蝦蝦飯" },
-                { time: "16:30-17:30", desc: "備瀨福木林道 租協力車或散步，綠蔭隧道漫遊" },
-                { time: "18:30", desc: "返回恩納飯店稍作休息" },
-                { time: "19:00", desc: "【晚餐】恩納村人氣居酒屋 (體驗沖繩地料理、炒苦瓜、海葡萄)" }
+                { time: "09:30", desc: "出發前往 沖繩美麗海水族館" },
+                { time: "10:00-13:30", desc: "水族館（鯨鯊、海豚秀）→ 午餐 Ocean Blue 或岸本食堂" },
+                { time: "14:00-16:00", desc: "古宇利島（跨橋、沙灘踩水、蝦蝦飯）" },
+                { time: "16:30-17:30", desc: "備瀨福木林道（協力車散步）" },
+                { time: "18:30", desc: "返回御幸海灘酒店" },
+                { time: "19:00", desc: "【晚餐】恩納村人氣居酒屋" }
             ]
         },
         {
             day: 4, date: "7/26 (日)", title: "鳳梨小火車 × 美國村日落", emoji: "🍍",
             theme: "南下動線",
             items: [
-                { time: "09:30", desc: "退房行李上車，告別恩納" },
-                { time: "10:00-11:30", desc: "名護鳳梨園 搭乘自動遊園車，小孩超愛鳳梨甜點" },
-                { time: "12:00-13:30", desc: "名護市區午餐 (推薦琉麺或當地食堂)" },
-                { time: "14:30-16:00", desc: "中城公園 或 浦添大公園 巨型滾輪溜滑梯放電" },
-                { time: "16:30-19:00", desc: "美國村 American Village 自由逛街、親子散步、落日步道看夕陽" },
-                { time: "19:30", desc: "【晚餐】美國村周邊: 迴轉壽司or美式漢堡，輕鬆解決" },
-                { time: "20:30", desc: "住宿建議: 續住恩納同飯店(省事) 或 南下美國村附近飯店" }
+                { time: "09:30", desc: "退房，行李上車" },
+                { time: "10:00-11:30", desc: "名護鳳梨園（造型遊園車）" },
+                { time: "12:00-13:30", desc: "名護市區午餐" },
+                { time: "14:30-16:00", desc: "浦添大公園 或 中城公園 — 巨型滾輪溜滑梯（務必自備滑行墊！）" },
+                { time: "16:30-19:00", desc: "美國村（逛街、日落步道）" },
+                { time: "19:30", desc: "【晚餐】美國村周邊（迴轉壽司 或 美式漢堡）" },
+                { time: "20:30", desc: "續住 御幸海灘酒店" }
             ]
         },
         {
-            day: 5, date: "7/27 (一)", title: "玉泉洞地底探險", emoji: "🪨",
+            day: 5, date: "7/27 (一)", title: "玉泉洞地底探險 × 那霸", emoji: "🪨",
             theme: "南部文化",
             items: [
-                { time: "上午", desc: "飯店退房，南下途中停靠 殘波岬燈塔，遼闊海景拍照" },
-                { time: "中午", desc: "順路享用沖繩麵 (推薦大家食堂或路邊名店)" },
-                { time: "下午", desc: "沖繩世界文化王國・玉泉洞 (天然鐘乳石洞避暑、看傳統太鼓舞)" },
-                { time: "傍晚", desc: "那霸市區飯店 Check-in (此晚仍住那霸，方便隔日國際通行程，推薦國際通附近飯店)" },
-                { time: "夜間", desc: "國際通晚餐自由探索 (第一牧志公設市場或炭烤串燒)" }
+                { time: "09:00", desc: "恩納飯店退房，南下" },
+                { time: "10:00-10:40", desc: "殘波岬燈塔" },
+                { time: "11:00-12:30", desc: "順路享用沖繩麵" },
+                { time: "13:00-16:00", desc: "沖繩世界・玉泉洞（鐘乳石、太鼓舞）" },
+                { time: "16:30", desc: "入住 琉球利恩飯店那霸國際通" },
+                { time: "17:30-21:00", desc: "國際通逛街、晚餐自由探索" },
+                { time: "🍺", desc: "飯店福利：免費 Orion 啤酒一杯（每人/每晚）" }
             ]
         },
         {
-            day: 6, date: "7/28 (二)", title: "國際通採買 × 光影水族館", emoji: "🛍️",
+            day: 6, date: "7/28 (二)", title: "國際通逛街 × DMM水族館", emoji: "🛍️",
             theme: "逛街避暑",
             items: [
-                { time: "上午", desc: "國際通 自由活動 (藥妝、伴手禮、塩屋雪鹽冰淇淋)" },
-                { time: "下午", desc: "iias沖繩豐崎購物中心 + DMM Kariyushi水族館 (全室內冷氣，光影科技與樹懶互動)" },
-                { time: "晚上", desc: "【晚餐】iias美食街 或 系滿魚市場 (新鮮海鮮丼、炸物)" },
-                { time: "備註", desc: "雨天備案首選，小朋友超愛DMM觸摸池" }
+                { time: "09:00-12:00", desc: "國際通自由活動（藥妝、伴手禮）" },
+                { time: "12:00-13:30", desc: "國際通午餐" },
+                { time: "14:00-18:00", desc: "iias 豐崎購物中心 + DMM Kariyushi 水族館（全室內冷氣）" },
+                { time: "18:30", desc: "【晚餐】iias 美食街 或 系滿魚市場" },
+                { time: "20:00", desc: "返回琉球利恩飯店" }
             ]
         },
         {
-            day: 7, date: "7/29 (三)", title: "最終購物日 × 入住瀨長島STORYLINE", emoji: "🏝️",
-            theme: "永旺夢樂城 + 海島度假感",
+            day: 7, date: "7/29 (三)", title: "永旺夢樂城 × 瀨長島STORYLINE", emoji: "🏝️",
+            theme: "最終購物",
             items: [
-                { time: "09:30", desc: "飯店退房，行李全數上車 (此晚改住瀨長島STORYLINE，不折返那霸)" },
-                { time: "10:00-16:00", desc: "AEON MALL Okinawa Rycom (來客夢) 寶可夢中心、電器、嬰兒用品、服飾一站買齊，午餐於購物中心內解決" },
-                { time: "16:00-17:00", desc: "驅車前往瀨長島 STORYLINE 酒店 (車程約30-40分鐘)，辦理入住，放戰利品" },
-                { time: "17:30-19:30", desc: "漫步Umikaji Terrace 白色階梯商店街，看飛機起降、欣賞橘色夕陽。可泡瀨長島足湯或預約飯店溫泉" },
-                { time: "19:30", desc: "【晚餐】瀨長島周邊餐廳 — 推薦「塔可飯咖啡」、「海鮮BBQ」或飯店精緻料理；亦可開車5分鐘至OUTLET周邊用餐" },
-                { time: "💤", desc: "【打包夜】飯店空間舒適，務必將所有戰利品、行李箱整理完畢，隔天僅10分鐘車程至機場" }
+                { time: "09:30", desc: "琉球利恩飯店退房" },
+                { time: "10:00-16:00", desc: "AEON MALL 來客夢（寶可夢中心、電器、服飾）午餐於購物中心內" },
+                { time: "16:00-17:00", desc: "前往 瀨長島 STORYLINE 酒店 入住" },
+                { time: "17:30-19:30", desc: "Umikaji Terrace（白色商店街、夕陽、足湯）" },
+                { time: "19:30", desc: "【晚餐】瀨長島周邊餐廳（塔可飯 / 海鮮 BBQ）" },
+                { time: "💤", desc: "打包夜：整理所有行李，隔天輕鬆還車" }
             ]
         },
         {
-            day: 8, date: "7/30 (四)", title: "從瀨長島優雅返航 ✈️", emoji: "🏁",
+            day: 8, date: "7/30 (四)", title: "從瀨長島優雅返航", emoji: "✈️",
             theme: "機場返港",
             items: [
-                { time: "08:00-08:45", desc: "飯店享用早餐，退房。出發前至鄰近加油站加滿油(瀨長島周邊有加油站)" },
-                { time: "09:00-09:30", desc: "前往機場附近租車公司還車 (OTS/Times 瀨長島周邊營業所)，搭乘接駁車至那霸機場國際線" },
-                { time: "09:50", desc: "抵達那霸機場，辦理登機＋行李託運 (因住宿離機場超近，時間充裕)" },
-                { time: "10:30", desc: "機場免稅店最後補貨 (Royce、紅芋塔、沖繩泡盛)" },
-                { time: "12:20", desc: "班機準時起飛，返回香港" },
-                { time: "14:30", desc: "降落香港機場，圓滿結束沖繩8日家族旅行！" }
+                { time: "08:00-08:45", desc: "早餐、退房，加滿油" },
+                { time: "09:00-09:30", desc: "還車 → 接駁車至那霸機場" },
+                { time: "09:50", desc: "辦理登機與行李託運" },
+                { time: "10:30", desc: "機場免稅店最後採買" },
+                { time: "12:20", desc: "起飛返回香港" },
+                { time: "14:30", desc: "抵達香港，行程圓滿結束" }
             ]
         }
     ];
 
     const container = document.getElementById('days-container');
     if (container) {
-        scheduleData.forEach((dayData, idx) => {
+        scheduleData.forEach((dayData) => {
             const dayDiv = document.createElement('div');
             dayDiv.className = 'day-section';
-            const dayNumber = dayData.day;
             const header = document.createElement('div');
             header.className = 'day-header';
-            header.setAttribute('data-dayid', `day-${dayNumber}`);
             header.innerHTML = `
                 <div class="day-title">
                     <span class="day-emojii">${dayData.emoji}</span>
-                    <span>Day ${dayNumber} ・ ${dayData.date}</span>
+                    <span>Day ${dayData.day} ・ ${dayData.date}</span>
                     <span class="day-theme">${dayData.theme}</span>
                 </div>
-                <button class="btn-toggle" aria-label="展開/收合">▼</button>
+                <button class="btn-toggle">▼</button>
             `;
             const body = document.createElement('div');
             body.className = 'day-body';
             body.style.display = 'block';
-            let itemsHtml = `<h3 style="margin-bottom: 1rem; font-weight: 600;">✨ ${dayData.title}</h3>`;
+            let itemsHtml = `<h3 style="margin-bottom: 1rem;">✨ ${dayData.title}</h3>`;
             dayData.items.forEach(item => {
                 itemsHtml += `
                     <div class="timeline-item">
@@ -456,15 +474,28 @@
                     </div>
                 `;
             });
-            // 個別日特殊提示
-            if (dayNumber === 2) {
-                itemsHtml += `<div class="highlight" style="margin-top: 12px;">🍲 百年古家「大家」為預約名店，晚餐時段採完全預約，請確保出發前已完成訂位。當天從JUNGLIA離開請抓17:00動身，山路夜間駕駛放慢速度。</div>`;
+            // 第二天票價表格
+            if (dayData.day === 2) {
+                itemsHtml += `
+                    <div class="price-table" style="margin-top: 1rem;">
+                        <table>
+                            <caption style="text-align: left; margin-bottom: 6px; font-weight: 600;">🎟️ JUNGLIA 門票價格 (2026年7月)</caption>
+                            <thead><tr><th>票種</th><th>大人(12歲↑)</th><th>兒童(4-11歲)</th><th>備註</th></tr></thead>
+                            <tbody>
+                                <tr><td>1日門票</td><td>8,800日圓</td><td>5,940日圓</td><td>主要推薦</td></tr>
+                                <tr><td>1日門票+SPA</td><td>11,880日圓</td><td>7,810日圓</td><td>含無邊際溫泉</td></tr>
+                                <tr><td>SPA單獨票</td><td>3,080日圓</td><td>1,870日圓</td><td>僅長輩適用</td></tr>
+                                <tr><td>豪華通行證</td><td colspan="2">990~2,970日圓</td><td>快速通關</td></tr>
+                                <tr><td>停車場(每台)</td><td colspan="2">2,000日圓</td><td>全預約制</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size:0.85rem;">💰 12人門票估算(1日票)：10大×8,800 + 2小×5,940 = <strong>約99,880日圓 (約港幣5,100)</strong></p>
+                    </div>
+                `;
             }
-            if (dayNumber === 7) {
-                itemsHtml += `<div class="alert-card" style="margin-top: 12px; background:#FEF1DF;">🏨 本日入住瀨長島STORYLINE酒店！請留意：Check-in時間約15:00後，但我們約16-17點抵達剛好。永旺血拼後直接往瀨長島移動，享受海島度假夜，隔天去機場免早起。</div>`;
-            }
-            if (dayNumber === 8) {
-                itemsHtml += `<div class="highlight" style="margin-top: 12px;">✈️ 因為住在瀨長島，前往機場與還車路線相當順暢，早晨從容吃完早餐再出發，12人務必確認還車時間與油箱加滿。</div>`;
+            // 第四天強調滑行墊
+            if (dayData.day === 4) {
+                itemsHtml += `<div class="highlight" style="margin-top: 12px;">🛑 再次提醒：浦添大公園溜滑梯務必自備滑行墊（厚紙板/毛巾），穿長褲。</div>`;
             }
             body.innerHTML = itemsHtml;
             dayDiv.appendChild(header);
@@ -486,23 +517,6 @@
             });
         });
     }
-
-    // 補充住宿更動總說明
-    const hotelNote = document.createElement('div');
-    hotelNote.className = 'reserve-note';
-    hotelNote.style.marginTop = '1.5rem';
-    hotelNote.style.backgroundColor = '#f9eedb';
-    hotelNote.innerHTML = `
-        <p>🏨 <strong>住宿配置 (修改後)</strong><br>
-        ▪ Day1 ~ Day4：恩納村 御幸海灘酒店 (Hotel Miyuki Beach) — 沙灘近，親子友善。<br>
-        ▪ Day5：那霸市區精選飯店 (國際通周邊，便於逛街與南下行程銜接)<br>
-        ▪ Day6：那霸市區同飯店 (續住，行李不用移動)<br>
-        ▪ <span style="background:#ffe2b5; padding:0 6px;">Day7：瀨長島 STORYLINE 酒店 (最後一晚奢華悠閒，離機場超近，早上還車&搭機無壓力)</span><br>
-        🔔 提醒：Day5及Day6那霸住宿請提早預訂可容納12人的連通房或樓層集中，Day7瀨長島STORYLINE因熱門務必至少三個月前預訂。
-        </p>
-    `;
-    const targetElem = document.querySelector('.highlight');
-    if (targetElem) targetElem.insertAdjacentElement('afterend', hotelNote);
 </script>
 </body>
 </html>
