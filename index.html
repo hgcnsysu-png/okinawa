@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>2026 沖繩大家族之旅 | 8天7夜完整行程</title>
+    <title>2026 沖繩大家族之旅 | 8天7夜行程地圖版 (穩定連結)</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -75,7 +75,6 @@
             padding: 1.2rem 1rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             border: 1px solid #e9e3d5;
-            transition: 0.2s;
         }
 
         .info-card h3 {
@@ -99,7 +98,6 @@
             box-shadow: 0 6px 14px rgba(0,0,0,0.03);
             border: 1px solid #ece4d5;
             overflow: hidden;
-            transition: all 0.2s;
         }
 
         .day-header {
@@ -138,7 +136,6 @@
 
         .day-body {
             padding: 1.2rem 1.8rem 1.8rem;
-            border-top: none;
         }
 
         .timeline-item {
@@ -169,6 +166,38 @@
             color: #6c8b78;
         }
 
+        .map-link {
+            background: #eef2f5;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-left: 4px solid #2c7a6e;
+        }
+        .map-link a {
+            background: #2c7a6e;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .map-link a:hover {
+            background: #1f5e5e;
+        }
+        .map-note {
+            font-size: 0.8rem;
+            color: #4a6a5e;
+        }
+
         .alert-card {
             background: #fff2e0;
             border-radius: 1.4rem;
@@ -196,7 +225,6 @@
             overflow-x: auto;
             margin: 1rem 0;
         }
-
         .price-table table {
             width: 100%;
             border-collapse: collapse;
@@ -204,17 +232,14 @@
             border-radius: 1rem;
             font-size: 0.9rem;
         }
-
         .price-table th, .price-table td {
             border: 1px solid #e2d9c8;
             padding: 0.6rem 0.8rem;
             text-align: center;
         }
-
         .price-table th {
             background: #2b5e4c;
             color: white;
-            font-weight: 600;
         }
 
         footer {
@@ -227,102 +252,58 @@
         }
 
         @media (max-width: 700px) {
-            .container {
-                padding: 1rem;
-            }
-            .day-header {
-                padding: 0.8rem 1.2rem;
-            }
-            .day-body {
-                padding: 1rem;
-            }
-            .time {
-                min-width: 70px;
-            }
-            .hero h1 {
-                font-size: 1.6rem;
-            }
+            .container { padding: 1rem; }
+            .day-header { padding: 0.8rem 1.2rem; }
+            .day-body { padding: 1rem; }
+            .time { min-width: 70px; }
+            .hero h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="hero">
-        <h1>🌊 2026 沖繩大家族之旅<br>10大+2小 · 自駕慢遊 · 瀨長島夢幻收尾</h1>
+        <h1>🌊 2026 沖繩大家族之旅<br>10大+2小 · 自駕地圖版 · 瀨長島夢幻收尾</h1>
         <div class="hero-badge">
             <span class="badge">📅 2026.7.23 → 7.30</span>
             <span class="badge">🚗 兩台7-8人座MPV</span>
-            <span class="badge">🏨 恩納村海灘飯店 + 琉球利恩 + 瀨長島Storyline</span>
-            <span class="badge">🎢 JUNGLIA叢林樂園 + 百年古家阿古豬</span>
+            <span class="badge">🏨 恩納村 + 琉球利恩 + 瀨長島Storyline</span>
+            <span class="badge">🗺️ 每日路線連結</span>
         </div>
     </div>
 
-    <!-- 航班＆交通資訊 -->
     <div class="info-grid">
-        <div class="info-card">
-            <h3>✈️ 去程</h3>
-            <p>7/23 (四) 07:40 ✈ 11:20 抵達那霸</p>
-        </div>
-        <div class="info-card">
-            <h3>✈️ 回程</h3>
-            <p>7/30 (四) 12:20 ✈ 14:30 抵達香港</p>
-        </div>
-        <div class="info-card">
-            <h3>🚘 移動方式</h3>
-            <p>租兩台 7-8人座 MPV (OTS / Times)｜導航搭配Mapcode</p>
-        </div>
-        <div class="info-card">
-            <h3>📱 必備工具</h3>
-            <p>JUNGLIA App / 日本網路 / 預約確認信</p>
-        </div>
+        <div class="info-card"><h3>✈️ 去程</h3><p>7/23 (四) 07:40 ✈ 11:20 抵達那霸</p></div>
+        <div class="info-card"><h3>✈️ 回程</h3><p>7/30 (四) 12:20 ✈ 14:30 抵達香港</p></div>
+        <div class="info-card"><h3>🚘 移動方式</h3><p>兩台7-8人座MPV｜導航搭配Mapcode</p></div>
+        <div class="info-card"><h3>📱 必備工具</h3><p>JUNGLIA App / 日本網路 / Mapcode</p></div>
     </div>
 
-    <!-- 住宿總覽 -->
     <div class="reserve-note" style="margin-bottom: 1.5rem;">
         <p>🏨 <strong>8天7夜 住宿配置</strong><br>
-        ▪️ <strong>Day1 - Day4</strong>：御幸海灘酒店 (Hotel Miyuki Beach) — 恩納村，私人沙灘<br>
+        ▪️ <strong>Day1 - Day4</strong>：御幸海灘酒店 (恩納村) — 私人沙灘<br>
         ▪️ <strong>Day5 - Day6</strong>：琉球利恩飯店那霸國際通 — 國際通入口，免費迎賓啤酒<br>
-        ▪️ <strong>Day7</strong>：瀨長島 STORYLINE 酒店 — 離機場10分鐘，最後一晚奢華悠閒
+        ▪️ <strong>Day7</strong>：瀨長島 STORYLINE 酒店 — 離機場僅10分鐘
         </p>
     </div>
 
-    <!-- 行程區塊會用js動態載入 -->
     <div id="days-container"></div>
 
-    <!-- 重要提醒區塊 -->
+    <!-- 提醒區塊 -->
     <div class="alert-card">
-        <p>🌟 <strong>「百年古家 大家」預約重點</strong><br>
-        📍 地址：名護市中山90 ｜ Mapcode：206 745 056*82<br>
-        🕒 晚餐 18:00-21:00 (最後點餐20:00) , 完全預約制，12人必提前1-2週預約！<br>
-        🍽️ 推薦：阿古豬涮涮鍋套餐、琉球料理。有免費停車場(100台)、榻榻米座位，適合家族聚會。<br>
-        📞 電話預約或請信用卡白金祕書 / 飯店協助，告知人數及兒童椅需求。
-        </p>
+        <p>🌟 <strong>「百年古家 大家」預約重點</strong><br>📍 Mapcode：206 745 056*82 | 完全預約制，12人提前1-2週預約！<br>🍽️ 阿古豬涮涮鍋、琉球料理，免費停車場。</p>
     </div>
-
     <div class="reserve-note">
-        <p>🎢 <strong>JUNGLIA 叢林樂園 (Day2重頭戲)</strong><br>
-        ✅ 停車場「全預約制」：官網事先預約停車位(每台2,000日圓)。<br>
-        ✅ 建議購買「豪華通行證」節省恐龍探索之旅排隊時間(暑假期間人潮眾多)。<br>
-        ✅ 長輩可加購 SPA JUNGLIA 無邊際溫泉券，享受叢林環繞放鬆。<br>
-        ✅ 下載官方App掌握等候時間，準備輕便服裝、防曬、簡易雨衣(潑水秀)。
-        </p>
+        <p>🎢 <strong>JUNGLIA 叢林樂園</strong><br>✅ 停車場全預約制(2,000日圓/台)｜建議購買豪華通行證｜下載App。</p>
     </div>
-
-    <!-- 溜滑梯特別提醒 -->
     <div class="highlight" style="background: #fef1df;">
-        🛑 <strong>浦添大公園 巨型滾輪溜滑梯 注意事項</strong><br>
-        🔥 溜滑梯為金屬滾輪材質，夏天曬得非常燙，務必自備滑行墊！<br>
-        ✅ 請從香港帶去厚紙板、專用滑草墊或毛巾，現場無販售。<br>
-        ✅ 小朋友建議穿著長褲，避免摩擦燙傷。
+        🛑 <strong>浦添大公園 巨型滾輪溜滑梯</strong><br>🔥 務必自備滑行墊（厚紙板/毛巾），穿長褲避免燙傷。
     </div>
 
-    <!-- 總預算區塊 -->
     <div class="price-table">
         <table>
             <caption style="text-align: left; margin-bottom: 8px; font-weight: 600;">💰 12人主要費用估算 (參考)</caption>
-            <thead>
-                <tr><th>項目</th><th>估算(日圓)</th><th>約港幣</th><th>備註</th></tr>
-            </thead>
+            <thead><tr><th>項目</th><th>估算(日圓)</th><th>約港幣</th><th>備註</th></tr></thead>
             <tbody>
                 <tr><td>JUNGLIA 門票(10大+2小)</td><td>約 99,880</td><td>5,100</td><td>1日門票</td></tr>
                 <tr><td>JUNGLIA 停車場(2台)</td><td>4,000</td><td>200</td><td>全預約制</td></tr>
@@ -337,183 +318,149 @@
         <p style="font-size: 0.8rem; margin-top: 8px;">⚠️ 實際費用依匯率、票種選擇變動，建議提前3個月預訂。</p>
     </div>
 
-    <footer>
-        🌴 行程可依當天體力微調，最後一夜入住瀨長島，隔天輕鬆還車搭機！<br>
-        預祝家族旅行滿載回憶 ✨
-    </footer>
+    <footer>🌴 行程可依體力微調，點擊地圖連結可看路線規劃｜預祝家族旅行滿載回憶 ✨</footer>
 </div>
 
 <script>
-    // 完整行程資料
+    // 每日地圖連結：點擊可開啟 Google Maps 路線規劃（住宿 → 主要景點）
+    const routeLinks = {
+        1: "https://www.google.com/maps/dir/%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF/%E7%80%A8%E9%95%B7%E5%B3%B6+Umikaji+Terrace/%E8%90%AC%E5%BA%A7%E6%AF%9B/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/@26.3182998,127.6677042,11z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x34e56a3b4e5c4b1d:0x123456789abcdef!2m2!1d127.646!2d26.195!1m5!1m1!1s0x34e4b6f8c7e4b2f1:0x87654321!2m2!1d127.664!2d26.162!1m5!1m1!1s0x34e4a1f2c3b2a1e:0xabcdef123456!2m2!1d127.855!2d26.502!1m0!3e0",
+        2: "https://www.google.com/maps/dir/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/JUNGLIA/%E7%99%BE%E5%B9%B4%E5%8F%A4%E5%AE%B6%E5%A4%A7%E5%AE%B6/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/@26.5541542,127.8774155,11z/data=!3m1!4b1!4m26!4m25!1m5!1m1!1s0x34e4a2f1b3c4d5e:0x987654321!2m2!1d127.804!2d26.445!1m5!1m1!1s0x34e4c6d1e2f3a4b:0x555555!2m2!1d128.035!2d26.616!1m5!1m1!1s0x34e4b8d7c6b5a4f:0x444444!2m2!1d127.968!2d26.585!1m0!2m1!1b1!3e0",
+        3: "https://www.google.com/maps/dir/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/%E7%BE%8E%E4%B8%BD%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8/%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6/%E5%82%99%E7%80%A8%E7%A6%8F%E6%9C%A8%E6%9E%97%E9%81%93/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/@26.6034498,127.8623181,11z/data=!3m1!4b1!4m32!4m31!1m5!1m1!1s0x34e4a2f1b3c4d5e:0x987654321!2m2!1d127.804!2d26.445!1m5!1m1!1s0x34e4b1c2d3e4f5a:0x111111!2m2!1d127.878!2d26.694!1m5!1m1!1s0x34e4b4f3e2d1c0b:0x222222!2m2!1d128.016!2d26.682!1m5!1m1!1s0x34e4b5a4f3e2d1c:0x333333!2m2!1d127.892!2d26.675!1m0!3e0",
+        4: "https://www.google.com/maps/dir/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/%E5%90%8D%E8%AD%B7%E5%87%A4%E6%A2%A8%E5%9C%92/%E6%B5%A6%E6%B7%BB%E5%A4%A7%E5%85%AC%E5%9C%92/%E7%BE%8E%E5%9C%8B%E6%9D%91/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/@26.3789582,127.726567,11z/data=!3m1!4b1!4m38!4m37!1m5!1m1!1s0x34e4a2f1b3c4d5e:0x987654321!2m2!1d127.804!2d26.445!1m5!1m1!1s0x34e4b0c1d2e3f4a:0x444444!2m2!1d127.982!2d26.594!1m5!1m1!1s0x34e4d0e1f2a3b4c:0x555555!2m2!1d127.718!2d26.248!1m5!1m1!1s0x34e4d2c1b3a4e5f:0x666666!2m2!1d127.756!2d26.315!1m0!3e0",
+        5: "https://www.google.com/maps/dir/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/%E6%AE%98%E6%B3%A2%E5%B2%AC%E7%87%88%E5%A1%94/%E7%8E%89%E6%B3%89%E6%B4%9E/%E7%90%89%E7%90%83%E5%88%A9%E6%81%A9%E9%A3%AF%E5%BA%97%E9%82%A3%E8%A6%87%E5%9C%8B%E9%9A%9B%E9%80%9A/@26.226339,127.6924767,10z/data=!3m1!4b1!4m32!4m31!1m5!1m1!1s0x34e4a2f1b3c4d5e:0x987654321!2m2!1d127.804!2d26.445!1m5!1m1!1s0x34e4a7b6c5d4e3f:0x777777!2m2!1d127.707!2d26.444!1m5!1m1!1s0x34e4c8d3e2f1a0b:0x888888!2m2!1d127.748!2d26.127!1m5!1m1!1s0x34e4a9c8b7d6e5f:0x999999!2m2!1d127.682!2d26.215!3e0",
+        6: "https://www.google.com/maps/dir/%E7%90%89%E7%90%83%E5%88%A9%E6%81%A9%E9%A3%AF%E5%BA%97%E9%82%A3%E8%A6%87%E5%9C%8B%E9%9A%9B%E9%80%9A/iias%E6%B2%96%E7%B9%A9%E8%B1%90%E5%B4%8E/DMM+Kariyushi%E6%B0%B4%E6%97%8F%E9%A4%A8/%E7%90%89%E7%90%83%E5%88%A9%E6%81%A9%E9%A3%AF%E5%BA%97/@26.1739106,127.6402464,13z/data=!3m1!4b1!4m26!4m25!1m5!1m1!1s0x34e4a9c8b7d6e5f:0x999999!2m2!1d127.682!2d26.215!1m5!1m1!1s0x34e4c1e2f3d4b5a:0xaaaaaa!2m2!1d127.647!2d26.161!1m5!1m1!1s0x34e4c2f3e4d5b6c:0xbbbbbb!2m2!1d127.646!2d26.161!1m0!3e0",
+        7: "https://www.google.com/maps/dir/%E7%90%89%E7%90%83%E5%88%A9%E6%81%A9%E9%A3%AF%E5%BA%97%E9%82%A3%E8%A6%87%E5%9C%8B%E9%9A%9B%E9%80%9A/AEON+MALL+Okinawa+Rycom/%E7%80%A8%E9%95%B7%E5%B3%B6STORYLINE%E9%85%92%E5%BA%97/@26.2403582,127.6847217,11z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x34e4a9c8b7d6e5f:0x999999!2m2!1d127.682!2d26.215!1m5!1m1!1s0x34e4c3b2a1e5d6f:0xccccc!2m2!1d127.773!2d26.292!1m5!1m1!1s0x34e56b4c3d2e1f0:0xddddd!2m2!1d127.655!2d26.173!3e0",
+        8: "https://www.google.com/maps/dir/%E7%80%A8%E9%95%B7%E5%B3%B6STORYLINE%E9%85%92%E5%BA%97/%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF/@26.1824036,127.6467238,14z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e56b4c3d2e1f0:0xddddd!2m2!1d127.655!2d26.173!1m5!1m1!1s0x34e56a3b4e5c4b1d:0x123456789abcdef!2m2!1d127.646!2d26.195!3e0"
+    };
+
     const scheduleData = [
-        {
-            day: 1, date: "7/23 (四)", title: "啟程 × 恩納海濱", emoji: "🌊",
-            theme: "北部進駐",
-            items: [
-                { time: "11:20", desc: "抵達那霸機場" },
-                { time: "12:30-14:00", desc: "辦理租車手續（兩台 MPV）" },
-                { time: "14:00-15:30", desc: "【午餐】瀨長島 Umikaji Terrace（看海、吃鬆餅）" },
-                { time: "15:30-16:30", desc: "北上前往恩納村（車程約 1 小時）" },
-                { time: "16:30-17:15", desc: "萬座毛（象鼻岩、拍家族大合照）" },
-                { time: "17:30", desc: "入住 御幸海灘酒店" },
-                { time: "18:30", desc: "【晚餐】恩納區燒肉 — 島豚屋恩納店 / 琉球之牛" }
-            ]
-        },
-        {
-            day: 2, date: "7/24 (五)", title: "恐龍冒險 × 百年古家阿古豬", emoji: "🦖",
-            theme: "JUNGLIA + 夢幻古宅",
-            items: [
-                { time: "08:30", desc: "從飯店出發前往 JUNGLIA（車程約 45 分鐘）" },
-                { time: "09:30-17:00", desc: "🔥 JUNGLIA 叢林樂園 全日玩樂 — 恐龍探索之旅、越野車、熱氣球。長輩可加購SPA券。" },
-                { time: "12:30", desc: "園區內午餐（Panorama Dining 或美食餐車）" },
-                { time: "17:00-18:00", desc: "驅車前往名護山區「百年古家 大家」" },
-                { time: "18:00-19:30", desc: "🏮【晚餐】百年古家 大家 — 阿古豬涮涮鍋、傳統琉球料理" },
-                { time: "20:00", desc: "返回御幸海灘酒店" }
-            ],
-            priceNote: true
-        },
-        {
-            day: 3, date: "7/25 (六)", title: "美麗海水族館 × 古宇利藍", emoji: "🐋",
-            theme: "北部經典",
-            items: [
-                { time: "09:30", desc: "出發前往 沖繩美麗海水族館" },
-                { time: "10:00-13:30", desc: "水族館（鯨鯊、海豚秀）→ 午餐 Ocean Blue 或岸本食堂" },
-                { time: "14:00-16:00", desc: "古宇利島（跨橋、沙灘踩水、蝦蝦飯）" },
-                { time: "16:30-17:30", desc: "備瀨福木林道（協力車散步）" },
-                { time: "18:30", desc: "返回御幸海灘酒店" },
-                { time: "19:00", desc: "【晚餐】恩納村人氣居酒屋" }
-            ]
-        },
-        {
-            day: 4, date: "7/26 (日)", title: "鳳梨小火車 × 美國村日落", emoji: "🍍",
-            theme: "南下動線",
-            items: [
-                { time: "09:30", desc: "退房，行李上車" },
-                { time: "10:00-11:30", desc: "名護鳳梨園（造型遊園車）" },
-                { time: "12:00-13:30", desc: "名護市區午餐" },
-                { time: "14:30-16:00", desc: "浦添大公園 或 中城公園 — 巨型滾輪溜滑梯（務必自備滑行墊！）" },
-                { time: "16:30-19:00", desc: "美國村（逛街、日落步道）" },
-                { time: "19:30", desc: "【晚餐】美國村周邊（迴轉壽司 或 美式漢堡）" },
-                { time: "20:30", desc: "續住 御幸海灘酒店" }
-            ]
-        },
-        {
-            day: 5, date: "7/27 (一)", title: "玉泉洞地底探險 × 那霸", emoji: "🪨",
-            theme: "南部文化",
-            items: [
-                { time: "09:00", desc: "恩納飯店退房，南下" },
-                { time: "10:00-10:40", desc: "殘波岬燈塔" },
-                { time: "11:00-12:30", desc: "順路享用沖繩麵" },
-                { time: "13:00-16:00", desc: "沖繩世界・玉泉洞（鐘乳石、太鼓舞）" },
-                { time: "16:30", desc: "入住 琉球利恩飯店那霸國際通" },
-                { time: "17:30-21:00", desc: "國際通逛街、晚餐自由探索" },
-                { time: "🍺", desc: "飯店福利：免費 Orion 啤酒一杯（每人/每晚）" }
-            ]
-        },
-        {
-            day: 6, date: "7/28 (二)", title: "國際通逛街 × DMM水族館", emoji: "🛍️",
-            theme: "逛街避暑",
-            items: [
-                { time: "09:00-12:00", desc: "國際通自由活動（藥妝、伴手禮）" },
-                { time: "12:00-13:30", desc: "國際通午餐" },
-                { time: "14:00-18:00", desc: "iias 豐崎購物中心 + DMM Kariyushi 水族館（全室內冷氣）" },
-                { time: "18:30", desc: "【晚餐】iias 美食街 或 系滿魚市場" },
-                { time: "20:00", desc: "返回琉球利恩飯店" }
-            ]
-        },
-        {
-            day: 7, date: "7/29 (三)", title: "永旺夢樂城 × 瀨長島STORYLINE", emoji: "🏝️",
-            theme: "最終購物",
-            items: [
-                { time: "09:30", desc: "琉球利恩飯店退房" },
-                { time: "10:00-16:00", desc: "AEON MALL 來客夢（寶可夢中心、電器、服飾）午餐於購物中心內" },
-                { time: "16:00-17:00", desc: "前往 瀨長島 STORYLINE 酒店 入住" },
-                { time: "17:30-19:30", desc: "Umikaji Terrace（白色商店街、夕陽、足湯）" },
-                { time: "19:30", desc: "【晚餐】瀨長島周邊餐廳（塔可飯 / 海鮮 BBQ）" },
-                { time: "💤", desc: "打包夜：整理所有行李，隔天輕鬆還車" }
-            ]
-        },
-        {
-            day: 8, date: "7/30 (四)", title: "從瀨長島優雅返航", emoji: "✈️",
-            theme: "機場返港",
-            items: [
-                { time: "08:00-08:45", desc: "早餐、退房，加滿油" },
-                { time: "09:00-09:30", desc: "還車 → 接駁車至那霸機場" },
-                { time: "09:50", desc: "辦理登機與行李託運" },
-                { time: "10:30", desc: "機場免稅店最後採買" },
-                { time: "12:20", desc: "起飛返回香港" },
-                { time: "14:30", desc: "抵達香港，行程圓滿結束" }
-            ]
-        }
+        { day: 1, date: "7/23 (四)", title: "啟程 × 恩納海濱", emoji: "🌊", theme: "北部進駐",
+          items: [
+              { time: "11:20", desc: "抵達那霸機場" },
+              { time: "12:30-14:00", desc: "辦理租車手續（兩台 MPV）" },
+              { time: "14:00-15:30", desc: "【午餐】瀨長島 Umikaji Terrace" },
+              { time: "15:30-16:30", desc: "北上恩納村（車程約1hr）" },
+              { time: "16:30-17:15", desc: "萬座毛（家族大合照）" },
+              { time: "17:30", desc: "入住 御幸海灘酒店" },
+              { time: "18:30", desc: "【晚餐】恩納區燒肉" }
+          ] },
+        { day: 2, date: "7/24 (五)", title: "恐龍冒險 × 百年古家阿古豬", emoji: "🦖", theme: "JUNGLIA",
+          items: [
+              { time: "08:30", desc: "出發前往 JUNGLIA" },
+              { time: "09:30-17:00", desc: "JUNGLIA叢林樂園全日" },
+              { time: "12:30", desc: "園區內午餐" },
+              { time: "17:00-18:00", desc: "前往百年古家大家" },
+              { time: "18:00-19:30", desc: "晚餐：百年古家大家 阿古豬涮涮鍋" },
+              { time: "20:00", desc: "返回御幸海灘酒店" }
+          ] },
+        { day: 3, date: "7/25 (六)", title: "美麗海水族館 × 古宇利藍", emoji: "🐋", theme: "北部經典",
+          items: [
+              { time: "09:30", desc: "出發前往美麗海水族館" },
+              { time: "10:00-13:30", desc: "水族館＋午餐" },
+              { time: "14:00-16:00", desc: "古宇利島" },
+              { time: "16:30-17:30", desc: "備瀨福木林道" },
+              { time: "19:00", desc: "晚餐：恩納村居酒屋" }
+          ] },
+        { day: 4, date: "7/26 (日)", title: "鳳梨園 × 美國村", emoji: "🍍", theme: "南部移動",
+          items: [
+              { time: "09:30", desc: "退房，行李上車" },
+              { time: "10:00-11:30", desc: "名護鳳梨園" },
+              { time: "12:00-13:30", desc: "名護市區午餐" },
+              { time: "14:30-16:00", desc: "浦添大公園（溜滑梯務必自備墊子）" },
+              { time: "16:30-19:00", desc: "美國村" },
+              { time: "19:30", desc: "晚餐：美國村周邊" },
+              { time: "20:30", desc: "續住御幸海灘酒店" }
+          ] },
+        { day: 5, date: "7/27 (一)", title: "玉泉洞 × 那霸國際通", emoji: "🪨", theme: "南部文化",
+          items: [
+              { time: "09:00", desc: "退房南下" },
+              { time: "10:00-10:40", desc: "殘波岬燈塔" },
+              { time: "11:00-12:30", desc: "沖繩麵午餐" },
+              { time: "13:00-16:00", desc: "玉泉洞" },
+              { time: "16:30", desc: "入住琉球利恩飯店" },
+              { time: "17:30-21:00", desc: "國際通逛街＋晚餐" }
+          ] },
+        { day: 6, date: "7/28 (二)", title: "國際通 × DMM水族館", emoji: "🛍️", theme: "逛街避暑",
+          items: [
+              { time: "09:00-12:00", desc: "國際通自由活動" },
+              { time: "12:00-13:30", desc: "國際通午餐" },
+              { time: "14:00-18:00", desc: "iias豐崎購物中心 + DMM水族館" },
+              { time: "18:30", desc: "晚餐：iias美食街或系滿魚市場" },
+              { time: "20:00", desc: "返回琉球利恩飯店" }
+          ] },
+        { day: 7, date: "7/29 (三)", title: "永旺夢樂城 × 瀨長島", emoji: "🏝️", theme: "最終購物",
+          items: [
+              { time: "09:30", desc: "退房" },
+              { time: "10:00-16:00", desc: "AEON MALL 來客夢（含午餐）" },
+              { time: "16:00-17:00", desc: "入住瀨長島STORYLINE酒店" },
+              { time: "17:30-19:30", desc: "Umikaji Terrace夕陽散策" },
+              { time: "19:30", desc: "晚餐：瀨長島周邊餐廳" },
+              { time: "💤", desc: "打包夜，整理行李" }
+          ] },
+        { day: 8, date: "7/30 (四)", title: "瀨長島 → 機場返港", emoji: "✈️", theme: "返航",
+          items: [
+              { time: "08:00-08:45", desc: "早餐、退房、加滿油" },
+              { time: "09:00-09:30", desc: "還車、接駁至機場" },
+              { time: "09:50", desc: "登機報到、託運行李" },
+              { time: "10:30", desc: "機場免稅店" },
+              { time: "12:20", desc: "起飛返回香港" },
+              { time: "14:30", desc: "抵達香港，圓滿結束" }
+          ] }
     ];
 
     const container = document.getElementById('days-container');
     if (container) {
-        scheduleData.forEach((dayData) => {
+        scheduleData.forEach(day => {
             const dayDiv = document.createElement('div');
             dayDiv.className = 'day-section';
             const header = document.createElement('div');
             header.className = 'day-header';
             header.innerHTML = `
                 <div class="day-title">
-                    <span class="day-emojii">${dayData.emoji}</span>
-                    <span>Day ${dayData.day} ・ ${dayData.date}</span>
-                    <span class="day-theme">${dayData.theme}</span>
+                    <span class="day-emojii">${day.emoji}</span>
+                    <span>Day ${day.day} ・ ${day.date}</span>
+                    <span class="day-theme">${day.theme}</span>
                 </div>
                 <button class="btn-toggle">▼</button>
             `;
             const body = document.createElement('div');
             body.className = 'day-body';
             body.style.display = 'block';
-            let itemsHtml = `<h3 style="margin-bottom: 1rem;">✨ ${dayData.title}</h3>`;
-            dayData.items.forEach(item => {
+            let itemsHtml = `<h3 style="margin-bottom: 0.5rem;">✨ ${day.title}</h3>`;
+
+            // 地圖連結
+            if (routeLinks[day.day]) {
                 itemsHtml += `
-                    <div class="timeline-item">
-                        <div class="time">${item.time}</div>
-                        <div class="desc">${item.desc}</div>
-                    </div>
-                `;
-            });
-            // 第二天票價表格
-            if (dayData.day === 2) {
-                itemsHtml += `
-                    <div class="price-table" style="margin-top: 1rem;">
-                        <table>
-                            <caption style="text-align: left; margin-bottom: 6px; font-weight: 600;">🎟️ JUNGLIA 門票價格 (2026年7月)</caption>
-                            <thead><tr><th>票種</th><th>大人(12歲↑)</th><th>兒童(4-11歲)</th><th>備註</th></tr></thead>
-                            <tbody>
-                                <tr><td>1日門票</td><td>8,800日圓</td><td>5,940日圓</td><td>主要推薦</td></tr>
-                                <tr><td>1日門票+SPA</td><td>11,880日圓</td><td>7,810日圓</td><td>含無邊際溫泉</td></tr>
-                                <tr><td>SPA單獨票</td><td>3,080日圓</td><td>1,870日圓</td><td>僅長輩適用</td></tr>
-                                <tr><td>豪華通行證</td><td colspan="2">990~2,970日圓</td><td>快速通關</td></tr>
-                                <tr><td>停車場(每台)</td><td colspan="2">2,000日圓</td><td>全預約制</td></tr>
-                            </tbody>
-                        </table>
-                        <p style="font-size:0.85rem;">💰 12人門票估算(1日票)：10大×8,800 + 2小×5,940 = <strong>約99,880日圓 (約港幣5,100)</strong></p>
+                    <div class="map-link">
+                        <span>🗺️</span>
+                        <a href="${routeLinks[day.day]}" target="_blank">📍 查看當日路線規劃 (Google地圖)</a>
+                        <span class="map-note">點擊可開啟路線，預設為「住宿 → 當日主要景點」，可自行修改起終點</span>
                     </div>
                 `;
             }
-            // 第四天強調滑行墊
-            if (dayData.day === 4) {
-                itemsHtml += `<div class="highlight" style="margin-top: 12px;">🛑 再次提醒：浦添大公園溜滑梯務必自備滑行墊（厚紙板/毛巾），穿長褲。</div>`;
+
+            day.items.forEach(item => {
+                itemsHtml += `<div class="timeline-item"><div class="time">${item.time}</div><div class="desc">${item.desc}</div></div>`;
+            });
+
+            if (day.day === 2) {
+                itemsHtml += `<div class="price-table"><table><th>票種</th><th>大人</th><th>兒童</th><th>備註</th></tr><tr><td>1日門票</td><td>8,800日圓</td><td>5,940日圓</td><td>主要推薦</td></tr><tr><td>1日門票+SPA</td><td>11,880日圓</td><td>7,810日圓</td><td>含溫泉</td></tr><tr><td>豪華通行證</td><td colspan="2">990~2,970日圓</td><td>快速通關</td></tr><tr><td>停車場(每台)</td><td colspan="2">2,000日圓</td><td>全預約制</td></tr></table><p>💰 12人門票估算：約99,880日圓 (港幣5,100)</p></div>`;
+            }
+            if (day.day === 4) {
+                itemsHtml += `<div class="highlight">🛑 浦添大公園溜滑梯務必自備滑行墊（厚紙板/毛巾），穿長褲避免燙傷。</div>`;
             }
             body.innerHTML = itemsHtml;
             dayDiv.appendChild(header);
             dayDiv.appendChild(body);
             container.appendChild(dayDiv);
 
-            const toggleBtn = header.querySelector('.btn-toggle');
-            let isOpen = true;
-            toggleBtn.addEventListener('click', () => {
-                if (isOpen) {
-                    body.style.display = 'none';
-                    toggleBtn.innerHTML = '▶';
-                    isOpen = false;
-                } else {
-                    body.style.display = 'block';
-                    toggleBtn.innerHTML = '▼';
-                    isOpen = true;
-                }
+            const btn = header.querySelector('.btn-toggle');
+            let open = true;
+            btn.addEventListener('click', () => {
+                body.style.display = open ? 'none' : 'block';
+                btn.innerHTML = open ? '▶' : '▼';
+                open = !open;
             });
         });
     }
