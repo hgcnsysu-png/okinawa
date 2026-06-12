@@ -6,6 +6,16 @@
     <title>2026 沖繩大家族之旅 | 6天5夜完整攻略（浮潛＋國際通指南）</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* --- 基礎重設與變數 --- */
+        :root {
+            --primary-color: #1f5e5e;
+            --primary-gradient: linear-gradient(135deg, #1f5e5e 0%, #2c7a6e 100%);
+            --text-main: #1e2a2e;
+            --bg-main: #f8f6f2;
+            --border-color: #ece4d5;
+            --accent-orange: #b6673e;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,350 +24,447 @@
 
         body {
             font-family: 'Noto Sans TC', 'Inter', sans-serif;
-            background-color: #f8f6f2;
-            color: #1e2a2e;
-            line-height: 1.5;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
             scroll-behavior: smooth;
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 1.5rem;
         }
 
+        /* --- Hero 頂部區塊 --- */
         .hero {
-            background: linear-gradient(135deg, #1f5e5e 0%, #2c7a6e 100%);
+            background: var(--primary-gradient);
             border-radius: 2rem;
-            padding: 2rem 2rem 1.8rem;
+            padding: 3rem 2.5rem;
             margin-bottom: 2.5rem;
             color: white;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 30px rgba(31, 94, 94, 0.15);
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
             font-weight: 700;
+            line-height: 1.3;
         }
 
         .hero-badge {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            opacity: 0.9;
+            gap: 0.8rem;
         }
 
         .badge {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(2px);
-            padding: 0.3rem 0.8rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1rem;
             border-radius: 40px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* --- 頂部資訊卡片格線 --- */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 1.2rem;
-            margin-bottom: 2.8rem;
+            margin-bottom: 2.5rem;
         }
 
         .info-card {
             background: white;
-            border-radius: 1.5rem;
-            padding: 1.2rem 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            border: 1px solid #e9e3d5;
+            border-radius: 1.2rem;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
         }
 
         .info-card h3 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #5f7f6e;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .info-card p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: #1e2a2e;
+            color: var(--text-main);
         }
 
+        /* --- 住宿專區 --- */
+        .hotel-note {
+            background: #e6eee9;
+            border-radius: 1.5rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+            border-left: 6px solid #3f886e;
+        }
+        .hotel-note h3 {
+            color: #2b5e4c;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hotel-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .hotel-list li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .hotel-list li::before {
+            content: "▪️";
+            position: absolute;
+            left: 0;
+            color: #3f886e;
+        }
+
+        /* --- 每日行程區塊 --- */
         .day-section {
             background: white;
             border-radius: 1.8rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
-            border: 1px solid #ece4d5;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
             overflow: hidden;
         }
 
         .day-header {
-            background: #fef7e8;
-            padding: 1rem 1.8rem;
-            border-bottom: 2px solid #e2d9c8;
+            background: #fef8ec;
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid #eaddca;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .day-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2b5e4c;
             display: flex;
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
         }
 
-        .day-emojii {
-            font-size: 1.8rem;
+        .day-main-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2b5e4c;
         }
 
         .day-theme {
             background: #d9e6db;
             padding: 0.2rem 0.8rem;
             border-radius: 30px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #2c5a44;
         }
 
         .day-body {
-            padding: 1.2rem 1.8rem 1.8rem;
+            padding: 2rem;
+        }
+
+        .day-summary-title {
+            font-size: 1.25rem;
+            color: #2b5e4c;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px dashed #ece4d5;
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- 時間軸排版 --- */
+        .timeline-container {
+            position: relative;
+            margin-left: 10px;
+            padding-left: 20px;
+            border-left: 2px solid #ebdcb9;
         }
 
         .timeline-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            position: relative;
+            margin-bottom: 1.8rem;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            border: 2px solid white;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
         }
 
         .time {
-            min-width: 90px;
             font-weight: 700;
-            color: #b6673e;
-            font-size: 0.9rem;
+            color: var(--accent-orange);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
         }
 
         .desc {
-            flex: 1;
-            font-size: 0.98rem;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            font-weight: 500;
         }
 
+        /* --- 景點細節介紹卡片 --- */
         .spot-intro {
-            background: #f9f5e8;
-            border-radius: 0.8rem;
-            padding: 0.6rem 1rem;
-            margin: 0.4rem 0 0.8rem 2rem;
-            font-size: 0.88rem;
-            border-left: 3px solid #c7a55b;
+            background: #fdfbf7;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            margin: 0.8rem 0 1.5rem 0;
+            font-size: 0.95rem;
+            border-left: 4px solid #c7a55b;
             color: #5a4a2e;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.01);
         }
         .spot-intro strong {
-            color: #b6673e;
+            color: var(--accent-orange);
         }
 
-        .btn-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #6c8b78;
-        }
-
+        /* --- Google Maps 連結按鈕 --- */
         .map-link {
-            background: #eef2f5;
-            border-radius: 1rem;
-            padding: 0.8rem 1rem;
-            margin: 0.8rem 0 1.2rem 0;
+            background: #f0f4f8;
+            border-radius: 1.2rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
             border-left: 4px solid #2c7a6e;
+            flex-wrap: wrap;
+        }
+        .map-info-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #3b5a4f;
         }
         .map-link a {
             background: #2c7a6e;
             color: white;
-            padding: 6px 14px;
+            padding: 8px 18px;
             border-radius: 40px;
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.2s;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(44, 122, 110, 0.2);
         }
         .map-link a:hover {
             background: #1f5e5e;
-        }
-        .map-note {
-            font-size: 0.8rem;
-            color: #4a6a5e;
+            transform: translateY(-1px);
         }
 
-        .alert-card {
-            background: #fff2e0;
-            border-radius: 1.4rem;
-            padding: 1.2rem 1.6rem;
-            margin: 1.8rem 0;
-            border-left: 8px solid #f4b942;
+        /* --- 各類提醒卡片設計 (樣式收納) --- */
+        .alert-box {
+            border-radius: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.98rem;
         }
+        .alert-box strong { font-size: 1.05rem; }
 
-        .reserve-note {
-            background: #e0f0ea;
-            border-radius: 1rem;
-            padding: 1rem 1.2rem;
-            margin: 1.2rem 0;
-        }
+        .snorkel-tips { background: #e3f6fc; border-left: 5px solid #008bbd; color: #1a4d61; }
+        .snorkel-tips strong { color: #00729c; }
+        
+        .parking-tips { background: #f5ece1; border-left: 5px solid #b67e3e; color: #5c3e1a; }
+        .parking-tips strong { color: #915a20; }
+        
+        .gas-tips { background: #e3effa; border-left: 5px solid #0077b6; color: #144566; }
+        .gas-tips strong { color: #005f8c; }
+        .gas-tips a { color: #0077b6; font-weight: 600; text-decoration: underline; }
 
-        .highlight {
-            background: #eef6f0;
-            border-left: 4px solid #3f886e;
-            padding: 0.5rem 1rem;
-            border-radius: 14px;
-            margin: 1rem 0;
-        }
+        .highlight-tips { background: #fff1e0; border-left: 5px solid #f4b942; color: #66490b; }
+        .highlight-tips strong { color: #b57a07; }
 
-        .gas-tips {
-            background: #d9eaf5;
-            border-left: 4px solid #0077b6;
-            padding: 1rem 1.2rem;
-            border-radius: 1rem;
-            margin: 1.2rem 0;
-        }
-        .gas-tips strong {
-            color: #005f8c;
-        }
-        .gas-tips a {
-            color: #005f8c;
-            font-weight: 600;
-            text-decoration: underline;
-        }
-
-        .parking-tips {
-            background: #f0e6d2;
-            border-left: 4px solid #b67e3e;
-            padding: 0.8rem 1rem;
-            border-radius: 0.8rem;
-            margin: 0.8rem 0;
-            font-size: 0.9rem;
-        }
-
-        .snorkel-tips {
-            background: #d4f1f9;
-            border-left: 4px solid #008bbd;
-            padding: 0.8rem 1rem;
-            border-radius: 0.8rem;
-            margin: 0.8rem 0;
-            font-size: 0.9rem;
-        }
-
+        /* --- 國際通專區與雙欄配置 --- */
         .kokusai-guide {
-            background: #f9efd9;
-            border-radius: 1rem;
-            padding: 1rem 1.2rem;
-            margin: 1.2rem 0;
+            background: #fdf6ec;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #f3e4ce;
         }
         .kokusai-guide h4 {
             color: #b6673e;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .two-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 0.8rem 0;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
         }
+        .guide-col {
+            background: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .guide-col strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #f8f6f2;
+        }
+        .guide-col ul {
+            padding-left: 1.2rem;
+        }
+        .guide-col li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* --- 美食伴手禮大區塊 --- */
         .food-shopping-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin: 1.5rem 0;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
         }
         .food-card, .shopping-card {
             background: white;
-            border-radius: 1.2rem;
-            padding: 1rem 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.02);
             border-top: 6px solid #e2a526;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
         .shopping-card {
             border-top-color: #2c7a6e;
         }
         .food-card h3, .shopping-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         .food-card ul, .shopping-card ul {
             padding-left: 1.2rem;
-            margin: 0.5rem 0;
         }
         .food-card li, .shopping-card li {
-            margin-bottom: 0.4rem;
-            line-height: 1.4;
+            margin-bottom: 0.6rem;
+            font-size: 0.98rem;
         }
+
+        /* --- 預算與記帳表格 --- */
         .price-table {
             overflow-x: auto;
-            margin: 1rem 0;
+            margin: 2.5rem 0;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
         .price-table table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
-            border-radius: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         .price-table th, .price-table td {
-            border: 1px solid #e2d9c8;
-            padding: 0.6rem 0.8rem;
+            padding: 0.8rem 1rem;
             text-align: center;
+            border-bottom: 1px solid #f0eadd;
         }
         .price-table th {
             background: #2b5e4c;
             color: white;
+            font-weight: 600;
+        }
+        .price-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- 按鈕樣式 --- */
+        .btn-toggle {
+            background: #eaddca;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: #5c4e1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .btn-toggle:hover {
+            background: #d9cbb5;
         }
 
         footer {
             text-align: center;
-            margin-top: 3rem;
-            padding: 2rem 0.5rem;
+            margin-top: 4rem;
+            padding: 2.5rem 1rem;
             color: #7b8a7e;
             border-top: 1px solid #e2d9cb;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 700px) {
+        /* --- 響應式 RWD 斷點優化 --- */
+        @media (max-width: 768px) {
             .container { padding: 1rem; }
-            .day-header { padding: 0.8rem 1.2rem; }
-            .day-body { padding: 1rem; }
-            .time { min-width: 70px; }
-            .hero h1 { font-size: 1.6rem; }
-            .spot-intro { margin-left: 0.5rem; }
-            .food-shopping-grid, .two-columns { grid-template-columns: 1fr; }
+            .hero { padding: 2rem 1.5rem; border-radius: 1.5rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .day-header { padding: 1rem 1.2rem; }
+            .day-body { padding: 1.2rem; }
+            .food-shopping-grid, .two-columns { grid-template-columns: 1fr; gap: 1.2rem; }
+            .food-card, .shopping-card { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
+    
     <div class="hero">
         <h1>🏝️ 2026 沖繩大家族之旅<br>10大+2小 · 6天5夜完整攻略 · 浮潛＋國際通指南</h1>
         <div class="hero-badge">
@@ -377,18 +484,18 @@
         <div class="info-card"><h3>📱 必備工具</h3><p>日本網路 / Mapcode / 預約確認信</p></div>
     </div>
 
-    <div class="reserve-note" style="margin-bottom: 1.5rem;">
-        <p>🏨 <strong>6天5夜 住宿配置</strong><br>
-        ▪️ <strong>Day1 - Day2</strong>：御幸海灘酒店 (恩納村) — 私人沙灘，2晚<br>
-        ▪️ <strong>Day3 - Day4</strong>：琉球利恩飯店那霸國際通 — 國際通入口，免費迎賓啤酒，2晚<br>
-        ▪️ <strong>Day5</strong>：瀨長島 STORYLINE 酒店 — 離機場僅10分鐘，最後一晚悠閒度假
-        </p>
+    <div class="hotel-note">
+        <h3>🏨 6天5夜 住宿配置</h3>
+        <ul class="hotel-list">
+            <li><strong>Day1 - Day2</strong>：御幸海灘酒店 (恩納村) — 私人沙灘，2晚</li>
+            <li><strong>Day3 - Day4</strong>：琉球利恩飯店那霸國際通 — 國際通入口，免費迎賓啤酒，2晚</li>
+            <li><strong>Day5</strong>：瀨長島 STORYLINE 酒店 — 離機場僅10分鐘，最後一晚悠閒度假</li>
+        </ul>
     </div>
 
     <div id="days-container"></div>
 
-    <!-- 浮潛推薦區塊 -->
-    <div class="snorkel-tips">
+    <div class="alert-box snorkel-tips">
         <p><strong>🐠 【沖繩浮潛推薦】青之洞窟／家庭友善方案</strong><br>
         📍 <strong>青之洞窟</strong>（恩納村真榮田岬）— 世界唯二藍洞，夢幻藍光，熱帶魚豐富。從御幸海灘酒店車程約15-20分鐘。<br>
         💰 <strong>參考價格</strong>：約4,000-7,000日圓/人（含裝備、教練、拍照）<br>
@@ -398,14 +505,13 @@
         </p>
     </div>
 
-    <!-- 國際通攻略區塊 -->
     <div class="kokusai-guide">
         <h4>🍜 【國際通自由探索攻略】</h4>
         <p>國際通全長約1.6公里，建議由西（縣廳前站）往東（牧志站）逛，晚上燈光美、氣氛佳。</p>
         <div class="two-columns">
-            <div>
+            <div class="guide-col">
                 <strong>🍴 美食推薦</strong>
-                <ul style="margin-top: 6px; padding-left: 1.2rem;">
+                <ul>
                     <li><strong>暖暮拉麵</strong> — 九州冠軍拉麵，約800-1,000日圓</li>
                     <li><strong>鳥貴族</strong> — 均一價390日圓串燒，適合家庭</li>
                     <li><strong>第一牧志公設市場</strong> — 現挑海鮮代客料理，體驗獨特</li>
@@ -413,9 +519,9 @@
                     <li><strong>Calbee+</strong> — 現炸薯條、沖繩限定洋芋片</li>
                 </ul>
             </div>
-            <div>
+            <div class="guide-col">
                 <strong>🛍️ 購物攻略</strong>
-                <ul style="margin-top: 6px; padding-left: 1.2rem;">
+                <ul>
                     <li><strong>大國藥妝</strong> — 藥品最齊全、價格漂亮</li>
                     <li><strong>唐吉訶德(24H)</strong> — 藥妝+零食+雜貨+電器一次購足</li>
                     <li><strong>御菓子御殿</strong> — 紅芋塔（沖繩必買伴手禮）</li>
@@ -423,13 +529,14 @@
                 </ul>
             </div>
         </div>
-        <p>📌 <strong>親子小提醒</strong>：可設定「唐吉訶德」為集合點；推車主街OK但市場本通較窄；GiGO有夾娃娃機可讓小孩放電。<br>
-        ⏰ <strong>建議3小時路線</strong>：17:30逛藥妝 → 18:30晚餐 → 20:00吃冰淇淋 → 21:00唐吉訶德掃貨 → 步行回飯店。<br>
-        💡 飯店就在國際通上，購物完直接回飯店超方便！</p>
+        <p style="font-size: 0.95rem; color: #5a4a2e; dashed top; padding-top:1rem; border-top:1px dashed #eaddca;">
+            📌 <strong>親子小提醒</strong>：可設定「唐吉訶德」為集合點；推車主街OK但市場本通較窄；GiGO有夾娃娃機可讓小孩放電。<br>
+            ⏰ <strong>建議3小時路線</strong>：17:30逛藥妝 → 18:30晚餐 → 20:00吃冰淇淋 → 21:00唐吉訶德掃貨 → 步行回飯店。<br>
+            💡 飯店就在國際通上，購物完直接回飯店超方便！
+        </p>
     </div>
 
-    <!-- ⛽ 加油注意事項總提醒 -->
-    <div class="gas-tips">
+    <div class="alert-box gas-tips">
         <p><strong>⛽ 【沖繩自駕加油重點】</strong> 務必看完！<br>
         🔹 <strong>燃油種類</strong>：租車多為「普通汽油(レギュラー)」，取車時確認油蓋標示。<br>
         🔹 <strong>加油方式</strong>：分「自助加油(セルフ)」與「人工加油(フルサービス)」，自助較便宜。<br>
@@ -439,10 +546,9 @@
         </p>
     </div>
 
-    <!-- 🅿️ 首里城停車資訊 -->
-    <div class="parking-tips">
+    <div class="alert-box parking-tips">
         <p><strong>🅿️ 【首里城自駕停車攻略】</strong><br>
-        📍 <strong>停車場</strong>：県営首里城公園 首里杜館地下駐車場 (Mapcode: 33 161 526*44)<br>
+        📍 <strong>停車場</strong>：県營首里城公園 首里杜館地下駐車場 (Mapcode: 33 161 526*44)<br>
         💰 <strong>收費 (2026年4月起)</strong>：小型車(MPV可停) → 首1小時 <strong>500日圓</strong>，之後每30分鐘 <strong>250日圓</strong>，單日上限 <strong>1,000日圓</strong>。<br>
         🕒 <strong>營業時間</strong> (2026/7/1起)：<strong>08:30 - 19:30</strong><br>
         ✅ <strong>免預約</strong>：你們到訪日(7/26週日)非強制預約期間，直接前往即可。<br>
@@ -450,7 +556,6 @@
         </p>
     </div>
 
-    <!-- 🌟 推薦美食＋必買伴手禮 雙欄 -->
     <div class="food-shopping-grid">
         <div class="food-card">
             <h3>🍜 沖繩推薦美食</h3>
@@ -466,7 +571,7 @@
                 <li><strong>Blue Seal 冰淇淋</strong> — 沖繩隨處可見，推薦紅芋、甘蔗、鹽金桔口味。</li>
                 <li><strong>Orion 生啤酒</strong> — 當地經典啤酒，飯店免費迎賓可喝到！</li>
             </ul>
-            <p style="margin-top: 8px; font-size: 0.85rem; color: #b6673e;">💡 國際通「第一牧志公設市場」可現挑海鮮代客烹調。</p>
+            <p style="margin-top: 12px; font-size: 0.9rem; color: #b6673e; font-weight:500;">💡 那霸市「第一牧志公設市場」與「泊漁港市場」皆可現挑海鮮即刻品嚐。</p>
         </div>
         <div class="shopping-card">
             <h3>🛍️ 沖繩必買伴手禮</h3>
@@ -476,48 +581,56 @@
                 <li><strong>雪鹽 (Yukishio)</strong> — 宮古島雪鹽，細緻甘鹹，可買雪鹽餅乾或調味鹽。</li>
                 <li><strong>泡盛 (Awamori)</strong> — 沖繩古酒，可買久米仙或瑞泉，入門款「常溫＋冰塊」最好喝。</li>
                 <li><strong>沖繩辣油 (Kooregu)</strong> — 泡盛浸泡島辣椒，配沖繩麵或炒菜超提味。</li>
-                <li><strong>Orion 週邊商品</strong> — 限定啤酒杯、T恤、鑰匙圈，機場或超市有售。</li>
+                <li><strong>Orion 週邊商品</strong> — 限定啤酒杯、T恤、鑰匙圈，機場或超市有售.</li>
                 <li><strong>Splash 海洋深層水化妝水</strong> — 沖繩限定保養品，保濕清爽。</li>
                 <li><strong>風獅爺小物 (Shisa)</strong> — 陶器、木雕、磁鐵，可買對獅回家避邪祈福。</li>
                 <li><strong>琉球玻璃杯</strong> — 手作感＋繽紛氣泡，國際通「琉球玻璃村」可選購。</li>
                 <li><strong>ROYCE’ 沖繩限定</strong> — 紅芋生巧克力、黑糖巧克力片。</li>
             </ul>
-            <p style="margin-top: 8px; font-size: 0.85rem; color: #2c7a6e;">📦 建議在「AEON Mall 來客夢」或「國際通」一次購足，機場也可補貨。</p>
+            <p style="margin-top: 12px; font-size: 0.9rem; color: #2c7a6e; font-weight:500;">📦 建議在「AEON Mall 來客夢」或「國際通」一次購足，機場也可補貨。</p>
         </div>
     </div>
 
-    <div class="alert-card">
+    <div class="alert-box highlight-tips">
         <p>🌟 <strong>「百年古家 大家」預約重點</strong><br>📍 Mapcode：206 745 056*82 | 完全預約制，12人提前1-2週預約！<br>🍽️ 午餐時段 (12:00-13:30)，白天光線好拍照，庭園美景，阿古豬涮涮鍋、免費停車場。</p>
     </div>
-    <div class="reserve-note">
+
+    <div class="alert-box parking-tips">
         <p>🏯 <strong>首里城參觀資訊</strong><br>📍 Mapcode：33 161 526*44 | 開放時間 09:00-18:00 (最後入場17:30)<br>💰 大人400日圓 / 6歲以下免費｜單軌電車一日券享8折優惠 (320日圓)<br>🔔 正殿預計2026年11月完工，目前可參觀復興展示室及外圍區域，見證重建歷史。</p>
     </div>
-    <div class="highlight" style="background: #fef1df;">
-        🛑 <strong>浦添大公園 巨型滾輪溜滑梯</strong><br>🔥 務必自備滑行墊（厚紙板/毛巾），穿長褲避免燙傷。
+    
+    <div class="alert-box highlight-tips">
+        🛑 <strong>浦添大公園 巨型滾輪溜滑梯</strong><br>🔥 務必自備滑行墊（厚紙板/毛巾），穿長褲避免燙傷摩擦。
     </div>
 
     <div class="price-table">
         <table>
-            <caption style="text-align: left; margin-bottom: 8px; font-weight: 600;">💰 12人主要費用估算 (6天5夜，無JUNGLIA)</caption>
-            <thead><tr><th>項目</th><th>估算(日圓)</th><th>約港幣</th><th>備註</th> </thead>
+            <caption style="text-align: left; margin-bottom: 12px; font-weight: bold; font-size: 1.1rem; color: #2b5e4c;">💰 12人主要費用估算 (6天5夜，無JUNGLIA)</caption>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>估算(日圓)</th>
+                    <th>約港幣</th>
+                    <th>備註</th>
+                </tr>
+            </thead>
             <tbody>
-                <tr><td>美麗海水族館門票</td><td>約 30,000</td><td>1,530</td><td>可購買優惠套票</td> </tr>
-                <tr><td>首里城門票</td><td>4,000</td><td>200</td><td>10大人×400日圓</td> </tr>
-                <tr><td>玉泉洞門票</td><td>約 24,000</td><td>1,220</td><td>一般票價</td> </tr>
-                <tr><td>DMM 水族館門票</td><td>約 32,000</td><td>1,630</td><td>全室內</td> </tr>
-                <tr><td>租車(2台×6天)</td><td>約 120,000</td><td>6,120</td><td>含保險</td> </tr>
-                <tr><td>住宿(5晚,12人)</td><td>約 420,000</td><td>21,420</td><td>依實際房型</td> </tr>
-                <tr><td>餐食(6天)</td><td>約 300,000</td><td>15,300</td><td>含燒肉、古家等</td> </tr>
+                <tr><td>美麗海水族館門票</td><td>約 30,000</td><td>1,530</td><td>可購買優惠套票</td></tr>
+                <tr><td>首里城門票</td><td>4,000</td><td>200</td><td>10大人×400日圓</td></tr>
+                <tr><td>玉泉洞門票</td><td>約 24,000</td><td>1,220</td><td>一般票價</td></tr>
+                <tr><td>DMM 水族館門票</td><td>約 32,000</td><td>1,630</td><td>全室內</td></tr>
+                <tr><td>租車(2台×6天)</td><td>約 120,000</td><td>6,120</td><td>含保險</td></tr>
+                <tr><td>住宿(5晚,12人)</td><td>約 420,000</td><td>21,420</td><td>依實際房型</td></tr>
+                <tr><td>餐食(6天)</td><td>約 300,000</td><td>15,300</td><td>含燒肉、古家等</td></tr>
             </tbody>
         </table>
-        <p style="font-size: 0.8rem; margin-top: 8px;">⚠️ 實際費用依匯率、票種選擇變動，建議提前3個月預訂。</p>
+        <p style="font-size: 0.85rem; margin-top: 10px; color:#666;">⚠️ 實際費用依匯率、票種選擇變動，建議提前3個月預訂。</p>
     </div>
 
     <footer>🌴 行程可依體力微調，點擊地圖連結可看路線規劃｜🐠 浮潛可選青之洞窟｜🍜 國際通美食購物一次收｜預祝家族旅行滿載回憶 ✨</footer>
 </div>
 
 <script>
-    // 每日地圖連結（Google Maps 路線規劃）
     const routeLinks = {
         1: "https://www.google.com/maps/dir/%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF/%E7%80%A8%E9%95%B7%E5%B3%B6+Umikaji+Terrace/%E8%90%AC%E5%BA%A7%E6%AF%9B/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/@26.3182998,127.6677042,11z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x34e56a3b4e5c4b1d:0x123456789abcdef!2m2!1d127.646!2d26.195!1m5!1m1!1s0x34e4b6f8c7e4b2f1:0x87654321!2m2!1d127.664!2d26.162!1m5!1m1!1s0x34e4a1f2c3b2a1e:0xabcdef123456!2m2!1d127.855!2d26.502!1m0!3e0",
         2: "https://www.google.com/maps/dir/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/%E7%BE%8E%E4%B8%BD%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8/%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6/%E5%82%99%E7%80%A8%E7%A6%8F%E6%9C%A8%E6%9E%97%E9%81%93/%E5%BE%A1%E5%B9%B8%E6%B5%B7%E7%81%98%E9%85%92%E5%BA%97/@26.6034498,127.8623181,11z/data=!3m1!4b1!4m32!4m31!1m5!1m1!1s0x34e4a2f1b3c4d5e:0x987654321!2m2!1d127.804!2d26.445!1m5!1m1!1s0x34e4b1c2d3e4f5a:0x111111!2m2!1d127.878!2d26.694!1m5!1m1!1s0x34e4b4f3e2d1c0b:0x222222!2m2!1d128.016!2d26.682!1m5!1m1!1s0x34e4b5a4f3e2d1c:0x333333!2m2!1d127.892!2d26.675!1m0!3e0",
@@ -527,7 +640,6 @@
         6: "https://www.google.com/maps/dir/%E7%80%A8%E9%95%B7%E5%B3%B6STORYLINE%E9%85%92%E5%BA%97/%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF/@26.1824036,127.6467238,14z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e56b4c3d2e1f0:0xeeeeee!2m2!1d127.655!2d26.173!1m5!1m1!1s0x34e56a3b4e5c4b1d:0x123456789abcdef!2m2!1d127.646!2d26.195!3e0"
     };
 
-    // 景點介紹對照表
     const spotDescriptions = {
         "瀨長島Umikaji Terrace": "⭐ 希臘風格商店街｜白色階梯建築＋飛機起降，可看海泡足湯，傍晚夕陽極美。",
         "萬座毛": "⭐ 沖繩經典地標｜象鼻岩斷崖與無敵海景，適合拍家族大合照。晴天時海面呈現漸層藍色，草坪寬闊可讓小孩奔跑。",
@@ -544,7 +656,7 @@
         "DMM Kariyushi水族館": "⭐ 新潮光影水族館｜全室內冷氣超舒適，結合投影技術與真實生物，可近距離觀賞樹懶、企鵝、水母。",
         "AEON MALL Rycom": "⭐ 沖繩最大購物中心｜寶可夢中心、電器、嬰兒用品、服飾、超市伴手禮一次買齊，雨天或大熱天最佳備案。",
         "Umikaji Terrace夕陽散策": "⭐ 瀨長島黃昏絕景｜傍晚時分白色建築被染成金黃色，看著飛機起降與夕陽沉入海面，適合散步拍照、泡免費足湯。",
-        "系滿魚市場": "🦞 推薦海鮮｜現切生魚片、烤龍蝦、大干貝、海膽、炸魚天婦羅。可買好帶到旁邊座位區享用。"
+        "泊漁港市場": "🐟 泊港新鮮直送海鮮｜那霸市區在地海鮮首選！以現切鮪魚、黑鮪魚刺身聞名，另有烤大蝦、生蠔、海膽等生猛海鮮，市場乾淨精緻，非常適合做為海鮮午餐！"
     };
 
     const scheduleData = [
@@ -577,15 +689,14 @@
               { time: "18:00", desc: "入住 琉球利恩飯店那霸國際通" },
               { time: "19:00", desc: "【晚餐】國際通自由探索（詳見國際通攻略）" }
           ] },
-        { day: 4, date: "7/26 (日)", title: "首里城 → DMM水族館 → 系滿魚市場", emoji: "🏯", theme: "世界遺產+避暑",
+        { day: 4, date: "7/26 (日)", title: "首里城 → 泊漁港市場海鮮午餐 → DMM水族館", emoji: "🏯", theme: "文化與海鮮盛宴",
           items: [
               { time: "08:30", desc: "出發前往首里城（Mapcode:33 161 526*44）" },
               { time: "09:00-11:00", desc: "首里城公園（復興展示室、東展望台）" },
-              { time: "11:00-11:30", desc: "返回國際通" },
-              { time: "11:30-13:30", desc: "國際通午餐" },
-              { time: "14:00-18:00", desc: "iias豐崎購物中心 + DMM Kariyushi水族館" },
-              { time: "18:30", desc: "【晚餐】系滿魚市場（現切生魚片、烤龍蝦）" },
-              { time: "20:00", desc: "返回琉球利恩飯店" }
+              { time: "11:15-12:45", desc: "🐟【午餐】泊漁港市場（市區海鮮聖地，享用現切黑鮪魚、握壽司與生蠔）" },
+              { time: "13:30-17:30", desc: "iias豐崎購物中心 + DMM Kariyushi水族館（舒舒服服吹冷氣）" },
+              { time: "18:35", desc: "【晚餐】國際通周邊人氣餐廳 / 沖繩在地居酒屋" },
+              { time: "20:30", desc: "返回琉球利恩飯店，晚上可自由補貨藥妝" }
           ] },
         { day: 5, date: "7/27 (一)", title: "AEON Mall → 瀨長島 Storyline", emoji: "🏝️", theme: "最終購物",
           items: [
@@ -612,34 +723,45 @@
         scheduleData.forEach(day => {
             const dayDiv = document.createElement('div');
             dayDiv.className = 'day-section';
+            
             const header = document.createElement('div');
             header.className = 'day-header';
             header.innerHTML = `
                 <div class="day-title">
-                    <span class="day-emojii">${day.emoji}</span>
-                    <span>Day ${day.day} ・ ${day.date}</span>
+                    <span style="font-size:1.6rem;">${day.emoji}</span>
+                    <span class="day-main-text">Day ${day.day} ・ ${day.date}</span>
                     <span class="day-theme">${day.theme}</span>
                 </div>
                 <button class="btn-toggle">▼</button>
             `;
+            
             const body = document.createElement('div');
             body.className = 'day-body';
-            body.style.display = 'block';
-            let itemsHtml = `<h3 style="margin-bottom: 0.5rem;">✨ ${day.title}</h3>`;
+            
+            let itemsHtml = `<h3 class="day-summary-title">✨ ${day.title}</h3>`;
 
             if (routeLinks[day.day]) {
                 itemsHtml += `
                     <div class="map-link">
-                        <span>🗺️</span>
-                        <a href="${routeLinks[day.day]}" target="_blank">📍 查看當日路線規劃 (Google地圖)</a>
-                        <span class="map-note">點擊可開啟路線，預設為「住宿 → 當日主要景點」</span>
+                        <div class="map-info-text">
+                            <span>🗺️</span>
+                            <span><strong>當日路線規劃建議 (Google Maps)</strong></span>
+                        </div>
+                        <a href="${routeLinks[day.day]}" target="_blank">📍 點擊開啟導航</a>
                     </div>
                 `;
             }
 
+            itemsHtml += `<div class="timeline-container">`;
             day.items.forEach(item => {
-                itemsHtml += `<div class="timeline-item"><div class="time">${item.time}</div><div class="desc">${item.desc}</div></div>`;
-                if (item.desc.includes("瀨長島 Umikaji Terrace") && spotDescriptions["瀨長島Umikaji Terrace"])
+                itemsHtml += `
+                    <div class="timeline-item">
+                        <div class="time">${item.time}</div>
+                        <div class="desc">${item.desc}</div>
+                    </div>`;
+                
+                // 自動綁定景點介紹
+                if (item.desc.includes("Umikaji Terrace") && spotDescriptions["瀨長島Umikaji Terrace"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 瀨長島Umikaji Terrace 參觀重點</strong><br>${spotDescriptions["瀨長島Umikaji Terrace"]}</div>`;
                 if (item.desc.includes("萬座毛") && spotDescriptions["萬座毛"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 萬座毛 參觀重點</strong><br>${spotDescriptions["萬座毛"]}</div>`;
@@ -651,7 +773,7 @@
                     itemsHtml += `<div class="spot-intro"><strong>📌 備瀨福木林道 參觀重點</strong><br>${spotDescriptions["備瀨福木林道"]}</div>`;
                 if (item.desc.includes("名護鳳梨園") && spotDescriptions["名護鳳梨園"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 名護鳳梨園 參觀重點</strong><br>${spotDescriptions["名護鳳梨園"]}</div>`;
-                if (item.desc.includes("百年古家 大家") && spotDescriptions["百年古家大家"])
+                if (item.desc.includes("百年古家") && spotDescriptions["百年古家大家"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 百年古家大家 參觀重點</strong><br>${spotDescriptions["百年古家大家"]}</div>`;
                 if (item.desc.includes("美國村") && spotDescriptions["美國村"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 美國村 參觀重點</strong><br>${spotDescriptions["美國村"]}</div>`;
@@ -661,34 +783,36 @@
                     itemsHtml += `<div class="spot-intro"><strong>📌 首里城公園 參觀重點</strong><br>${spotDescriptions["首里城公園"]}</div>`;
                 if (item.desc.includes("DMM") && spotDescriptions["DMM Kariyushi水族館"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 DMM Kariyushi水族館 參觀重點</strong><br>${spotDescriptions["DMM Kariyushi水族館"]}</div>`;
-                if (item.desc.includes("系滿魚市場") && spotDescriptions["系滿魚市場"])
-                    itemsHtml += `<div class="spot-intro"><strong>🦞 系滿魚市場 推薦海鮮</strong><br>${spotDescriptions["系滿魚市場"]}</div>`;
+                if (item.desc.includes("泊漁港市場") && spotDescriptions["泊漁港市場"])
+                    itemsHtml += `<div class="spot-intro"><strong>🐟 泊漁港市場 參觀重點</strong><br>${spotDescriptions["泊漁港市場"]}</div>`;
                 if (item.desc.includes("AEON MALL") && spotDescriptions["AEON MALL Rycom"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 AEON MALL Rycom 參觀重點</strong><br>${spotDescriptions["AEON MALL Rycom"]}</div>`;
-                if (item.desc.includes("Umikaji Terrace 夕陽散策") && spotDescriptions["Umikaji Terrace夕陽散策"])
-                    itemsHtml += `<div class="spot-intro"><strong>📌 Umikaji Terrace夕陽散策 亮點</strong><br>${spotDescriptions["Umikaji Terrace夕陽散策"]}</div>`;
             });
+            itemsHtml += `</div>`; // 結束 timeline-container
 
+            // 區塊底部特規小提示
             if (day.day === 2) {
-                itemsHtml += `<div class="snorkel-tips" style="margin-top: 8px;"><strong>🐠 浮潛加購提醒</strong><br>➜ 青之洞窟浮潛位於恩納村（真榮田岬），從飯店車程約15分鐘。建議選08:30場次，結束後接水族館。需提前1-2週預約！</div>`;
+                itemsHtml += `<div class="alert-box snorkel-tips" style="margin-top: 1.5rem;"><strong>🐠 浮潛加購提醒</strong><br>➜ 青之洞窟浮潛位於恩納村（真榮田岬），從飯店車程約15分鐘。建議選08:30場次，結束後接水族館。需提前1-2週預約！</div>`;
             }
             if (day.day === 3) {
-                itemsHtml += `<div class="highlight">🛑 浦添大公園溜滑梯務必自備滑行墊（厚紙板/毛巾），穿長褲避免燙傷。</div>`;
+                itemsHtml += `<div class="alert-box highlight-tips" style="margin-top: 1.5rem;">🛑 浦添大公園溜滑梯務必自備滑行墊（厚紙板/毛巾），穿長褲避免燙傷。</div>`;
             }
             if (day.day === 4) {
-                itemsHtml += `<div class="parking-tips" style="margin-top: 8px;"><strong>🅿️ 首里城停車即時提醒</strong><br>➜ 停「首里杜館地下駐車場」，小型車首1小時500日圓、之後每30分鐘250日圓，上限1,000日圓。<br>➜ 營業時間08:30-19:30，建議停留不超過3小時。直接導航Mapcode即可。</div>`;
+                itemsHtml += `<div class="alert-box parking-tips" style="margin-top: 1.5rem;"><strong>🅿️ 首里城停車即時提醒</strong><br>➜ 停「首里杜館地下駐車場」，小型車首1小時500日圓、之後每30分鐘250日圓，上限1,000日圓。<br>➜ 營業時間08:30-19:30，直接導航Mapcode即可。</div>`;
             }
             if (day.day === 6) {
-                itemsHtml += `<div class="gas-tips" style="margin-top: 8px;"><strong>⛽ 最後還車前加油提醒</strong><br>➜ 瀨長島周邊有「ENEOS」「Cosmo」等加油站，請務必加滿「普通汽油(レギュラー)」。保留收據，還車時主動出示。<br>👉 可點擊上方「點此搜尋ガソリンスタンド」即時查找最近加油站。</div>`;
+                itemsHtml += `<div class="alert-box gas-tips" style="margin-top: 1.5rem;"><strong>⛽ 最後還車前加油提醒</strong><br>➜ 瀨長島周邊有「ENEOS」「Cosmo」等加油站，請務必加滿「普通汽油(レギュラー)」。保留收據，還車時主動出示。<br>👉 可點擊下方「點此搜尋ガソリンスタンド」即時查找最近加油站。</div>`;
             }
+
             body.innerHTML = itemsHtml;
             dayDiv.appendChild(header);
             dayDiv.appendChild(body);
             container.appendChild(dayDiv);
 
+            // 收折功能觸發
             const btn = header.querySelector('.btn-toggle');
             let open = true;
-            btn.addEventListener('click', () => {
+            header.addEventListener('click', () => {
                 body.style.display = open ? 'none' : 'block';
                 btn.innerHTML = open ? '▶' : '▼';
                 open = !open;
