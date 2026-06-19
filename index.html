@@ -943,4 +943,24 @@
                 itemsHtml += `<div class="alert-box parking-tips" style="margin-top: 0.5rem;"><strong>🐈 奧武島大家族爆食玩樂提示</strong><br>12人分成兩車停在「中本鮮魚」對面大免費車位。長輩和小孩可以在乾淨無異味的<strong>奧武島魚市場</strong>吹冷氣吃現切刺身丼飯，或者去<strong>海產物食堂</strong>舒適坐著吃海鮮定食；熱愛炸物的可以同時派人排隊「中本」與現點現炸的「大城天婦羅」互相PK！吃飽後帶小孩去大樹下的<strong>Maimu柑仔店</strong>買特色零嘴、去沙灘踩踩水、並找島上的親人貓咪群拍照，絕對是超悠閒的半日體驗！<br>⚠️ <em>小提示：貓咪很熱情但炸物太油，請勿用人類的天婦羅餵食貓咪喔！</em></div>`;
             }
             if (day.day === 6) {
-                itemsHtml += `<div class="alert-box gas-tips" style="margin-top: 1.5rem;"><strong>⛽ FLIGHT RENTACAR 還車提醒</strong><br>➜ 兩台 Serena 都要加滿「普通汽油(レギュラー)」，並保留收據。08:50前抵達那霸機場店（那霸市山下町30-8），還車後搭免費接駁車去機場。<br>👉 可點擊下方「點此搜尋ガソリンスタンド
+                itemsHtml += `<div class="alert-box gas-tips" style="margin-top: 1.5rem;"><strong>⛽ FLIGHT RENTACAR 還車提醒</strong><br>➜ 兩台 Serena 都要加滿「普通汽油(レギュラー)」，並保留收據。08:50前抵達那霸機場店（那霸市山下町30-8），還車後搭免費接駁車去機場。<br>👉 可點擊下方「點此搜尋ガソリンスタンド」即時查找。</div>`;
+            }
+
+            body.innerHTML = itemsHtml;
+            dayDiv.appendChild(header);
+            dayDiv.appendChild(body);
+            container.appendChild(dayDiv);
+
+            // 收折功能觸發
+            const btn = header.querySelector('.btn-toggle');
+            let open = true;
+            header.addEventListener('click', () => {
+                body.style.display = open ? 'none' : 'block';
+                btn.innerHTML = open ? '▶' : '▼';
+                open = !open;
+            });
+        });
+    }
+</script>
+</body>
+</html>
