@@ -533,7 +533,7 @@
         .journey-map-section .section-kicker { color: #9ce3db; }
         .map-stats {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: .75rem;
             margin: 1rem 0;
         }
@@ -556,7 +556,7 @@
         }
         #journey-map {
             width: 100%;
-            height: 590px;
+            height: 520px;
             border-radius: 1.2rem;
             overflow: hidden;
             border: 4px solid rgba(255,255,255,.18);
@@ -590,19 +590,6 @@
             font-size: .78rem;
             line-height: 1.65;
         }
-        .map-day-marker {
-            display: grid;
-            place-items: center;
-            width: 24px;
-            height: 24px;
-            border-radius: 50% 50% 50% 0;
-            color: white;
-            border: 2px solid white;
-            box-shadow: 0 2px 8px rgba(0,0,0,.32);
-            font: 800 11px/1 Inter, sans-serif;
-            transform: rotate(-45deg);
-        }
-        .map-day-marker span { transform: rotate(45deg); }
         .map-load-note {
             padding: .55rem .75rem;
             border-radius: .7rem;
@@ -1001,7 +988,7 @@
             .spot-guide { padding: 1rem; }
             .andagi-grid { grid-template-columns: 1fr; }
             .map-stats, .map-legend { grid-template-columns: 1fr; }
-            #journey-map { height: 500px; }
+            #journey-map { height: 440px; }
             .journey-map-section { padding: 1rem; }
             .section-heading { align-items:flex-start; flex-direction:column; }
         }
@@ -1712,12 +1699,11 @@
     <section class="journey-map-section" id="journey-footprint">
         <div class="section-heading">
             <span class="section-kicker">OUR OKINAWA FOOTPRINT</span>
-            <h2>🗺️ 六天五夜・沖繩旅程足跡</h2>
-            <p>從那霸機場一路北上美麗海與古宇利島，再沿中部、首里與南部返回瀨長島。不同顏色代表每天的實際駕車路線。</p>
+            <h2>🗺️ 六天沖繩自駕總覽</h2>
+            <p>地圖只保留六條每日路線與七個代表地標，詳細停靠點請查看上方每日行程。</p>
         </div>
         <div class="map-stats">
-            <div class="map-stat"><span>單台Serena預估里程</span><strong>約 281 km</strong></div>
-            <div class="map-stat"><span>兩台車合計行駛</span><strong>約 562 km</strong></div>
+            <div class="map-stat"><span>六天自駕路線長度</span><strong>約 281 km</strong></div>
             <div class="map-stat"><span>最長駕車日</span><strong>Day 2・約104 km</strong></div>
         </div>
         <div id="journey-map" role="img" aria-label="六天沖繩自駕旅程路線地圖"></div>
@@ -1729,11 +1715,11 @@
             <div class="map-legend-item"><i class="route-swatch" style="background:#2f9d76"></i><span>Day 5 那霸→瀨長島｜19.1 km</span></div>
             <div class="map-legend-item"><i class="route-swatch" style="background:#d65b8c"></i><span>Day 6 瀨長島→還車｜5.7 km</span></div>
         </div>
-        <p class="map-footnote">里程依各日主要停靠點及道路路線估算，為每台車的行程距離；未計算散步、飯店內移動、尋找停車位、加油繞行及租車接駁巴士，因此實際里程表可能略高。地圖可縮放、拖曳，點擊編號可查看景點。</p>
+        <p class="map-footnote">約281公里是整條旅程的道路長度；兩台車同行仍以此距離理解。未計尋找停車位與加油繞行，實際里程表可能略高。地圖可縮放、拖曳，點擊圓點查看代表地標。</p>
         <p class="map-load-note" id="map-load-note">正在載入實際道路路線…</p>
     </section>
 
-    <footer>🌴 六天走遍沖繩北中南｜🚐 兩台Serena約行駛562公里｜🥮 三大沙翁名店吃過癮 🌟</footer>
+    <footer>🌴 六天走遍沖繩北中南｜🚐 自駕路線約281公里｜🥮 三大沙翁名店吃過癮 🌟</footer>
 </div>
 
 <script>
@@ -2066,21 +2052,22 @@
         }).addTo(map);
         const allBounds = [];
 
-        const markerIcon = (day, color) => L.divIcon({
-            className: "",
-            html: `<div class="map-day-marker" style="background:${color}"><span>${day}</span></div>`,
-            iconSize: [24,24], iconAnchor: [12,24], popupAnchor: [0,-23]
-        });
+        routes.forEach(route => route.keys.forEach(key => allBounds.push(points[key])));
 
-        routes.forEach((route, routeIndex) => {
-            route.keys.forEach((key, pointIndex) => {
-                const latLng = points[key];
-                allBounds.push(latLng);
-                if (pointIndex === 0 && routeIndex > 0) return;
-                L.marker(latLng, { icon: markerIcon(route.day, colors[routeIndex]) })
-                    .bindPopup(`<strong>Day ${route.day}｜${route.names[pointIndex]}</strong><br>當日駕車約 ${route.distance}`)
-                    .addTo(map);
-            });
+        const landmarks = [
+            ["flight", "那霸機場／租車店", "旅程起點與終點"],
+            ["miyuki", "Hotel Miyuki Beach", "Day 1–2 恩納住宿"],
+            ["churaumi", "美麗海水族館", "北部代表景點"],
+            ["kouri", "古宇利島", "全程最北端"],
+            ["shuri", "首里城／那霸", "中部返回那霸"],
+            ["world", "沖繩世界・玉泉洞", "南部代表景點"],
+            ["senaga", "瀨長島", "最後一晚住宿"]
+        ];
+        landmarks.forEach(([key, name, note]) => {
+            L.circleMarker(points[key], {
+                radius: 7, color: "#ffffff", weight: 3,
+                fillColor: "#123f47", fillOpacity: 1
+            }).bindPopup(`<strong>${name}</strong><br>${note}`).addTo(map);
         });
         map.fitBounds(allBounds, { padding: [25,25] });
 
@@ -2103,7 +2090,7 @@
                 }).bindTooltip(`Day ${route.day}｜${route.distance}（概略線）`).addTo(map);
             }
         })).then(() => {
-            if (loadNote) loadNote.textContent = "✓ 六天道路路線已載入；可拖曳、縮放並點擊景點編號。";
+            if (loadNote) loadNote.textContent = "✓ 六天道路路線已載入；可拖曳、縮放並點擊代表地標。";
             setTimeout(() => map.invalidateSize(), 150);
         });
     })();
