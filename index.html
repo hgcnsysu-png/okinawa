@@ -295,6 +295,93 @@
         .audit-card.critical { border-top: 4px solid var(--coral); }
         .audit-card.weather { border-top: 4px solid #3fa7d6; }
         .audit-card.flex { border-top: 4px solid #e6af2e; }
+
+        /* --- 門票總覽 --- */
+        .ticket-board {
+            margin: 0 0 2.7rem;
+            padding: 1.7rem;
+            border-radius: 1.6rem;
+            background: linear-gradient(145deg, #fffdf8, #f5fbfa);
+            border: 1px solid #dfebe7;
+            box-shadow: var(--shadow-soft);
+        }
+        .ticket-summary {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 1rem;
+            margin-bottom: 1.15rem;
+        }
+        .ticket-total, .ticket-note {
+            padding: 1rem 1.15rem;
+            border-radius: 1rem;
+        }
+        .ticket-total {
+            color: white;
+            background: linear-gradient(135deg, var(--ocean), var(--primary-color));
+        }
+        .ticket-total span, .ticket-note span {
+            display: block;
+            font-size: .78rem;
+            opacity: .85;
+        }
+        .ticket-total strong {
+            display: block;
+            margin: .15rem 0;
+            font-size: 1.5rem;
+        }
+        .ticket-note {
+            color: #6a5018;
+            background: #fff1cf;
+            border: 1px solid #f0db9e;
+        }
+        .ticket-table-wrap { overflow-x: auto; }
+        .ticket-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 760px;
+            font-size: .88rem;
+        }
+        .ticket-table th, .ticket-table td {
+            padding: .78rem .72rem;
+            border-bottom: 1px solid #e8eeeb;
+            text-align: left;
+            vertical-align: top;
+        }
+        .ticket-table th {
+            color: #38615d;
+            background: #eaf5f2;
+            font-size: .78rem;
+            letter-spacing: .03em;
+        }
+        .ticket-table tr:last-child td { border-bottom: 0; }
+        .ticket-status {
+            display: inline-flex;
+            padding: .16rem .48rem;
+            border-radius: 999px;
+            font-size: .7rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .ticket-status.required { color:#8c3423; background:#ffe1d8; }
+        .ticket-status.optional { color:#765410; background:#fff0c9; }
+        .ticket-status.booked { color:#17637a; background:#dff4fa; }
+        .ticket-free-list {
+            margin-top: 1rem;
+            padding: .9rem 1rem;
+            border-radius: .9rem;
+            background: #edf8f1;
+            color: #3c6750;
+            font-size: .85rem;
+        }
+        .ticket-hint {
+            margin: .65rem 0 1.25rem;
+            padding: .75rem .9rem;
+            border-radius: .85rem;
+            background: #fff5dc;
+            border: 1px solid #f0ddb0;
+            color: #765410;
+            font-size: .84rem;
+        }
         .hotel-note h3 {
             color: #2b5e4c;
             margin-bottom: 0.8rem;
@@ -681,6 +768,7 @@
             .route-day:not(:last-child)::after { display:none; }
             .audit-grid { grid-template-columns: 1fr; }
             .day-metrics { grid-template-columns: 1fr; }
+            .ticket-summary { grid-template-columns: 1fr; }
             .section-heading { align-items:flex-start; flex-direction:column; }
         }
         @media (max-width: 430px) {
@@ -793,6 +881,91 @@
             <p>每天固定車組、車長與集合點；停車後拍樓層柱號。Day 3濕衣物獨立密封，護照與現金不可留車內。</p>
         </article>
     </div>
+
+    <section class="ticket-board" aria-labelledby="ticket-title">
+        <div class="section-heading">
+            <span class="section-kicker">TICKETS &amp; RESERVATIONS</span>
+            <h2 id="ticket-title">🎟️ 門票與付費活動總覽</h2>
+            <p>全團共12人：7位成人，5位兒童分別為9、10、12、13、14歲；各景點的兒童票分界不同。</p>
+        </div>
+        <div class="ticket-summary">
+            <div class="ticket-total">
+                <span>12人固定門票估算</span>
+                <strong>¥89,910–95,460</strong>
+                <small>7位成人＋5位兒童；另加黑潮浮潛訂單</small>
+            </div>
+            <div class="ticket-note">
+                <span>出發前要做</span>
+                <b>請確認12歲小朋友是否仍就讀小學</b>
+                <small>DMM依入場日分級定價；玻璃船的12歲票種以年級判定。</small>
+            </div>
+        </div>
+        <div class="ticket-table-wrap">
+            <table class="ticket-table">
+                <thead>
+                    <tr>
+                        <th>日期／景點</th>
+                        <th>成人票</th>
+                        <th>兒童／學生票</th>
+                        <th>購票提醒</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="ticket-status required">需門票</span><strong>Day 1｜萬座毛</strong></td>
+                        <td>¥100</td>
+                        <td>小學生以上 ¥100；未就學免費</td>
+                        <td>入口售票機現場購買即可。</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ticket-status required">需門票</span><strong>Day 2｜沖繩美麗海水族館</strong></td>
+                        <td>¥2,180</td>
+                        <td>高中 ¥1,440；中小學 ¥710；未滿6歲免費</td>
+                        <td>建議先買電子票，減少12人排隊時間。</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ticket-status booked">已預約</span><strong>Day 3｜黑潮坐船浮潛</strong></td>
+                        <td colspan="2">以Rezio訂單／預約確認信所列金額為準</td>
+                        <td>攜帶電子憑證；如遇海況取消，依店家退款或改期規則辦理。</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ticket-status required">付費區</span><strong>Day 3｜首里城</strong></td>
+                        <td>¥400</td>
+                        <td>高中 ¥300；中小學 ¥160；未滿6歲免費</td>
+                        <td>公園免費區不用票；本行程安排進入付費區。團體優惠須20人以上，12人不適用。</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ticket-status required">需門票</span><strong>Day 4｜沖繩世界・玉泉洞</strong></td>
+                        <td>¥2,000</td>
+                        <td>4–14歲 ¥1,000；未滿4歲免費</td>
+                        <td>15歲起算成人；團體優惠須15人以上，12人不適用。</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ticket-status optional">看天氣</span><strong>Day 4｜奧武島玻璃船</strong></td>
+                        <td>¥1,500</td>
+                        <td>4歲～小學生 ¥750</td>
+                        <td>官網表示現場告知「看過網站」可能享8折，請當日致電確認船班與實收金額。</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ticket-status required">入館付費</span><strong>Day 4｜壺屋燒物博物館</strong></td>
+                        <td>¥350</td>
+                        <td>大學生以下目前免費</td>
+                        <td>於17:30最後入館前現場購票；出發前再確認票價公告。</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ticket-status required">需門票</span><strong>Day 5｜DMM Kariyushi水族館</strong></td>
+                        <td>¥2,800–3,200</td>
+                        <td>13–17歲 ¥2,200–2,600；4–12歲 ¥1,700–2,100；3歲以下免費</td>
+                        <td>依2026運營日曆分Value／Regular／Peak；12人建議先登記團體來館並線上購票。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ticket-free-list">
+            <strong>🆓 行程中免門票：</strong>
+            備瀨福木林道、古宇利大橋／古宇利島、讀谷村農夫市集、AEON MALL Rycom、泊いゆまち、波上宮／波之上海灘、壺屋やちむん通、瀨長島Umikaji Terrace。停車、餐飲、體驗或特別展另計。
+        </div>
+    </section>
 
     <div id="days-container"></div>
 
@@ -990,7 +1163,7 @@
 
     <div class="price-table">
         <table>
-            <caption style="text-align: left; margin-bottom: 12px; font-weight: bold; font-size: 1.1rem; color: #2b5e4c;">💰 12人主要費用估算 (6天5夜，無JUNGLIA)</caption>
+            <caption style="text-align: left; margin-bottom: 12px; font-weight: bold; font-size: 1.1rem; color: #2b5e4c;">💰 12人主要費用估算（7位成人＋5位兒童）</caption>
             <thead>
                 <tr>
                     <th>項目</th>
@@ -1000,16 +1173,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>美麗海水族館門票</td><td>約 30,000</td><td>1,530</td><td>可購買優惠套票</td></tr>
-                <tr><td>首里城門票</td><td>4,000</td><td>200</td><td>10大人×400日圓</td></tr>
-                <tr><td>玉泉洞門票</td><td>約 24,000</td><td>1,220</td><td>一般票價</td></tr>
-                <tr><td>DMM 水族館門票</td><td>約 32,000</td><td>1,630</td><td>全室內</td></tr>
+                <tr><td>萬座毛門票</td><td>1,200</td><td>依匯率</td><td>12人均為小學生以上</td></tr>
+                <tr><td>美麗海水族館門票</td><td>18,810</td><td>依匯率</td><td>成人7人＋中小學生5人</td></tr>
+                <tr><td>首里城付費區</td><td>3,600</td><td>依匯率</td><td>成人7人＋中小學生5人</td></tr>
+                <tr><td>沖繩世界・玉泉洞</td><td>19,000</td><td>依匯率</td><td>成人7人＋4–14歲5人</td></tr>
+                <tr><td>奧武島玻璃船</td><td>15,750–16,500</td><td>依匯率</td><td>12歲是否仍為小學生會影響票價；未計可能的官網提示折扣</td></tr>
+                <tr><td>壺屋燒物博物館</td><td>2,450</td><td>依匯率</td><td>成人7人；大學生以下目前免費</td></tr>
+                <tr><td>DMM 水族館門票</td><td>29,100–33,900</td><td>依匯率</td><td>成人7人＋13–17歲2人＋4–12歲3人</td></tr>
                 <tr><td>租車（2台 Serena×6天）</td><td>約 120,000</td><td>6,120</td><td>FLIGHT RENTACAR，含保險</td></tr>
                 <tr><td>住宿(5晚,12人)</td><td>約 420,000</td><td>21,420</td><td>依實際房型</td></tr>
                 <tr><td>餐食(6天)</td><td>約 300,000</td><td>15,300</td><td>含燒肉、古家等</td></tr>
             </tbody>
         </table>
-        <p style="font-size: 0.85rem; margin-top: 10px; color:#666;">⚠️ 實際費用依匯率、票種選擇變動，建議提前3個月預訂。</p>
+        <p style="font-size: 0.85rem; margin-top: 10px; color:#666;">⚠️ 固定門票合計約¥89,910–95,460；黑潮浮潛未列入，請以已預約訂單為準。</p>
     </div>
 
     <footer>🌴 行程可依體力微調，點擊地圖連結可看路線規劃｜🛍️ 讀谷村市集買水果｜⛩️ 奧武島貓咪天婦羅巡禮｜🥮 三大沙翁名店吃過癮 🌟</footer>
@@ -1026,51 +1202,33 @@
     };
 
     const spotDescriptions = {
-        "瀨長島Umikaji Terrace": "⭐ 希臘風格商店街｜白色階梯建築＋飛機起降，可看海泡足湯，傍晚夕陽極美。",
-        "萬座毛": "⭐ 沖繩經典地標｜象鼻岩斷崖與無敵海景，適合拍家族大合照.入口附近有【三矢本舖（恩納店）】，記得帶上現炸沙翁！",
-        "三矢本舖恩納店": "🥮 沖繩經典沙翁名店｜就在萬座毛入口與國道58號附近。必點原味、紅芋、黑糖沙翁。極力推薦限量「三矢龍珠」，口感如麻糬般Q彈，大人小孩都愛！",
-        "美麗海水族館": "⭐ 世界級水族館｜必看「鯨鯊與鬼蝠魟」在巨大水槽中共游，戶外海豚秀免費觀賞，觸摸池讓小朋友近距離接觸海星。",
-        "古宇利島": "⭐ 沖繩版亞當與夏娃｜跨過古宇利大橋後可見蒂芬尼藍海景，沙灘踩水、心形岩打卡，順路必吃蝦蝦飯。",
-        "備瀨福木林道": "⭐ 療癒綠蔭隧道｜種植數千棵福木形成的林道，租用協力車或散步，陽光透過樹葉灑落非常愜意。",
-        "百年古家大家": "⭐ 百年古民家｜超過百年歷史的琉球傳統建築，夜晚紅瓦古民家與瀑布庭園點燈後更有氣氛，適合享用阿古豬涮涮鍋。",
-        "讀谷村農夫市集": "🛒 在地人大推的農產直銷所（Yunta Ichiba）｜有超大免費停車場。7月正值芒果與鳳梨盛產期，這裡的現採芒果多汁且便宜！熟食區有沖繩飯糰與手作便當。🍜 同棟讀谷村地域振興中心3樓的【Ramen Hachiren Main Store／麺屋はちれん 読谷本店】是人氣自家製麵拉麵店，推薦沾麵與拉麵；11:00開始營業，週六可作為少量成員的早午餐備案。12人需拆桌，若想試吃請11:00開門即去並控制在30分鐘內，避免影響12:45來客夢午餐。",
-        "首里城公園": "⭐ 琉球王國象徵｜世界遺產，正殿雖重建中仍可參觀復興展示室、東展望台俯瞰那霸市景。2026年見證歷史的一刻。",
-        "波上宮": "⛩️ 沖繩總鎮守（崖上神殿）｜矗立於黑色懸崖之勝地。參觀完後可到旁邊的「波之上海灘」陸橋上拍攝神社全景，也別忘了買限定的「紅型宮守」與給小朋友的「小書包防護御守」。",
-        "奧武島": "🐈 沖繩南部超人氣貓咪與銅板美食之島！與本島僅由一條百米短橋相連，開車繞一圈僅10分鐘。島上最大的特色是隨處可見溫馴、不怕人的療癒小貓趴趴走，且擁有清澈湛藍的奧武島海灘，是絕佳的中繼美食站！",
-        "中本鮮魚天婦羅店": "🍤 奧武島超級名店！位於過橋後右手邊，用料極度紮實，每到假日排隊人潮極誇張。必點特產鮮魚天婦羅、炸花枝、炸地瓜等。點餐提供中文注文單對照，建議點完現做現吃最過癮！",
-        "大城天婦羅店": "🍤 在地人極力推薦的另一家天婦羅天王！不同於中本，大城天婦羅通常是現點現炸，外皮更為酥脆，也是島上的熱門排隊美食，適合與中本鮮魚進行一場天婦羅大比拼！",
-        "奧武島魚市場": "🐟 雖然規模精跡（約5-6家攤位），但內部極其乾淨整齊、毫無異味。這裡提供產地直送、極其便宜的新鮮現切生魚片定食與豐富的海鮮丼飯，想大口吃刺身的家人絕對不容錯過！",
-        "奧武島海產物食堂": "🍛 位於港口邊的白色建築，是一間精緻的在地海鮮餐廳。提供各式由當日現撈漁獲做成的海鮮定食、沖繩天婦羅等料理，適合全家人坐下來舒適地享用豐盛的漁夫午餐。",
-        "Maimu柑仔店": "🍜 【まいむ Maimu】隱藏在橋邊大樹下的懷舊小店。外觀被茂密巨傘般的大樹覆蓋，極具鄉村風情。店內販售沖繩麵、各式蓋飯以及懷舊古早味零嘴，是拍照打卡與在地輕食的絕妙去處。",
-        "步沙翁": "🥮 號稱「沖繩第一夢幻沙翁」｜位於國際通「第一牧志公設市場」2樓。製程不加一滴水或牛奶，純以大量蛋黃與麵粉油炸，冷掉也完全不油膩，蛋香極濃。常溫可放10天，帶在車上當點心超合適！",
-        "DMM Kariyushi水族館": "⭐ 新潮光影水族館｜全室內冷氣超舒適，結合投影技術與真實生物，可近距離觀賞樹懶、企鵝、水母。",
-        "AEON MALL Rycom": "⭐ 沖繩最大級購物中心｜午餐首選3樓美食街分組：沖繩人氣雞蛋料理【Egg Farm鳥玉】、沖繩平價牛排【ジャンボステーキ HAN'S】、兒童與清淡組可選丸龜製麵，甜點吃【Blue Seal】。必看1樓免費百噸大水槽 Rycom Aquarium；親子必逛1樓 Pokémon Center Okinawa 與寶可夢主題【ちゅらピカ廣場】；孩子仍有體力可到4樓【樂市樂座】玩30分鐘。うんこミュージアム需另外購票且較花時間，本次3小時行程不建議加入。",
-        "泊いゆまち": "🐟 那霸泊漁港的鮮魚直售市場｜官方營業時間06:00–18:00、原則全年無休，但各攤實際開店時間不同。07:15主要選擇是現切生鮪魚、刺身、握壽司、大東壽司及外帶商品；部分海鮮丼、魚湯與熱食店可能08:00–09:00後才開始。市場座位有限，12人建議分成3–4組購買，使用簡易座位或外帶；準備少量現金與保冷袋，避免購買需長時間留在車內的生食。",
-        "Umikaji Terrace夕陽散策": "⭐ 瀨長島黃昏絕景｜傍晚時分白色建築被染成金黃色，看著飛機起降與夕陽沉入海面，適合散步拍照、泡免費足湯。",
-        "泊漁港市場": "🐟 泊港新鮮直送海鮮｜那霸市區在地海鮮首選！以現切鮪魚、黑鮪魚刺身聞名，另有烤大蝦、生蠔、海膽等生猛海鮮，市場乾淨精緻，非常適合做為海鮮午餐！"
+        "瀨長島Umikaji Terrace": "白色海景商店街，可看飛機與夕陽；重點是散步、拍照和足湯。",
+        "萬座毛": "看象鼻岩與海岸斷崖，適合拍全家福；停留約30–45分鐘。",
+        "三矢本舖恩納店": "順路買沙翁；推薦原味、紅芋與限量三矢龍珠。",
+        "美麗海水族館": "必看黑潮之海的鯨鯊與鬼蝠魟；戶外海豚表演免費。",
+        "古宇利島": "開車跨古宇利大橋看海，安排沙灘散步即可，不必塞太多景點。",
+        "備瀨福木林道": "水族館旁的綠蔭林道，適合避暑散步與拍照。",
+        "百年古家大家": "紅瓦古民家與庭園氣氛佳，晚餐主打阿古豬料理。",
+        "讀谷村農夫市集": "7月可買芒果、鳳梨與熟食。Ramen Hachiren 11:00營業，想吃需拆桌並控制時間。",
+        "首里城公園": "參觀復興展示與城郭，東展望台可看那霸市景。",
+        "波上宮": "崖上神社；參拜後到波之上海灘陸橋拍神社全景。",
+        "奧武島": "南部小島，以海鮮、天婦羅、玻璃船和貓咪聞名。",
+        "中本鮮魚天婦羅店": "熱門排隊店，推薦鮮魚、花枝與地瓜天婦羅。",
+        "大城天婦羅店": "現點現炸、外皮酥脆，可與中本分組購買比較。",
+        "奧武島魚市場": "小型鮮魚市場，適合買現切刺身或海鮮丼。",
+        "奧武島海產物食堂": "港邊海鮮定食餐廳，適合全團坐下吃午餐。",
+        "Maimu柑仔店": "橋邊大樹下的小店，可買零食、簡餐並拍照。",
+        "步沙翁": "牧志市場2樓的人氣沙翁，蛋香濃，適合外帶。",
+        "DMM Kariyushi水族館": "全室內光影水族館，重點看水母、企鵝與近距離動物展示。",
+        "AEON MALL Rycom": "午餐分組用餐；必看免費大水槽、Pokémon Center，購物後15:15集合。",
+        "泊いゆまち": "早餐以鮪魚刺身、壽司和魚湯為主；12人分組採買，08:30離開。",
+        "Umikaji Terrace夕陽散策": "看夕陽與飛機起降，散步拍照並泡免費足湯。",
+        "泊漁港市場": "那霸市區鮮魚市場，主打鮪魚刺身、壽司與海鮮。"
     };
 
-    // 玉泉洞深度資料強化
-    const gyokusendoIntro = `⭐ 日本第二大地下鐘乳石奇觀！歷經 <strong>30萬年</strong> 漫長歲月淬煉。整個洞穴長達 5 公里，目前開放給觀光客安全參觀的部分約為 <strong>900公尺</strong>（全長的 1/5 最精華段）。
-    洞內終年維持在舒爽的 <strong>21度左右</strong>，夏天來此避暑極佳！全區高低落差錯落有致，設有完善的景觀步道與魔幻 LED 照明。
-    ⚠️ <strong>家族防雷提示</strong>：因洞內偏黑、環境極度濕滑且包含多處階梯，<strong>完全無法推嬰兒車</strong>。3歲以下幼童或步履不穩的長輩，走完全程（官方估約30分，拍照漫遊需1小時）會非常吃力，帶小孩務必牽好並斟酌體力！`;
-
-    const gyokusendoSpots = `🧭 <strong>玉泉洞 5 大核心必看地標</strong>：
-    1. <strong>夫婦岩</strong>：相依相偎、形影不離的天然鐘乳石柱。
-    2. <strong>昇龍之鐘、秀麗峰、銀柱</strong>：粗獷的銀柱與白色圓滑的昇龍之鐘錯落交織。鐘乳石每 3 年才長高 0.1 公分，極度珍貴，嚴禁動手觸摸！
-    3. <strong>槍天井</strong>：玉泉洞最震撼奇景！多達 <strong>2萬支</strong> 細尖狀的石鐘乳密密麻麻佈滿整個洞頂，壓迫感與壯麗感十足。
-    4. <strong>化石廣場</strong>：此處岩壁完整保存了 <strong>1萬5千年前</strong> 滅絕的古代小鹿骨骼化石，見證沖繩遠古生態。
-    5. <strong>青泉</strong>：清澈地下泉水在魔幻藍色燈光折射下，呈現出如夢似幻的寶藍色水潭，是全洞最熱門的拍照打卡點。`;
-
-    const gyokusendoThemePark = `🎭 <strong>王國村園區包含體驗（門票已全含，無須加購）</strong>：
-    • <strong>EISA太鼓舞表演</strong>：沖繩傳統祭典大鼓舞，氣勢磅礡、互動性強，必看演出！
-    • <strong>毒蛇博物館公園</strong>：展示沖繩特有波布蛇，還有驚險刺激的毒蛇秀。
-    • <strong>熱帶水果園</strong>：栽種約 100 種、450 棵熱帶果樹，隨季節可觀賞難得一見的奇花異果，旁有水果小吃攤。
-    • <strong>南都造酒所</strong>：展示獨創的「波布蛇毒蛇酒」，並能觀賞透明化製酒生產線。這裡使用玉泉洞清澈地下水釀造的<strong>「沖繩珊瑚啤酒 (OKINAWA SANGO BEER)」</strong>是超級在地亮點！`;
-
-    const gyokusendoRestaurants = `🍽️ <strong>玉泉洞美食雙案推薦</strong>：
-    • <strong>首選方案【CYURA島自助餐廳】</strong>：園區內最知名的吃到飽餐廳。大人 1,980 日圓 / 兒童 1,200 日圓，供應無數種採用沖繩在地新鮮食材烹調的特色琉球料理，非常適合大群家人飽餐。
-    • <strong>輕食方案【在地沖繩麵小吃】</strong>：如果不想吃太飽，熟食區販售由鰹魚高湯、肥美五花肉、魚糕與大蔥熬製的便宜沖繩麵，簡單卻十分地道美味。`;
+    const gyokusendoIntro = `洞內約21°C、步道約900公尺。地面濕滑且階梯多，不能推嬰兒車，請穿防滑鞋。`;
+    const gyokusendoSpots = `<strong>必看：</strong>槍天井、青泉與大型鐘乳石群；全程約45–60分鐘。`;
+    const gyokusendoThemePark = `<strong>園區重點：</strong>10:30 EISA太鼓舞；其餘展區依時間與體力選看。`;
 
 
     const scheduleData = [
@@ -1165,6 +1323,18 @@
         6: { intensity: "中等", drive: "約30分鐘", flex: "08:00必須離開飯店" }
     };
 
+    const getTicketHint = (desc) => {
+        if (desc.includes("萬座毛（")) return "🎟️ 門票：每人 ¥100；未就學兒童免費，入口現場購票。";
+        if (desc.includes("美麗海水族館（")) return "🎟️ 門票：成人 ¥2,180／高中 ¥1,440／中小學 ¥710／未滿6歲免費。";
+        if (desc.includes("已預約：黑潮")) return "🎟️ 已預約付費活動：金額與取消規則以Rezio確認信為準，記得攜帶電子憑證。";
+        if (desc.includes("首里城公園參觀")) return "🎟️ 進入付費區：成人 ¥400／高中 ¥300／中小學 ¥160／未滿6歲免費。";
+        if (desc.includes("沖繩世界文化王國")) return "🎟️ 門票：成人（15歲起）¥2,000／4–14歲 ¥1,000／未滿4歲免費。";
+        if (desc.includes("奧武島海底觀光玻璃船")) return "🎟️ 現場票參考：成人 ¥1,500／4歲～小學生 ¥750；海況停航則改自由活動。";
+        if (desc.includes("壺屋燒物博物館")) return "🎟️ 入館：成人 ¥350；大學生以下目前免費，17:30前完成入館。";
+        if (desc.includes("DMM Kariyushi 水族館（")) return "🎟️ 分級票價：成人 ¥2,800–3,200；兒童依年齡與入場日為 ¥1,700–2,600。";
+        return "";
+    };
+
     const classifyItem = (desc) => {
         if (/【早餐|【午餐|【晚餐|美食|用餐/.test(desc)) return ["type-meal", "🍽️"];
         if (/已預約/.test(desc)) return ["type-booked", "✓"];
@@ -1224,6 +1394,9 @@
                         <div class="time">${item.time}</div>
                         <div class="desc">${item.desc}</div>
                     </div>`;
+
+                const ticketHint = getTicketHint(item.desc);
+                if (ticketHint) itemsHtml += `<div class="ticket-hint">${ticketHint}</div>`;
                 
                 // 自動綁定景點介紹
                 if (item.desc.includes("瀨長島Umikaji Terrace夕陽散策") && spotDescriptions["瀨長島Umikaji Terrace"])
@@ -1252,15 +1425,11 @@
                     itemsHtml += `<div class="spot-intro"><strong>🌋 沖繩世界文化王國・玉泉洞 深度導覽</strong><br>${gyokusendoIntro}</div>`;
                     itemsHtml += `<div class="spot-intro">${gyokusendoSpots}</div>`;
                     itemsHtml += `<div class="spot-intro">${gyokusendoThemePark}</div>`;
-                    itemsHtml += `<div class="spot-intro">${gyokusendoRestaurants}</div>`;
                 }
 
                 // 奧武島系列
                 if (item.desc.includes("奧武島海產物食堂")) {
-                    itemsHtml += `<div class="spot-intro"><strong>🐈 奧武島 貓咪之島大解密</strong><br>${spotDescriptions["奧武島"]}</div>`;
-                    itemsHtml += `<div class="spot-intro"><strong>🍤 兩大天婦羅名店爭霸</strong><br>${spotDescriptions["中本鮮魚天婦羅店"]}<br><br>${spotDescriptions["大城天婦羅店"]}</div>`;
-                    itemsHtml += `<div class="spot-intro"><strong>🐟 魚市場刺身與海鮮食堂</strong><br>${spotDescriptions["奧武島魚市場"]}<br><br>${spotDescriptions["奧武島海產物食堂"]}</div>`;
-                    itemsHtml += `<div class="spot-intro"><strong>🌳 綠蔭巨傘打卡點與柑仔店</strong><br>${spotDescriptions["Maimu柑仔店"]}</div>`;
+                    itemsHtml += `<div class="spot-intro"><strong>🐈 奧武島重點</strong><br>${spotDescriptions["奧武島"]} 午餐吃海產物食堂；中本／大城天婦羅擇一外帶即可。</div>`;
                 }
 
                 if (item.desc.includes("步沙翁") && spotDescriptions["步沙翁"])
