@@ -382,6 +382,143 @@
             color: #765410;
             font-size: .84rem;
         }
+        .spot-guide {
+            margin: 3rem 0;
+            padding: 1.4rem;
+            border-radius: 1.8rem;
+            background: linear-gradient(145deg, #f7fbf9, #edf7f5);
+            border: 1px solid #dbeae5;
+            box-shadow: var(--shadow-soft);
+        }
+        .spot-guide-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .55rem;
+            margin: 1rem 0 1.5rem;
+        }
+        .spot-guide-nav a {
+            padding: .45rem .75rem;
+            border-radius: 999px;
+            color: #27685e;
+            background: white;
+            border: 1px solid #cfe3dc;
+            font-size: .82rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .guide-day-block { margin-top: 1.6rem; }
+        .guide-day-title {
+            margin: 0 0 .8rem;
+            color: #285f59;
+            font-size: 1.05rem;
+        }
+        .spot-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .85rem;
+        }
+        .guide-card {
+            overflow: hidden;
+            border-radius: 1rem;
+            background: white;
+            border: 1px solid #dfeae6;
+        }
+        .guide-card summary {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            padding: .95rem 1rem;
+            color: #284f4a;
+            font-weight: 800;
+            cursor: pointer;
+            list-style: none;
+        }
+        .guide-card summary::-webkit-details-marker { display: none; }
+        .guide-card summary::after {
+            content: "＋";
+            margin-left: auto;
+            color: #3e8a7b;
+            font-size: 1.15rem;
+        }
+        .guide-card[open] summary::after { content: "−"; }
+        .guide-card .guide-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 2rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: .65rem;
+            background: #e7f5f1;
+        }
+        .guide-content {
+            padding: 0 1rem 1rem;
+            color: #526660;
+            font-size: .88rem;
+            line-height: 1.75;
+        }
+        .guide-content p { margin: 0 0 .65rem; }
+        .guide-points {
+            display: grid;
+            gap: .45rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .guide-points li {
+            padding: .55rem .65rem;
+            border-radius: .7rem;
+            background: #f5f9f7;
+        }
+        .guide-points strong { color: #2f7166; }
+        .andagi-plan {
+            margin: 2.2rem 0;
+            padding: 1.35rem;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, #fff8e8, #fff1d3);
+            border: 1px solid #efd7a3;
+            box-shadow: var(--shadow-soft);
+        }
+        .andagi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .8rem;
+            margin-top: 1rem;
+        }
+        .andagi-card {
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgba(255,255,255,.88);
+            border: 1px solid #f0dfb9;
+        }
+        .andagi-card .andagi-day {
+            display: inline-flex;
+            margin-bottom: .55rem;
+            padding: .2rem .5rem;
+            border-radius: 999px;
+            color: #8a5421;
+            background: #ffe7af;
+            font-size: .72rem;
+            font-weight: 800;
+        }
+        .andagi-card h3 {
+            margin: 0 0 .55rem;
+            color: #77471f;
+            font-size: 1rem;
+        }
+        .andagi-card p {
+            margin: .32rem 0;
+            color: #6d5a45;
+            font-size: .84rem;
+            line-height: 1.65;
+        }
+        .andagi-warning {
+            margin-top: .85rem;
+            padding: .75rem .85rem;
+            border-radius: .8rem;
+            color: #765410;
+            background: rgba(255,255,255,.65);
+            font-size: .82rem;
+        }
         .hotel-note h3 {
             color: #2b5e4c;
             margin-bottom: 0.8rem;
@@ -769,6 +906,9 @@
             .audit-grid { grid-template-columns: 1fr; }
             .day-metrics { grid-template-columns: 1fr; }
             .ticket-summary { grid-template-columns: 1fr; }
+            .spot-guide-grid { grid-template-columns: 1fr; }
+            .spot-guide { padding: 1rem; }
+            .andagi-grid { grid-template-columns: 1fr; }
             .section-heading { align-items:flex-start; flex-direction:column; }
         }
         @media (max-width: 430px) {
@@ -969,6 +1109,293 @@
 
     <div id="days-container"></div>
 
+    <section class="spot-guide" id="spot-guide">
+        <div class="section-heading">
+            <span class="section-kicker">DETAILED TRAVEL GUIDE</span>
+            <h2>🧭 景點深度攻略與必玩必吃</h2>
+            <p>每日時間表保留短提示，完整玩法集中在這裡。點擊景點名稱即可展開。</p>
+        </div>
+        <nav class="spot-guide-nav" aria-label="景點攻略快速索引">
+            <a href="#guide-day1">Day 1 恩納</a>
+            <a href="#guide-day2">Day 2 北部</a>
+            <a href="#guide-day3">Day 3 中部・首里</a>
+            <a href="#guide-day4">Day 4 南部</a>
+            <a href="#guide-day5">Day 5 那霸・豐崎</a>
+        </nav>
+
+        <div class="guide-day-block" id="guide-day1">
+            <h3 class="guide-day-title">Day 1｜恩納海岸</h3>
+            <div class="spot-guide-grid">
+                <details class="guide-card" open>
+                    <summary><span class="guide-icon">🌊</span>萬座毛</summary>
+                    <div class="guide-content">
+                        <p>沖繩代表性的海岸斷崖，名稱有「可容納萬人坐下的草原」之意。環形步道不長，很適合第一天順路停留。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>象鼻岩、珊瑚礁海岸與草原全景。</li>
+                            <li><strong>必拍：</strong>觀景台全家福；下午海色通常更漂亮。</li>
+                            <li><strong>必吃：</strong>三矢本舖沙翁，推薦原味、紅芋與三矢龍珠。</li>
+                            <li><strong>建議：</strong>停留30–45分鐘，風大時留意帽子。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🏖️</span>Hotel Miyuki Beach</summary>
+                    <div class="guide-content">
+                        <p>面向恩納海岸的度假飯店，作為前兩晚北部基地，可省下往返那霸的時間。</p>
+                        <ul class="guide-points">
+                            <li><strong>必做：</strong>入住後海邊散步，確認早餐與隔日集合時間。</li>
+                            <li><strong>團體重點：</strong>Day 3清晨退房，前一晚先收好行李與浮潛用品。</li>
+                            <li><strong>提醒：</strong>泳衣、毛巾和乾衣分袋，貴重物品隨身。</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="guide-day-block" id="guide-day2">
+            <h3 class="guide-day-title">Day 2｜沖繩北部經典</h3>
+            <div class="spot-guide-grid">
+                <details class="guide-card" open>
+                    <summary><span class="guide-icon">🐋</span>沖繩美麗海水族館</summary>
+                    <div class="guide-content">
+                        <p>海洋博公園核心景點，以巨大「黑潮之海」水槽與鯨鯊聞名。戶外園區很大，不必每區都走完。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>黑潮之海、鯨鯊、鬼蝠魟與珊瑚之海。</li>
+                            <li><strong>親子必玩：</strong>觸摸池；戶外海豚表演免費。</li>
+                            <li><strong>玩法：</strong>入館先確認表演時間，再倒排行走路線。</li>
+                            <li><strong>建議：</strong>停留約3小時，12人先約好集合點。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🌳</span>備瀨福木林道</summary>
+                    <div class="guide-content">
+                        <p>傳統聚落外圍種滿防風福木，形成安靜的綠色隧道，距水族館很近。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>福木林蔭、紅瓦民宅與林道盡頭海景。</li>
+                            <li><strong>必玩：</strong>本次以短程散步為主，比租車繞完全區更順。</li>
+                            <li><strong>提醒：</strong>聚落仍有居民，拍照保持安靜、不進私人範圍。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🍜</span>沖縄そば ちむどんどん</summary>
+                    <div class="guide-content">
+                        <p>以湯頭、麵體與燉豬肉為主角的沖繩麵午餐，晚上安排阿古豬時，中午吃這個份量剛好。</p>
+                        <ul class="guide-points">
+                            <li><strong>必吃：</strong>三枚肉沖繩麵、軟骨排骨麵與炊飯。</li>
+                            <li><strong>12人策略：</strong>接受拆桌，排隊時先選好餐點。</li>
+                            <li><strong>提醒：</strong>熱門時段可能等候，須守住離店時間。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🌉</span>古宇利大橋與古宇利島</summary>
+                    <div class="guide-content">
+                        <p>跨海大橋兩側是北部經典藍色海景。本次以大橋與沙灘為主，不再塞入太多島上景點。</p>
+                        <ul class="guide-points">
+                            <li><strong>必玩：</strong>過橋看海、古宇利沙灘踩水與橋景合照。</li>
+                            <li><strong>可吃：</strong>蝦蝦飯、鳳梨甜點或Blue Seal，挑一樣即可。</li>
+                            <li><strong>提醒：</strong>不可在橋上臨停；古宇利塔與心形岩本次可省略。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🐖</span>百年古家 大家</summary>
+                    <div class="guide-content">
+                        <p>紅瓦古民家、庭園與瀑布構成很有沖繩味的晚餐環境，招牌是阿古豬料理。</p>
+                        <ul class="guide-points">
+                            <li><strong>必吃：</strong>阿古豬涮涮鍋、沖繩炊飯與海葡萄。</li>
+                            <li><strong>必看：</strong>入夜後的紅瓦建築與庭園燈景。</li>
+                            <li><strong>提醒：</strong>已預約19:30，建議19:15前完成報到；可提早拍攝庭園夜景。</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="guide-day-block" id="guide-day3">
+            <h3 class="guide-day-title">Day 3｜浮潛・中部・首里</h3>
+            <div class="spot-guide-grid">
+                <details class="guide-card" open>
+                    <summary><span class="guide-icon">🐠</span>黑潮坐船浮潛</summary>
+                    <div class="guide-content">
+                        <p>搭船前往青洞或當日安全潛點進行浮潛，不是水肺潛水；實際地點依風浪與海況調整。</p>
+                        <ul class="guide-points">
+                            <li><strong>必玩：</strong>觀察熱帶魚、珊瑚與青洞藍色水光。</li>
+                            <li><strong>必帶：</strong>泳衣、毛巾、乾衣、防水袋、電子憑證與健康資料。</li>
+                            <li><strong>提醒：</strong>先到指定停車場再步行報到；暈船者提早準備。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🥭</span>讀谷村農夫市集</summary>
+                    <div class="guide-content">
+                        <p>在地農產直銷所，7月是芒果與鳳梨產季，也有便當、飯糰和熟食。</p>
+                        <ul class="guide-points">
+                            <li><strong>必買：</strong>當季芒果、鳳梨與沖繩特色零食。</li>
+                            <li><strong>必吃備案：</strong>Ramen Hachiren推薦沾麵；11:00營業且需拆桌。</li>
+                            <li><strong>提醒：</strong>只作短停，避免影響來客夢午餐與首里城。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🛍️</span>AEON MALL Rycom來客夢</summary>
+                    <div class="guide-content">
+                        <p>大型購物中心，適合午餐、親子活動與分組購物，也是浮潛後吹冷氣休息的好地方。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>1樓免費大水槽Rycom Aquarium。</li>
+                            <li><strong>親子必玩：</strong>Pokémon Center、ちゅらピカ廣場；有餘力再玩樂市樂座。</li>
+                            <li><strong>必吃：</strong>鳥玉、HAN'S牛排、丸龜製麵；甜點選Blue Seal。</li>
+                            <li><strong>提醒：</strong>拍下停車位置，15:15全員集合離場。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🏯</span>首里城公園</summary>
+                    <div class="guide-content">
+                        <p>琉球王國的政治文化中心，正殿復原工程本身也是參觀重點。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>守禮門、奉神門、復興展示與正殿重建區。</li>
+                            <li><strong>必拍：</strong>東展望台俯瞰那霸市區。</li>
+                            <li><strong>提醒：</strong>坡道石階較多，夏季補水；18:00前離場。</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="guide-day-block" id="guide-day4">
+            <h3 class="guide-day-title">Day 4｜沖繩南部文化與海島</h3>
+            <div class="spot-guide-grid">
+                <details class="guide-card" open>
+                    <summary><span class="guide-icon">🌋</span>沖繩世界・玉泉洞</summary>
+                    <div class="guide-content">
+                        <p>玉泉洞開放步道約900公尺、洞內約21°C；園區另有琉球街區、表演與文化展示。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>槍天井、青泉、大型鐘乳石群與10:30 EISA太鼓舞。</li>
+                            <li><strong>必玩：</strong>時間充裕才選一項工藝體驗。</li>
+                            <li><strong>提醒：</strong>地面濕滑、階梯多且不能推嬰兒車，穿防滑鞋。</li>
+                            <li><strong>建議：</strong>先走玉泉洞再看太鼓，12:45準時離園。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🐈</span>奧武島</summary>
+                    <div class="guide-content">
+                        <p>與本島由短橋相連的小島，以海鮮、天婦羅、玻璃船、海灘與貓咪聞名。</p>
+                        <ul class="guide-points">
+                            <li><strong>必吃：</strong>海產物食堂定食；中本或大城天婦羅擇一外帶。</li>
+                            <li><strong>必玩：</strong>玻璃船看珊瑚與魚群，約20分鐘；海況不佳即取消。</li>
+                            <li><strong>可逛：</strong>魚市場、海邊與Maimu柑仔店。</li>
+                            <li><strong>提醒：</strong>勿用炸物餵貓，孩子靠近海邊須有大人陪同。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🏺</span>壺屋燒物博物館・やちむん通</summary>
+                    <div class="guide-content">
+                        <p>壺屋是那霸陶器文化核心，先看博物館，再沿老街逛陶器店與窯場遺跡。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>壺屋燒歷史、傳統窯具與沖繩陶器特色。</li>
+                            <li><strong>必買：</strong>風獅爺、小碟、杯子；易碎品要求加強包裝。</li>
+                            <li><strong>提醒：</strong>17:30前進館，自由分組但須設定集合點。</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="guide-day-block" id="guide-day5">
+            <h3 class="guide-day-title">Day 5｜那霸・豐崎・瀨長島</h3>
+            <div class="spot-guide-grid">
+                <details class="guide-card" open>
+                    <summary><span class="guide-icon">🐟</span>泊いゆまち漁港市場</summary>
+                    <div class="guide-content">
+                        <p>泊港旁的鮮魚市場，以鮪魚、刺身、壽司和海鮮熟食為主，適合海鮮早餐。</p>
+                        <ul class="guide-points">
+                            <li><strong>必吃：</strong>生鮪魚刺身、握壽司、大東壽司與魚湯。</li>
+                            <li><strong>玩法：</strong>12人拆成3–4組，多買小份互相分享。</li>
+                            <li><strong>提醒：</strong>部分熱食店較晚營業；08:15集合、08:30離開。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">⛩️</span>波上宮・波之上海灘</summary>
+                    <div class="guide-content">
+                        <p>建在珊瑚岩崖上的沖繩總鎮守，神社與城市海灘相鄰。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>本殿參拜與崖上神社景觀。</li>
+                            <li><strong>必拍：</strong>從海灘旁陸橋拍攝神社岩壁全景。</li>
+                            <li><strong>可買：</strong>紅型宮守及兒童書包造型御守。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🪼</span>DMM Kariyushi水族館</summary>
+                    <div class="guide-content">
+                        <p>以影像、聲光和近距離動物展示為特色的室內水族館，與美麗海是不同體驗。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>水母光影區、企鵝、樹懶與俯視水槽。</li>
+                            <li><strong>必玩：</strong>依現場狀況參加餵食或互動體驗。</li>
+                            <li><strong>提醒：</strong>停留約2小時；票價依入場日分級。</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="guide-card">
+                    <summary><span class="guide-icon">🌅</span>瀨長島Umikaji Terrace</summary>
+                    <div class="guide-content">
+                        <p>沿坡地而建的白色海景商店街，可近距離看那霸機場飛機起降，傍晚氣氛最好。</p>
+                        <ul class="guide-points">
+                            <li><strong>必看：</strong>夕陽、海景與飛機低空進場。</li>
+                            <li><strong>必玩：</strong>階梯散步、拍白色建築、泡免費足湯。</li>
+                            <li><strong>必吃：</strong>沖繩甜點、漢堡、塔可飯或Blue Seal，選一項即可。</li>
+                            <li><strong>提醒：</strong>坡道階梯多，長輩可分段休息。</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="andagi-plan" id="andagi-plan">
+        <div class="section-heading">
+            <span class="section-kicker">SATA ANDAGI PLAN</span>
+            <h2>🥮 三大沙翁名店購買時間表</h2>
+            <p>三間都安排在原行程會經過的地方；Day 4須準時行動，才能在店家18:00關門前買到。</p>
+        </div>
+        <div class="andagi-grid">
+            <article class="andagi-card">
+                <span class="andagi-day">Day 1｜7月23日</span>
+                <h3>① 三矢本舖 恩納店</h3>
+                <p><strong>購買時間：</strong>16:30–17:15遊覽萬座毛期間。</p>
+                <p><strong>在哪附近：</strong>萬座毛入口、前往Hotel Miyuki Beach的順路位置。</p>
+                <p><strong>必買：</strong>現炸原味、紅芋、黑糖，以及限量三矢龍珠。</p>
+                <p><strong>營業參考：</strong>10:00–18:00；限量商品可能提早售完。</p>
+            </article>
+            <article class="andagi-card">
+                <span class="andagi-day">Day 4｜7月26日</span>
+                <h3>② 琉球菓子處 琉宮 平和通店</h3>
+                <p><strong>購買時間：</strong>17:30–17:50，壺屋博物館後前往平和通商店街。</p>
+                <p><strong>在哪附近：</strong>壺屋やちむん通、牧志公設市場與國際通步行範圍。</p>
+                <p><strong>必買：</strong>現炸原味、黑糖、黑芝麻黃豆粉及小顆串裝沙翁。</p>
+                <p><strong>營業參考：</strong>10:30–18:00；17:00後以外帶為主。</p>
+            </article>
+            <article class="andagi-card">
+                <span class="andagi-day">Day 4｜7月26日</span>
+                <h3>③ 呉屋天婦羅店</h3>
+                <p><strong>購買時間：</strong>17:30–18:00，與琉宮分成兩組採買後集合。</p>
+                <p><strong>在哪附近：</strong>牧志公設市場旁，從壺屋／平和通可步行前往。</p>
+                <p><strong>必買：</strong>原味、黑糖、芝麻沙翁；也可少量買魚或花枝天婦羅即食。</p>
+                <p><strong>營業參考：</strong>約09:00–18:00；接近關門可能售罄，當日先電話確認。</p>
+            </article>
+        </div>
+        <div class="andagi-warning">
+            <strong>為什麼沒有把「步沙翁」列入三站：</strong>
+            店家11:00開始販售、售完即止，且每週三、日休息。Day 3抵達國際通約18:30通常已買不到，Day 4又是星期日，因此本行程改選附近且較有機會實際買到的琉宮與呉屋。若特別想吃步沙翁，建議事前網購或另行確認臨時營業資訊。
+        </div>
+    </section>
+
     <div class="alert-box snorkel-tips">
         <p><strong>🐠 【已預約】黑潮潛水・青洞／夢幻礁坐船浮潛</strong><br>
         🕢 <strong>場次</strong>：Day 3（7/25）07:30，請依確認信要求提早抵達報到。<br>
@@ -1047,8 +1474,8 @@
                         <td><strong>Day 2<br>7/24</strong></td>
                         <td><strong>Hotel Miyuki Beach提供早餐</strong><br>07:00 飯店早餐</td>
                         <td><strong>沖縄そば ちむどんどん</strong><br>13:45 沖繩麵與炊飯</td>
-                        <td><strong>百年古家 大家</strong><br>19:00 阿古豬涮涮鍋</td>
-                        <td>沖縄そば ちむどんどん鄰近水族館且有寬敞停車場；大家19:00場需提前預約，晚餐用餐時間為90分鐘。</td>
+                        <td><strong>百年古家 大家</strong><br>19:30 阿古豬涮涮鍋</td>
+                        <td>沖縄そば ちむどんどん鄰近水族館且有寬敞停車場；大家已預約19:30，晚餐用餐時間為90分鐘。</td>
                     </tr>
                     <tr>
                         <td><strong>Day 3<br>7/25</strong></td>
@@ -1150,7 +1577,7 @@
     </div>
 
     <div class="alert-box highlight-tips">
-        <p>🌟 <strong>「百年古家 大家」19:00晚餐預約重點</strong><br>📍 Mapcode：206 745 056*82｜官方晚餐可預約17:30、18:00、19:00或19:30，12人選擇19:00場。<br>🍽️ 晚餐主打阿古豬／和牛涮涮鍋及和牛牛排，不供應午餐的沖繩麵與御膳；座位為90分鐘制，建議18:15抵達逛庭園與拍攝夜間古民家。</p>
+        <p>🌟 <strong>「百年古家 大家」19:30晚餐預約重點</strong><br>📍 Mapcode：206 745 056*82｜12人已預約19:30場，建議19:15前完成報到。<br>🍽️ 晚餐主打阿古豬／和牛涮涮鍋及和牛牛排，不供應午餐的沖繩麵與御膳；座位為90分鐘制，可提早抵達逛庭園與拍攝夜間古民家。</p>
     </div>
 
     <div class="alert-box parking-tips">
@@ -1239,7 +1666,7 @@
               { time: "12:30-14:00", desc: "搭免費接駁車前往店舖，辦理兩台 Nissan Serena 取車手續、安裝兒童座椅及確認車況" },
               { time: "14:15-15:00", desc: "【午餐】A&W 牧港店（沖繩美式漢堡、Root Beer；100個停車位）" },
               { time: "15:00-16:15", desc: "沿國道58號北上恩納村" },
-              { time: "16:30-17:15", desc: "萬座毛（家族大合照）➔ 【剛好經過】三矢本舖恩納店買現炸熱騰騰沙翁" },
+              { time: "16:30-17:15", desc: "萬座毛（家族大合照）➔ 【沙翁第1站】三矢本舖恩納店：就在萬座毛入口附近，買原味／紅芋／三矢龍珠" },
               { time: "17:30", desc: "入住 Hotel Miyuki Beach" },
               { time: "18:30", desc: "【晚餐】琉球之牛 恩納別館（可接受2-12人網路訂位；勿誤訂本館）" }
           ] },
@@ -1252,9 +1679,9 @@
               { time: "13:45-14:45", desc: "【午餐】沖縄そば ちむどんどん（沖繩麵、軟骨排骨麵、三枚肉麵與炊飯）" },
               { time: "15:30-17:15", desc: "古宇利大橋與古宇利島（跨海景觀、沙灘散步；時間足夠再吃蝦蝦飯或冰品）" },
               { time: "17:15-18:00", desc: "離開古宇利島，前往百年古家 大家" },
-              { time: "18:15-19:00", desc: "提早抵達大家，逛古民家庭園、瀑布與甜點工房" },
-              { time: "19:00-20:30", desc: "【晚餐】百年古家 大家（預約19:00阿古豬涮涮鍋，90分鐘制）" },
-              { time: "21:15", desc: "返回 Hotel Miyuki Beach 休息" }
+              { time: "18:15-19:15", desc: "提早抵達大家，逛古民家庭園、瀑布與甜點工房；19:15前完成報到" },
+              { time: "19:30-21:00", desc: "【晚餐】百年古家 大家（已預約19:30阿古豬涮涮鍋，90分鐘制）" },
+              { time: "21:45", desc: "返回 Hotel Miyuki Beach 休息" }
           ] },
         { day: 3, date: "7/25 (六)", title: "黑潮青洞浮潛 → 讀谷村市集 → 來客夢 → 首里城", emoji: "🐠", theme: "海上冒險與中部南下",
           items: [
@@ -1285,7 +1712,8 @@
               { time: "15:10-15:30", desc: "中本／大城天婦羅外帶、海邊散步與貓咪拍照" },
               { time: "15:30-16:30", desc: "返回那霸飯店，放下戰利品與短暫休息" },
               { time: "16:45-17:30", desc: "壺屋燒物博物館（沖繩陶藝與壺屋燒歷史，17:30前入館）" },
-              { time: "17:30-18:15", desc: "壺屋やちむん通散步（選購陶器、風獅爺與工藝品）" },
+              { time: "17:30-18:05", desc: "壺屋やちむん通短程散步後分組購買：【沙翁第2站】琉宮平和通店＋【第3站】呉屋天婦羅店；兩店約18:00關門" },
+              { time: "18:05-18:25", desc: "兩組在平和通／牧志市場附近集合，步行前往晚餐餐廳" },
               { time: "18:30", desc: "【晚餐】キャプテンズイン 國際通店（鐵板牛排＋龍蝦／鮮魚套餐，12人提前預約）；麵食備案：まぜ麺マホロバ／Ramen Paradise Maruko" }
           ] },
         { day: 5, date: "7/27 (一)", title: "泊漁港海鮮早餐 → 波上宮 → 科技水族館 → 瀨長島夕陽", emoji: "🏝️", theme: "港市場與最終度假風",
