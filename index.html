@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>2026 沖繩大家族之旅 | 6天5夜完整攻略（加入市集、波上宮與三大沙翁名店）</title>
+    <title>2026 沖繩大家族之旅｜12人・6天5夜自駕行程</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         /* --- 基礎重設與變數 --- */
@@ -14,6 +14,12 @@
             --bg-main: #f8f6f2;
             --border-color: #ece4d5;
             --accent-orange: #b6673e;
+            --ocean: #087f8c;
+            --sky: #75c9c8;
+            --sand: #f4d8a8;
+            --coral: #ef8354;
+            --ink-muted: #617477;
+            --shadow-soft: 0 14px 34px rgba(31, 94, 94, 0.09);
         }
 
         * {
@@ -24,7 +30,10 @@
 
         body {
             font-family: 'Noto Sans TC', 'Inter', sans-serif;
-            background-color: var(--bg-main);
+            background:
+                radial-gradient(circle at 8% 3%, rgba(117,201,200,.18), transparent 25rem),
+                radial-gradient(circle at 95% 15%, rgba(244,216,168,.35), transparent 24rem),
+                var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
             scroll-behavior: smooth;
@@ -38,20 +47,64 @@
 
         /* --- Hero 頂部區塊 --- */
         .hero {
-            background: var(--primary-gradient);
+            position: relative;
+            isolation: isolate;
+            background:
+                linear-gradient(130deg, rgba(8,127,140,.97), rgba(31,94,94,.97)),
+                var(--primary-gradient);
             border-radius: 2rem;
-            padding: 3rem 2.5rem;
+            padding: 3.4rem 2.7rem 4.5rem;
             margin-bottom: 2.5rem;
             color: white;
-            box-shadow: 0 12px 30px rgba(31, 94, 94, 0.15);
+            box-shadow: 0 18px 44px rgba(31, 94, 94, 0.2);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "OKINAWA";
+            position: absolute;
+            right: -0.04em;
+            top: -0.28em;
+            z-index: -1;
+            font: 800 clamp(5rem, 16vw, 11rem)/1 Inter, sans-serif;
+            letter-spacing: -.08em;
+            color: rgba(255,255,255,.055);
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: -5%;
+            right: -5%;
+            bottom: -42px;
+            height: 88px;
+            border-radius: 50% 50% 0 0;
+            background:
+                radial-gradient(70px 28px at 8% 25%, rgba(255,255,255,.26) 0 50%, transparent 52%),
+                radial-gradient(100px 35px at 28% 35%, rgba(255,255,255,.18) 0 50%, transparent 52%),
+                radial-gradient(120px 38px at 52% 18%, rgba(255,255,255,.22) 0 50%, transparent 52%),
+                radial-gradient(90px 30px at 76% 35%, rgba(255,255,255,.18) 0 50%, transparent 52%),
+                radial-gradient(110px 36px at 96% 18%, rgba(255,255,255,.24) 0 50%, transparent 52%);
         }
 
         .hero h1 {
-            font-size: 2.4rem;
+            font-size: clamp(1.9rem, 4vw, 2.65rem);
             letter-spacing: -0.5px;
             margin-bottom: 1.5rem;
             font-weight: 700;
             line-height: 1.3;
+            max-width: 820px;
+        }
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            margin-bottom: .9rem;
+            padding: .28rem .75rem;
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            font: 700 .72rem/1.4 Inter, sans-serif;
+            letter-spacing: .14em;
+            text-transform: uppercase;
         }
 
         .hero-badge {
@@ -85,7 +138,7 @@
             background: white;
             border-radius: 1.2rem;
             padding: 1.5rem 1.2rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+            box-shadow: var(--shadow-soft);
             border: 1px solid var(--border-color);
             transition: transform 0.2s;
         }
@@ -119,6 +172,129 @@
             margin-bottom: 3rem;
             border-left: 6px solid #3f886e;
         }
+
+        /* --- 全旅程圖像化總覽 --- */
+        .trip-overview {
+            margin: 0 0 2.7rem;
+            padding: 1.7rem;
+            border-radius: 1.6rem;
+            background: rgba(255,255,255,.82);
+            border: 1px solid rgba(8,127,140,.15);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(8px);
+        }
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .section-heading h2 {
+            color: var(--primary-color);
+            font-size: 1.35rem;
+            line-height: 1.3;
+        }
+        .section-heading p {
+            color: var(--ink-muted);
+            font-size: .86rem;
+        }
+        .route-strip {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(130px, 1fr));
+            gap: .7rem;
+            position: relative;
+        }
+        .route-day {
+            position: relative;
+            min-height: 150px;
+            padding: 1rem .9rem;
+            border-radius: 1.15rem;
+            background: linear-gradient(160deg, #fff, #f2faf9);
+            border: 1px solid #dbe9e5;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .route-day:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(31,94,94,.1);
+        }
+        .route-day:not(:last-child)::after {
+            content: "›";
+            position: absolute;
+            right: -.58rem;
+            top: 50%;
+            z-index: 2;
+            width: 1.1rem;
+            height: 1.1rem;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--ocean);
+            color: white;
+            font-weight: 800;
+            transform: translateY(-50%);
+        }
+        .route-icon {
+            display: grid;
+            place-items: center;
+            width: 2.35rem;
+            height: 2.35rem;
+            margin-bottom: .6rem;
+            border-radius: .8rem;
+            background: linear-gradient(145deg, #dff6f3, #fff3dc);
+            font-size: 1.3rem;
+        }
+        .route-day b {
+            display: block;
+            color: var(--primary-color);
+            font-size: .8rem;
+            letter-spacing: .04em;
+        }
+        .route-day strong {
+            display: block;
+            margin: .22rem 0;
+            font-size: .93rem;
+            line-height: 1.4;
+        }
+        .route-day small {
+            display: block;
+            color: var(--ink-muted);
+            line-height: 1.45;
+        }
+        .intensity {
+            display: inline-flex;
+            margin-top: .65rem;
+            padding: .18rem .5rem;
+            border-radius: 999px;
+            font-size: .7rem;
+            font-weight: 700;
+        }
+        .intensity.easy { color:#256249; background:#dff3e8; }
+        .intensity.medium { color:#7c5610; background:#fff0c9; }
+        .intensity.high { color:#9b3e28; background:#ffe1d8; }
+
+        .audit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .85rem;
+            margin: 1rem 0 2.6rem;
+        }
+        .audit-card {
+            padding: 1.15rem 1.2rem;
+            border-radius: 1.15rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 18px rgba(0,0,0,.03);
+        }
+        .audit-card b {
+            display: block;
+            margin-bottom: .35rem;
+            color: var(--primary-color);
+        }
+        .audit-card p { color: #526366; font-size: .9rem; }
+        .audit-card.critical { border-top: 4px solid var(--coral); }
+        .audit-card.weather { border-top: 4px solid #3fa7d6; }
+        .audit-card.flex { border-top: 4px solid #e6af2e; }
         .hotel-note h3 {
             color: #2b5e4c;
             margin-bottom: 0.8rem;
@@ -149,13 +325,14 @@
             background: white;
             border-radius: 1.8rem;
             margin-bottom: 2.5rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            box-shadow: var(--shadow-soft);
             border: 1px solid var(--border-color);
             overflow: hidden;
         }
 
         .day-header {
-            background: #fef8ec;
+            background:
+                linear-gradient(90deg, rgba(255,248,236,.98), rgba(234,248,246,.92));
             padding: 1.2rem 2rem;
             border-bottom: 1px solid #eaddca;
             cursor: pointer;
@@ -189,6 +366,26 @@
         .day-body {
             padding: 2rem;
         }
+        .day-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .65rem;
+            margin: 0 0 1.2rem;
+        }
+        .day-metric {
+            padding: .7rem .8rem;
+            border-radius: .9rem;
+            background: #f7faf9;
+            border: 1px solid #e3ece9;
+            font-size: .8rem;
+            color: #607276;
+        }
+        .day-metric b {
+            display: block;
+            margin-top: .1rem;
+            color: var(--text-main);
+            font-size: .9rem;
+        }
 
         .day-summary-title {
             font-size: 1.25rem;
@@ -210,6 +407,10 @@
         .timeline-item {
             position: relative;
             margin-bottom: 1.8rem;
+            padding: .8rem 1rem .85rem;
+            border-radius: 1rem;
+            background: rgba(255,255,255,.76);
+            border: 1px solid #f0eadf;
         }
         
         .timeline-item::before {
@@ -222,6 +423,21 @@
             border-radius: 50%;
             background: var(--accent-orange);
             border: 2px solid white;
+        }
+        .timeline-item.type-meal { background: #fffaf0; border-color: #f0dfb9; }
+        .timeline-item.type-booked { background: #eef9fb; border-color: #cce8ee; }
+        .timeline-item.type-transit { background: #f6f8f8; border-style: dashed; }
+        .timeline-item.type-hotel { background: #f1f7f3; border-color: #d7e7dc; }
+        .item-icon {
+            float: right;
+            display: grid;
+            place-items: center;
+            width: 1.8rem;
+            height: 1.8rem;
+            margin-left: .5rem;
+            border-radius: .55rem;
+            background: rgba(255,255,255,.8);
+            font-size: .95rem;
         }
 
         .timeline-item:last-child {
@@ -459,6 +675,20 @@
             .day-body { padding: 1.2rem; }
             .food-shopping-grid, .two-columns { grid-template-columns: 1fr; gap: 1.2rem; }
             .food-card, .shopping-card { padding: 1.5rem; }
+            .route-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .route-day:not(:last-child)::after { display:none; }
+            .audit-grid { grid-template-columns: 1fr; }
+            .day-metrics { grid-template-columns: 1fr; }
+            .section-heading { align-items:flex-start; flex-direction:column; }
+        }
+        @media (max-width: 430px) {
+            .route-strip { grid-template-columns: 1fr; }
+            .hero { padding: 2.2rem 1.25rem 3.7rem; }
+            .badge { font-size:.8rem; }
+            .timeline-container { margin-left: 2px; padding-left: 15px; }
+            .timeline-item::before { left:-21px; }
         }
     </style>
 </head>
@@ -466,7 +696,8 @@
 <div class="container">
     
     <div class="hero">
-        <h1>🏝️ 2026 沖繩大家族之旅<br>10大+2小 · 6天5夜完整攻略 · 市集、波上宮與三大沙翁名店巡禮</h1>
+        <div class="hero-kicker">Family Road Trip · Okinawa 2026</div>
+        <h1>🏝️ 沖繩大家族之旅<br>12人 · 兩台Serena · 6天5夜</h1>
         <div class="hero-badge">
             <span class="badge">📅 2026.7.23 → 7.28</span>
             <span class="badge">🚗 FLIGHT RENTACAR｜兩台 Nissan Serena</span>
@@ -498,6 +729,69 @@
             <li><strong>Day3 - Day4</strong>：琉球利恩飯店那霸國際通 — 國際通入口，免費迎賓啤酒，2晚；<strong>Day4、Day5 早餐自行處理</strong></li>
             <li><strong>Day5</strong>：琉球溫泉 瀨長島飯店 — 天然溫泉、看海與飛機起降；<strong>提供 Day6 早餐</strong></li>
         </ul>
+    </div>
+
+    <section class="trip-overview">
+        <div class="section-heading">
+            <div>
+                <h2>🗺️ 六日島嶼路線圖</h2>
+                <p>北部進駐 → 北部環遊 → 中部南下 → 南部文化 → 瀨長島度假 → 返港</p>
+            </div>
+            <p>點開下方每日卡片可看完整時間軸</p>
+        </div>
+        <div class="route-strip">
+            <article class="route-day">
+                <span class="route-icon">✈️</span><b>DAY 1 · 7/23</b>
+                <strong>機場 → 恩納村</strong>
+                <small>A&amp;W・萬座毛・Hotel Miyuki Beach</small>
+                <span class="intensity medium">中等｜取車日</span>
+            </article>
+            <article class="route-day">
+                <span class="route-icon">🐋</span><b>DAY 2 · 7/24</b>
+                <strong>沖繩北部環遊</strong>
+                <small>美麗海・備瀨・古宇利島・百年古家</small>
+                <span class="intensity high">偏高｜長途駕駛</span>
+            </article>
+            <article class="route-day">
+                <span class="route-icon">🐠</span><b>DAY 3 · 7/25</b>
+                <strong>浮潛後一路南下</strong>
+                <small>黑潮・讀谷・來客夢・首里城</small>
+                <span class="intensity high">最高｜嚴守15:15</span>
+            </article>
+            <article class="route-day">
+                <span class="route-icon">🏯</span><b>DAY 4 · 7/26</b>
+                <strong>南部文化與海島</strong>
+                <small>玉泉洞・奧武島・壺屋・鐵板燒</small>
+                <span class="intensity high">偏高｜步行較多</span>
+            </article>
+            <article class="route-day">
+                <span class="route-icon">♨️</span><b>DAY 5 · 7/27</b>
+                <strong>南那霸慢旅行</strong>
+                <small>波上宮・DMM・瀨長島夕陽</small>
+                <span class="intensity easy">悠閒｜室內為主</span>
+            </article>
+            <article class="route-day">
+                <span class="route-icon">🛫</span><b>DAY 6 · 7/28</b>
+                <strong>早餐 → 還車 → 返港</strong>
+                <small>加油・FLIGHT RENTACAR・HB337</small>
+                <span class="intensity medium">中等｜09:40到機場</span>
+            </article>
+        </div>
+    </section>
+
+    <div class="audit-grid">
+        <article class="audit-card critical">
+            <b>⏱️ 最大風險：Day 3</b>
+            <p>浮潛延誤超過30分鐘時，先刪減來客夢遊戲／購物；最晚15:15離場。不要壓縮首里城交通緩衝。</p>
+        </article>
+        <article class="audit-card weather">
+            <b>🌦️ 海況與天候備案</b>
+            <p>黑潮與奧武島玻璃船都受海況影響。前一晚與當日上午各確認一次，取消時改為來客夢或奧武島自由活動。</p>
+        </article>
+        <article class="audit-card flex">
+            <b>🧳 12人兩車操作原則</b>
+            <p>每天固定車組、車長與集合點；停車後拍樓層柱號。Day 3濕衣物獨立密封，護照與現金不可留車內。</p>
+        </article>
     </div>
 
     <div id="days-container"></div>
@@ -539,8 +833,8 @@
         </div>
         <p style="font-size: 0.95rem; color: #5a4a2e; dashed top; padding-top:1rem; border-top:1px dashed #eaddca;">
             📌 <strong>親子小提醒</strong>：可設定「唐吉訶德」為集合點；推車主街OK但在地市場較窄；GiGO有夾娃娃機可讓小孩放電。<br>
-            ⏰ <strong>建議3小時路線</strong>：17:30逛藥妝 → 18:30晚餐 → 20:00吃冰淇淋與牧志市場買步沙翁 → 21:00唐吉訶德掃貨 → 步行回飯店。<br>
-            💡 飯店就在國際通上，購物完直接回飯店超方便！
+            ⏰ <strong>Day 3晚間路線</strong>：19:00分組晚餐 → 20:45唐吉訶德集合 → 藥妝與伴手禮 → 步行回飯店。牧志公設市場組須優先入場，避免錯過約20:00的最後點餐。<br>
+            💡 飯店就在國際通上；Day 3已是全程最高強度，晚餐後不建議再排固定景點。
         </p>
     </div>
 
@@ -686,7 +980,7 @@
     </div>
 
     <div class="alert-box parking-tips">
-        <p>🏯 <strong>首里城參觀資訊</strong><br>📍 Mapcode：33 161 526*44 | 開放時間 09:00-18:00 (最後入場17:30)<br>💰 大人400日圓 / 6歲以下免費｜單軌電車一日券享8折優惠 (320日圓)<br>🔔 正殿預計2026年11月完工，目前可參觀復興展示室及外圍區域，見證重建歷史。</p>
+        <p>🏯 <strong>首里城參觀資訊（2026年7月適用）</strong><br>📍 Mapcode：33 161 526*44｜有料區域 08:30–19:00，售票截止18:30；免費區域至19:30。<br>💰 票價請以官方現場公告為準。<br>🔔 正殿預計2026年11月23日起一般公開；你們7月到訪時仍以復興展示、城郭與展望景觀為主。Day 3若16:30抵達，18:00離場的安排可行。</p>
     </div>
     
     <div class="alert-box highlight-tips">
@@ -858,11 +1152,28 @@
           ] }
     ];
 
+    const dayMeta = {
+        1: { intensity: "中等", drive: "約2–2.5小時", flex: "航班延誤時先刪萬座毛" },
+        2: { intensity: "偏高", drive: "約3.5小時", flex: "古宇利島可縮至60分鐘" },
+        3: { intensity: "最高", drive: "約2.5小時", flex: "浮潛延誤先縮來客夢" },
+        4: { intensity: "偏高", drive: "約2小時", flex: "玻璃船停航改海島散步" },
+        5: { intensity: "悠閒", drive: "約1小時", flex: "雨天也可完整執行" },
+        6: { intensity: "中等", drive: "約30分鐘", flex: "08:00必須離開飯店" }
+    };
+
+    const classifyItem = (desc) => {
+        if (/【早餐|【午餐|【晚餐|美食|用餐/.test(desc)) return ["type-meal", "🍽️"];
+        if (/已預約/.test(desc)) return ["type-booked", "✓"];
+        if (/入住|退房|飯店|酒店/.test(desc)) return ["type-hotel", "🏨"];
+        if (/出發|前往|返回|離開|沿國道|搭|還車|加油|集合/.test(desc)) return ["type-transit", "🚗"];
+        return ["type-activity", "📍"];
+    };
+
     const container = document.getElementById('days-container');
     if (container) {
         scheduleData.forEach(day => {
             const dayDiv = document.createElement('div');
-            dayDiv.className = 'day-section';
+            dayDiv.className = `day-section day-${day.day}`;
             
             const header = document.createElement('div');
             header.className = 'day-header';
@@ -878,7 +1189,14 @@
             const body = document.createElement('div');
             body.className = 'day-body';
             
-            let itemsHtml = `<h3 class="day-summary-title">✨ ${day.title}</h3>`;
+            const meta = dayMeta[day.day];
+            let itemsHtml = `
+                <h3 class="day-summary-title">✨ ${day.title}</h3>
+                <div class="day-metrics">
+                    <div class="day-metric">行程強度<b>${meta.intensity}</b></div>
+                    <div class="day-metric">預估駕駛<b>${meta.drive}</b></div>
+                    <div class="day-metric">彈性原則<b>${meta.flex}</b></div>
+                </div>`;
 
             if (routeLinks[day.day]) {
                 itemsHtml += `
@@ -894,8 +1212,10 @@
 
             itemsHtml += `<div class="timeline-container">`;
             day.items.forEach(item => {
+                const [itemType, itemIcon] = classifyItem(item.desc);
                 itemsHtml += `
-                    <div class="timeline-item">
+                    <div class="timeline-item ${itemType}">
+                        <span class="item-icon">${itemIcon}</span>
                         <div class="time">${item.time}</div>
                         <div class="desc">${item.desc}</div>
                     </div>`;
@@ -909,15 +1229,15 @@
                     itemsHtml += `<div class="spot-intro"><strong>🥮 三矢本舖 必吃點心</strong><br>${spotDescriptions["三矢本舖恩納店"]}</div>`;
                 if (item.desc.includes("美麗海水族館") && spotDescriptions["美麗海水族館"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 美麗海水族館 參觀重點</strong><br>${spotDescriptions["美麗海水族館"]}</div>`;
-                if (item.desc.includes("古宇利島") && spotDescriptions["古宇利島"])
+                if (item.desc.includes("古宇利大橋與古宇利島") && spotDescriptions["古宇利島"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 古宇利島 參觀重點</strong><br>${spotDescriptions["古宇利島"]}</div>`;
                 if (item.desc.includes("備瀨福木林道") && spotDescriptions["備瀨福木林道"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 備瀨福木林道 參觀重點</strong><br>${spotDescriptions["備瀨福木林道"]}</div>`;
-                if (item.desc.includes("百年古家") && spotDescriptions["百年古家大家"])
+                if (item.desc.includes("【晚餐】百年古家") && spotDescriptions["百年古家大家"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 百年古家大家 參觀重點</strong><br>${spotDescriptions["百年古家大家"]}</div>`;
                 if (item.desc.includes("農夫市集") && spotDescriptions["讀谷村農夫市集"])
                     itemsHtml += `<div class="spot-intro"><strong>🛒 讀谷村農夫市集 挖寶指南</strong><br>${spotDescriptions["讀谷村農夫市集"]}</div>`;
-                if (item.desc.includes("首里城") && spotDescriptions["首里城公園"])
+                if (item.desc.includes("首里城公園參觀") && spotDescriptions["首里城公園"])
                     itemsHtml += `<div class="spot-intro"><strong>📌 首里城公園 參觀重點</strong><br>${spotDescriptions["首里城公園"]}</div>`;
                 if (item.desc.includes("波上宮") && spotDescriptions["波上宮"])
                     itemsHtml += `<div class="spot-intro"><strong>⛩️ 波上宮 拍照與伴手禮重點</strong><br>${spotDescriptions["波上宮"]}</div>`;
@@ -931,7 +1251,7 @@
                 }
 
                 // 奧武島系列
-                if (item.desc.includes("奧武島自由覓食")) {
+                if (item.desc.includes("奧武島海產物食堂")) {
                     itemsHtml += `<div class="spot-intro"><strong>🐈 奧武島 貓咪之島大解密</strong><br>${spotDescriptions["奧武島"]}</div>`;
                     itemsHtml += `<div class="spot-intro"><strong>🍤 兩大天婦羅名店爭霸</strong><br>${spotDescriptions["中本鮮魚天婦羅店"]}<br><br>${spotDescriptions["大城天婦羅店"]}</div>`;
                     itemsHtml += `<div class="spot-intro"><strong>🐟 魚市場刺身與海鮮食堂</strong><br>${spotDescriptions["奧武島魚市場"]}<br><br>${spotDescriptions["奧武島海產物食堂"]}</div>`;
@@ -957,7 +1277,7 @@
                 itemsHtml += `<div class="alert-box snorkel-tips" style="margin-top: 1.5rem;"><strong>🍽️ 國際通晚餐自由覓食推薦</strong><br><strong>① 海鮮組｜第一牧志公設市場：</strong>1樓挑選鮮魚後到2樓代客料理，適合想吃生魚片、海鮮丼與龍蝦的人；2樓食堂最後點餐約20:00，19:00抵達後優先前往。<br><strong>② 拌麵組｜まぜ麺マホロバ：</strong>牧志1-3-34，人氣台灣風拌麵，可選普通或辣味並加追飯；週六營業至21:30（L.O.21:15）。店面不大，12人建議拆成2–4人小組。<br><strong>③ 濃厚豚骨組｜Ramen Paradise Maruko（ラーメンパラダイス丸幸）：</strong>牧志公設市場附近松尾2-11-15，18:00–01:00、不定休；只有吧檯小店、不可預約，粗麵或細麵可選，適合少人分組或晚餐後宵夜，出發前查看官方Instagram限時動態確認是否休店。<br><strong>④ 拉麵組｜暖暮那霸牧志店：</strong>豚骨拉麵、煎餃與叉燒飯，不能預約且座位較少，建議拆成2–4人小組並避開長隊。<br><strong>⑤ 串燒組｜鳥貴族縣廳前國際通店：</strong>17:00營業至深夜，可網路訂位，雞肉串燒與釜飯適合大人小孩。<br><strong>📍 集合：</strong>20:45唐吉訶德國際通店前；各組須保持手機暢通，若市場組尚未吃完請在群組回報。</div>`;
             }
             if (day.day === 4) {
-                itemsHtml += `<div class="alert-box parking-tips" style="margin-top: 1.5rem;"><strong>🌋 玉泉洞大家族防雷小筆記 (波比看世界攻略)</strong><br>12人家庭團強烈建議購買包含工藝體驗的Klook/KKday套票更便宜！進入玉泉洞前記得把<strong>推車留在車上或入口寄放</strong>（裡面樓梯非常多且地滑），全團老人與小孩一定要慢行看好。出洞後正好可以趕上震撼的<strong>太鼓舞表演</strong>，午餐可以直接去<strong>CYURA島餐廳</strong>吃沖繩料理自助餐或熟食區簡單吃碗沖繩麵。最後離開前去南都造酒所買瓶用地下水特製的<strong>沖繩珊瑚啤酒</strong>回利恩飯店喝，非常過癮！</div>`;
+                itemsHtml += `<div class="alert-box parking-tips" style="margin-top: 1.5rem;"><strong>🌋 玉泉洞大家族防雷筆記</strong><br>進入玉泉洞前把<strong>推車留在車上或入口寄放</strong>；洞內階梯多、地面濕滑，長輩與小朋友務必穿防滑鞋並慢行。09:30入園後以玉泉洞與10:30太鼓舞為核心，工藝體驗只選一項，才能12:45準時離開前往奧武島。午餐已安排<strong>奧武島海產物食堂</strong>，不再於沖繩世界用正餐；可攜帶小點心與飲水避免孩子過餓。</div>`;
                 itemsHtml += `<div class="alert-box parking-tips" style="margin-top: 0.5rem;"><strong>🐈 奧武島大家族爆食玩樂提示</strong><br>12人分成兩車停在「中本鮮魚」對面大免費車位。長輩和小孩可以在乾淨無異味的<strong>奧武島魚市場</strong>吹冷氣吃現切刺身丼飯，或者去<strong>海產物食堂</strong>舒適坐著吃海鮮定食；熱愛炸物的可以同時派人排隊「中本」與現點現炸的「大城天婦羅」互相PK！吃飽後帶小孩去大樹下的<strong>Maimu柑仔店</strong>買特色零嘴、去沙灘踩踩水、並找島上的親人貓咪群拍照，絕對是超悠閒的半日體驗！<br>⚠️ <em>小提示：貓咪很熱情但炸物太油，請勿用人類的天婦羅餵食貓咪喔！</em></div>`;
                 itemsHtml += `<div class="alert-box snorkel-tips" style="margin-top: 0.5rem;"><strong>🚤 玻璃船＋壺屋＋晚餐提醒</strong><br>奧武島玻璃船夏季原則上營業至傍晚，但可能因低潮、風浪或天候停航，當日上午致電 <strong>098-948-7255</strong>確認；停航時將14:30–15:30改為奧武島海灘與魚市場自由活動。回飯店後改以步行前往壺屋，避免那霸市區再次找車位。壺屋燒物博物館18:00閉館、17:30最後入館。<br><strong>🥩 キャプテンズイン：</strong>建議預約18:30並註明12人，希望安排相鄰鐵板座位；套餐有湯、沙拉、炒蔬菜、白飯／麵包，適合玩整天後吃飽。</div>`;
                 itemsHtml += `<div class="alert-box highlight-tips" style="margin-top: 0.5rem;"><strong>🍜 Day 4 國際通麵食備案／宵夜</strong><br>若有人不吃鐵板牛排，或晚餐後仍想吃麵，可分組前往：<strong>まぜ麺マホロバ</strong>（星期日11:30–21:00，L.O.20:45；拌麵份量可選，適合正式晚餐替代）或<strong>Ramen Paradise Maruko</strong>（18:00–01:00、不定休；牧志市場旁的濃厚豚骨拉麵吧檯小店，適合宵夜）。兩店皆不適合12人同時入座，務必小組行動。</div>`;
