@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>2026 沖繩大家族之旅｜12人・6天5夜自駕行程</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
     <style>
         /* --- 基礎重設與變數 --- */
         :root {
@@ -519,6 +520,96 @@
             background: rgba(255,255,255,.65);
             font-size: .82rem;
         }
+        .journey-map-section {
+            margin: 3rem 0 1.5rem;
+            padding: 1.4rem;
+            border-radius: 1.8rem;
+            color: #eefcfa;
+            background: linear-gradient(145deg, #123f47, #176a70);
+            box-shadow: 0 20px 45px rgba(18,63,71,.2);
+        }
+        .journey-map-section .section-heading h2,
+        .journey-map-section .section-heading p { color: inherit; }
+        .journey-map-section .section-kicker { color: #9ce3db; }
+        .map-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .75rem;
+            margin: 1rem 0;
+        }
+        .map-stat {
+            padding: .85rem 1rem;
+            border-radius: 1rem;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.15);
+        }
+        .map-stat span {
+            display: block;
+            color: #b9dedb;
+            font-size: .75rem;
+        }
+        .map-stat strong {
+            display: block;
+            margin-top: .12rem;
+            color: white;
+            font-size: 1.3rem;
+        }
+        #journey-map {
+            width: 100%;
+            height: 590px;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            border: 4px solid rgba(255,255,255,.18);
+            background: #d8eeeb;
+        }
+        .map-legend {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .55rem;
+            margin-top: .9rem;
+        }
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            padding: .58rem .7rem;
+            border-radius: .75rem;
+            color: #e7f7f5;
+            background: rgba(255,255,255,.08);
+            font-size: .78rem;
+        }
+        .route-swatch {
+            flex: 0 0 1.6rem;
+            width: 1.6rem;
+            height: .28rem;
+            border-radius: 999px;
+        }
+        .map-footnote {
+            margin: .85rem 0 0;
+            color: #c4e1df;
+            font-size: .78rem;
+            line-height: 1.65;
+        }
+        .map-day-marker {
+            display: grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50% 50% 50% 0;
+            color: white;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,.32);
+            font: 800 11px/1 Inter, sans-serif;
+            transform: rotate(-45deg);
+        }
+        .map-day-marker span { transform: rotate(45deg); }
+        .map-load-note {
+            padding: .55rem .75rem;
+            border-radius: .7rem;
+            color: #dff5f2;
+            background: rgba(255,255,255,.08);
+            font-size: .78rem;
+        }
         .hotel-note h3 {
             color: #2b5e4c;
             margin-bottom: 0.8rem;
@@ -909,6 +1000,9 @@
             .spot-guide-grid { grid-template-columns: 1fr; }
             .spot-guide { padding: 1rem; }
             .andagi-grid { grid-template-columns: 1fr; }
+            .map-stats, .map-legend { grid-template-columns: 1fr; }
+            #journey-map { height: 500px; }
+            .journey-map-section { padding: 1rem; }
             .section-heading { align-items:flex-start; flex-direction:column; }
         }
         @media (max-width: 430px) {
@@ -1615,7 +1709,31 @@
         <p style="font-size: 0.85rem; margin-top: 10px; color:#666;">⚠️ 固定門票合計約¥89,910–95,460；黑潮浮潛未列入，請以已預約訂單為準。</p>
     </div>
 
-    <footer>🌴 行程可依體力微調，點擊地圖連結可看路線規劃｜🛍️ 讀谷村市集買水果｜⛩️ 奧武島貓咪天婦羅巡禮｜🥮 三大沙翁名店吃過癮 🌟</footer>
+    <section class="journey-map-section" id="journey-footprint">
+        <div class="section-heading">
+            <span class="section-kicker">OUR OKINAWA FOOTPRINT</span>
+            <h2>🗺️ 六天五夜・沖繩旅程足跡</h2>
+            <p>從那霸機場一路北上美麗海與古宇利島，再沿中部、首里與南部返回瀨長島。不同顏色代表每天的實際駕車路線。</p>
+        </div>
+        <div class="map-stats">
+            <div class="map-stat"><span>單台Serena預估里程</span><strong>約 281 km</strong></div>
+            <div class="map-stat"><span>兩台車合計行駛</span><strong>約 562 km</strong></div>
+            <div class="map-stat"><span>最長駕車日</span><strong>Day 2・約104 km</strong></div>
+        </div>
+        <div id="journey-map" role="img" aria-label="六天沖繩自駕旅程路線地圖"></div>
+        <div class="map-legend">
+            <div class="map-legend-item"><i class="route-swatch" style="background:#ef8354"></i><span>Day 1 那霸→恩納｜56.4 km</span></div>
+            <div class="map-legend-item"><i class="route-swatch" style="background:#2b8cbe"></i><span>Day 2 北部環遊｜103.7 km</span></div>
+            <div class="map-legend-item"><i class="route-swatch" style="background:#8e63ce"></i><span>Day 3 恩納→那霸｜63.9 km</span></div>
+            <div class="map-legend-item"><i class="route-swatch" style="background:#e6a923"></i><span>Day 4 南部環遊｜32.2 km</span></div>
+            <div class="map-legend-item"><i class="route-swatch" style="background:#2f9d76"></i><span>Day 5 那霸→瀨長島｜19.1 km</span></div>
+            <div class="map-legend-item"><i class="route-swatch" style="background:#d65b8c"></i><span>Day 6 瀨長島→還車｜5.7 km</span></div>
+        </div>
+        <p class="map-footnote">里程依各日主要停靠點及道路路線估算，為每台車的行程距離；未計算散步、飯店內移動、尋找停車位、加油繞行及租車接駁巴士，因此實際里程表可能略高。地圖可縮放、拖曳，點擊編號可查看景點。</p>
+        <p class="map-load-note" id="map-load-note">正在載入實際道路路線…</p>
+    </section>
+
+    <footer>🌴 六天走遍沖繩北中南｜🚐 兩台Serena約行駛562公里｜🥮 三大沙翁名店吃過癮 🌟</footer>
 </div>
 
 <script>
@@ -1908,6 +2026,87 @@
             });
         });
     }
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+    (() => {
+        const mapElement = document.getElementById("journey-map");
+        const loadNote = document.getElementById("map-load-note");
+        if (!mapElement || typeof L === "undefined") {
+            if (loadNote) loadNote.textContent = "地圖元件未載入；請連接網路後重新整理頁面。";
+            return;
+        }
+
+        const colors = ["#ef8354", "#2b8cbe", "#8e63ce", "#e6a923", "#2f9d76", "#d65b8c"];
+        const points = {
+            flight: [26.2018365,127.6726578], aw: [26.2666884,127.7283708],
+            manzamo: [26.5050087,127.8502564], miyuki: [26.5110473,127.8919379],
+            churaumi: [26.6943689,127.8780380], bise: [26.7067,127.8813],
+            chimudondon: [26.6575,127.8885], kouri: [26.6982327,128.02055],
+            ufuya: [26.6210197,127.9636378], kuroshio: [26.4572,127.8298],
+            yunta: [26.3965,127.7445], rycom: [26.3142262,127.7959208],
+            shuri: [26.2170014,127.7193727], orion: [26.2185154,127.6937121],
+            world: [26.1398284,127.7490139], ou: [26.1297064,127.7734784],
+            tomari: [26.2300686,127.6802488], naminoue: [26.2205598,127.6711359],
+            dmm: [26.156325,127.6507063], senaga: [26.1763046,127.6414336]
+        };
+        const routes = [
+            { day:1, distance:"56.4 km", keys:["flight","aw","manzamo","miyuki"], names:["FLIGHT RENTACAR","A&W牧港","萬座毛","Hotel Miyuki Beach"] },
+            { day:2, distance:"103.7 km", keys:["miyuki","churaumi","bise","chimudondon","kouri","ufuya","miyuki"], names:["Hotel Miyuki Beach","美麗海水族館","備瀨福木林道","沖縄そば ちむどんどん","古宇利島","百年古家 大家","Hotel Miyuki Beach"] },
+            { day:3, distance:"63.9 km", keys:["miyuki","kuroshio","yunta","rycom","shuri","orion"], names:["Hotel Miyuki Beach","黑潮坐船浮潛","讀谷村農夫市集","AEON MALL Rycom","首里城","國際通飯店"] },
+            { day:4, distance:"32.2 km", keys:["orion","world","ou","orion"], names:["國際通飯店","沖繩世界・玉泉洞","奧武島","國際通飯店"] },
+            { day:5, distance:"19.1 km", keys:["orion","tomari","naminoue","dmm","senaga"], names:["國際通飯店","泊いゆまち","波上宮","DMM水族館","瀨長島飯店"] },
+            { day:6, distance:"5.7 km", keys:["senaga","flight"], names:["瀨長島飯店","FLIGHT RENTACAR還車"] }
+        ];
+
+        const map = L.map(mapElement, { scrollWheelZoom: false }).setView([26.39,127.82], 9);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        const allBounds = [];
+
+        const markerIcon = (day, color) => L.divIcon({
+            className: "",
+            html: `<div class="map-day-marker" style="background:${color}"><span>${day}</span></div>`,
+            iconSize: [24,24], iconAnchor: [12,24], popupAnchor: [0,-23]
+        });
+
+        routes.forEach((route, routeIndex) => {
+            route.keys.forEach((key, pointIndex) => {
+                const latLng = points[key];
+                allBounds.push(latLng);
+                if (pointIndex === 0 && routeIndex > 0) return;
+                L.marker(latLng, { icon: markerIcon(route.day, colors[routeIndex]) })
+                    .bindPopup(`<strong>Day ${route.day}｜${route.names[pointIndex]}</strong><br>當日駕車約 ${route.distance}`)
+                    .addTo(map);
+            });
+        });
+        map.fitBounds(allBounds, { padding: [25,25] });
+
+        Promise.all(routes.map(async (route, routeIndex) => {
+            const coordinates = route.keys.map(key => {
+                const [lat,lng] = points[key];
+                return `${lng},${lat}`;
+            }).join(";");
+            try {
+                const response = await fetch(`https://router.project-osrm.org/route/v1/driving/${coordinates}?overview=full&geometries=geojson`);
+                if (!response.ok) throw new Error("route unavailable");
+                const data = await response.json();
+                const roadLine = data.routes[0].geometry.coordinates.map(([lng,lat]) => [lat,lng]);
+                L.polyline(roadLine, { color: colors[routeIndex], weight: 5, opacity: .88 })
+                    .bindTooltip(`Day ${route.day}｜${route.distance}`)
+                    .addTo(map);
+            } catch (error) {
+                L.polyline(route.keys.map(key => points[key]), {
+                    color: colors[routeIndex], weight: 4, opacity: .8, dashArray: "8 8"
+                }).bindTooltip(`Day ${route.day}｜${route.distance}（概略線）`).addTo(map);
+            }
+        })).then(() => {
+            if (loadNote) loadNote.textContent = "✓ 六天道路路線已載入；可拖曳、縮放並點擊景點編號。";
+            setTimeout(() => map.invalidateSize(), 150);
+        });
+    })();
 </script>
 </body>
 </html>
