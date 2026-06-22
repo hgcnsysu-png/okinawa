@@ -383,6 +383,66 @@
             color: #765410;
             font-size: .84rem;
         }
+        .weather-plan {
+            margin: 2.5rem 0;
+            padding: 1.4rem;
+            border-radius: 1.8rem;
+            background: linear-gradient(145deg, #f4f8fb, #eaf3f7);
+            border: 1px solid #d5e4ec;
+            box-shadow: var(--shadow-soft);
+        }
+        .weather-levels {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .75rem;
+            margin: 1rem 0;
+        }
+        .weather-level {
+            padding: .9rem;
+            border-radius: 1rem;
+            background: white;
+            border: 1px solid #dfe8ed;
+        }
+        .weather-level strong { display:block; margin-bottom:.35rem; }
+        .weather-level p { margin:0; color:#607078; font-size:.82rem; line-height:1.65; }
+        .weather-level.green { border-top: 5px solid #42a66b; }
+        .weather-level.amber { border-top: 5px solid #e2a526; }
+        .weather-level.red { border-top: 5px solid #d75b54; }
+        .weather-table-wrap {
+            overflow-x: auto;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            background: white;
+            border: 1px solid #dfe8ed;
+        }
+        .weather-table {
+            width: 100%;
+            min-width: 820px;
+            border-collapse: collapse;
+            font-size: .84rem;
+        }
+        .weather-table th, .weather-table td {
+            padding: .75rem;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid #e5ecef;
+        }
+        .weather-table th { color:#315c68; background:#e6f1f5; }
+        .weather-table tr:last-child td { border-bottom:0; }
+        .weather-checklist {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .65rem;
+            margin-top: 1rem;
+        }
+        .weather-checklist div {
+            padding: .75rem .85rem;
+            border-radius: .8rem;
+            color: #4e626a;
+            background: rgba(255,255,255,.82);
+            font-size: .82rem;
+            line-height: 1.65;
+        }
         .spot-guide {
             margin: 3rem 0;
             padding: 1.4rem;
@@ -984,6 +1044,7 @@
             .audit-grid { grid-template-columns: 1fr; }
             .day-metrics { grid-template-columns: 1fr; }
             .ticket-summary { grid-template-columns: 1fr; }
+            .weather-levels, .weather-checklist { grid-template-columns: 1fr; }
             .spot-guide-grid { grid-template-columns: 1fr; }
             .spot-guide { padding: 1rem; }
             .andagi-grid { grid-template-columns: 1fr; }
@@ -1185,6 +1246,86 @@
         <div class="ticket-free-list">
             <strong>🆓 行程中免門票：</strong>
             備瀨福木林道、古宇利大橋／古宇利島、讀谷村農夫市集、AEON MALL Rycom、泊いゆまち、波上宮／波之上海灘、壺屋やちむん通、瀨長島Umikaji Terrace。停車、餐飲、體驗或特別展另計。
+        </div>
+    </section>
+
+    <section class="weather-plan" id="weather-backup">
+        <div class="section-heading">
+            <span class="section-kicker">TYPHOON &amp; RAIN PLAN</span>
+            <h2>🌧️ 颱風・豪雨與雨天備案</h2>
+            <p>7月屬可能受颱風影響的季節。原則是「小雨照走、強風換室內、警報不移動」，不為了完成行程冒險。</p>
+        </div>
+        <div class="weather-levels">
+            <article class="weather-level green">
+                <strong>🟢 Level A｜短暫陣雨／普通雨天</strong>
+                <p>沒有氣象警報、道路正常：原行程大致保留，準備雨衣與替換衣物；海邊、林道和觀景台依現場風勢縮短。</p>
+            </article>
+            <article class="weather-level amber">
+                <strong>🟡 Level B｜豪雨、強風或海上活動停辦</strong>
+                <p>取消浮潛、玻璃船、海灘、福木林道與長時間戶外活動，改用水族館、博物館和購物中心。兩車避免沿海與積水路段。</p>
+            </article>
+            <article class="weather-level red">
+                <strong>🔴 Level C｜暴風／大雨警報、交通停駛</strong>
+                <p>停止觀光與跨區駕駛，留在飯店或官方指定安全場所。不要前往海岸、橋梁、地下道、河川及斜坡，也不要為餐廳訂位冒險。</p>
+            </article>
+        </div>
+
+        <div class="weather-table-wrap">
+            <table class="weather-table">
+                <thead>
+                    <tr><th>日期</th><th>最容易受影響</th><th>Level B室內替代方案</th><th>決策時間與原則</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Day 1<br>7/23</strong></td>
+                        <td>萬座毛、沿海國道與飯店海灘。</td>
+                        <td>A&amp;W午餐後直接前往Hotel Miyuki Beach休息；萬座毛取消，不以來客夢繞路。琉球之牛如正常營業再前往。</td>
+                        <td>取車時查看JMA警報與58號道路狀況。若有暴風警報，詢問租車公司與飯店是否建議取車／移動。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 2<br>7/24</strong></td>
+                        <td>備瀨福木林道、古宇利大橋、沙灘與戶外海豚區。</td>
+                        <td>保留美麗海水族館，追加同園區<strong>海洋文化館＋星象館</strong>；取消備瀨與古宇利島。若道路安全，傍晚再前往百年古家大家。</td>
+                        <td>07:00確認北部道路及古宇利大橋風況。百年古家是否營業、訂位是否可取消須另行致電。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 3<br>7/25</strong></td>
+                        <td>黑潮坐船浮潛、首里城戶外城郭。</td>
+                        <td>浮潛取消時：08:30退房 → 10:00–14:00來客夢 → 15:00–17:30<strong>沖繩縣立博物館・美術館</strong> → 國際通飯店。首里城取消。</td>
+                        <td>前一晚查看黑潮通知，06:00再確認；是否出航完全服從店家。星期六博物館開放至20:00，行程有緩衝。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 4<br>7/26</strong></td>
+                        <td>沖繩世界戶外園區、奧武島玻璃船、海邊與壺屋步行。</td>
+                        <td>一般雨天且園區開放可只走玉泉洞與太鼓舞；豪雨強風則改<strong>沖繩縣立博物館・美術館 → San-A Main Place／DFS → 國際通</strong>。若Day 3已用過博物館，改DMM＋iias，Day 5再提早入住休息。</td>
+                        <td>08:00確認沖繩世界、玻璃船及道路。玻璃船停航即取消，不在奧武島等待；博物館星期日18:00閉館。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 5<br>7/27</strong></td>
+                        <td>泊漁港停車步行、波上宮、瀨長島夕陽及室外足湯。</td>
+                        <td>直接前往<strong>DMM Kariyushi水族館＋iias沖繩豐崎</strong>，取消波上宮與戶外散步；道路安全且飯店可接待時提早到瀨長島飯店休息、泡室內溫泉。</td>
+                        <td>星期一縣立博物館休館，不能作備案。若瀨長島聯外道路或飯店要求暫緩，留在那霸飯店並詢問延住。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 6<br>7/28</strong></td>
+                        <td>航班HB337、加油還車與機場接駁。</td>
+                        <td>沒有觀光替代行程；以航空公司公告為優先。航班延誤就留在飯店／機場安全區，航班取消則立即處理改票和住宿。</td>
+                        <td>出發前48、24、6小時各確認一次航班。不要因原定13:00起飛而在暴風中提早駕車前往機場。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="weather-checklist">
+            <div><strong>⏰ 固定判斷節點</strong><br>出發前72小時開始追蹤；每天18:00決定隔日A／B方案，當日06:00做最後確認。團長在群組只發布一個版本，避免兩台車各自判斷。</div>
+            <div><strong>🎒 12人備災物資</strong><br>每人雨衣、替換襪、密封袋；全團準備飲水、即食食物、常用藥、行動電源、少量現金及兩車充電線。</div>
+            <div><strong>🚐 兩台Serena</strong><br>強風時停室內或有遮蔽的高處停車場，遠離海堤、招牌與樹木；但豪雨淹水風險高時不要停地下層。積水看不出深度就立即回頭。</div>
+            <div><strong>📱 必查資訊</strong><br>
+                <a href="https://www.jma.go.jp/bosai/map.html" target="_blank">日本氣象廳警報地圖</a>｜
+                <a href="https://www.data.jma.go.jp/multi/warn/okinawa_honto.html?lang=en&amp;warning=all" target="_blank">沖繩本島警報</a>｜
+                <a href="https://visitokinawajapan.com/plan-your-trip/useful-information/typhoon-precautions-okinawa/" target="_blank">沖繩官方颱風指南</a>｜
+                <a href="https://www.greaterbay-airlines.com/cn/en_CN/manage/before-your-flight/Flight-status.html" target="_blank">大灣區航空HB336／HB337狀態</a>；另同步查看飯店、租車及各活動官方通知。
+            </div>
         </div>
     </section>
 
